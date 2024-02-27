@@ -1,0 +1,106 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Estilos para el contenedor del formulario */
+form {
+    margin: 0 auto;
+    padding: 35px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+/* Media query para pantallas pequeñas */
+@media screen and (max-width: 767px) {
+    form {
+        max-width: 550px;
+    }
+}
+
+/* Media query para pantallas más grandes o completas */
+@media screen and (min-width: 767px) {
+    form {
+        max-width: 700px;
+    }
+}
+
+
+/* Estilos para las etiquetas */
+label {
+    color: #04457A;
+    font-weight: bold;
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"],
+input[type="password"] {
+    width: calc(100% );
+    padding: 30px;
+    margin: 8px 0;
+    border: 2px solid #D7DBDD;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+/* Estilos para los campos de entrada (input) */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none; /* Quitamos el contorno predeterminado */
+    border-color: #D7DBDD; /* Establecemos el color del borde al mismo que el fondo */
+}
+
+/* Estilos para los placeholders */
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #B3B9BC;
+}
+
+/* Estilos para el primer párrafo */
+/* Estilos para el ¿Olvidaste tu contraseña? */
+p:first-of-type {
+    color: #33B4F6;
+     margin-top: 10px; 
+      margin-bottom: 25px;
+}
+
+/* Estilos para el segundo párrafo */
+/* Estilos para el ¿No tienes una cuenta? */
+p:nth-of-type(2) {
+    color: #B3B9BC;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Estilos para el Regístrate aplicando a (a) */
+p:nth-of-type(2) a {
+    color: #04457A;
+    text-decoration: none;
+}
+
+/* Estilos para el botón */
+button[type="submit"] {
+    width: 100%;
+    background-color: #6B80A6;
+    color: #fff;
+    padding: 25px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #04457A;
+}
+
+/* Estilos para el botón deshabilitado */
+button:disabled {
+    background-color: #6B80A6;
+    cursor: not-allowed;
+}
