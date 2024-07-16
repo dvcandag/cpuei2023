@@ -1,4 +1,3 @@
-
 <?php
 require_once '../models/New_PasswordModel.php';
 
@@ -10,7 +9,7 @@ class New_PasswordController {
 
             // Validación de los datos de entrada
             if (empty($codalumno) || empty($password)) {
-                echo "ingrese el código de alumno y la nueva contraseña.";
+                echo "Ingrese el código de alumno y la nueva contraseña.";
                 return;
             }
 
