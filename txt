@@ -1,0 +1,137 @@
+cursomvc/
+│
+├── database/
+│   ├── foto-alumno/
+│   ├── qr-alumno/
+│   └── cpuei2023.sql
+│   
+├── controllers/
+│   ├── DashboardController.php
+│   ├── New_PasswordController.php
+│   ├── CursosController.php
+│   ├── LoginController.php
+│   └── CarnetAlumnoController.php
+│
+├── models/
+│   ├── LoginModel.php
+│   ├── DashboardModel.php
+│   ├── New_PasswordModel.php
+│   ├── CursosModel.php
+│   └── CarnetAlumnoModel.php
+│
+├── views/
+│   ├── template/
+│   │   ├── footer.php
+│   │   ├── qr_alumno.php
+│   │   ├── header.php
+│   │   └── navbar.php
+│   ├── dashboard.php
+│   ├── login.php
+│   ├── logout.php
+│   ├── nuevo_password.php
+│   ├── carnet-alumno.php
+│   └── registrate.php
+│
+├── config/
+│   ├── config.php
+│   └── database.php
+│
+└── index.php
+
+    
+
+
+CREATE TABLE `alumno` (
+  `codalumno` varchar(8) NOT NULL,
+  `nombrealumno` varchar(250) NOT NULL,
+  `apaterno` varchar(250) NOT NULL,
+  `amaterno` varchar(250) NOT NULL,
+  `fotoalumno` blob DEFAULT NULL,
+  `escuela` varchar(250) NOT NULL,
+  `aula` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `curso` (
+  `codcurso` varchar(8) NOT NULL,
+  `nombrecurso` varchar(250) NOT NULL,
+  `descripcion` varchar(500) DEFAULT NULL,
+  `codprofesor` varchar(8) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `matricula` (
+  `codmatricula` int(11) NOT NULL,
+  `codalumno` varchar(8) NOT NULL,
+  `codcurso` varchar(8) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `nota` (
+  `codalumno` varchar(8) NOT NULL,
+  `nota1` double DEFAULT NULL,
+  `nota2` double DEFAULT NULL,
+  `nota3` double DEFAULT NULL,
+  `nota4` double DEFAULT NULL,
+  `promedio` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `profesor` (
+  `codprofesor` varchar(8) NOT NULL,
+  `nombreprofesor` varchar(250) NOT NULL,
+  `apaternoprofesor` varchar(250) NOT NULL,
+  `amaternoprofesor` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `usuario` (
+  `codalumno` varchar(8) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `qr_alumno` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Índices para tablas volcadas
+--
+ALTER TABLE `alumno`
+  ADD PRIMARY KEY (`codalumno`);
+
+ALTER TABLE `curso`
+  ADD PRIMARY KEY (`codcurso`),
+  ADD KEY `codprofesor` (`codprofesor`);
+
+ALTER TABLE `matricula`
+  ADD PRIMARY KEY (`codmatricula`),
+  ADD KEY `codalumno` (`codalumno`),
+  ADD KEY `codcurso` (`codcurso`);
+
+ALTER TABLE `nota`
+  ADD KEY `codalumno` (`codalumno`);
+
+ALTER TABLE `profesor`
+  ADD PRIMARY KEY (`codprofesor`);
+
+
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`codalumno`);
+
+ALTER TABLE `matricula`
+  MODIFY `codmatricula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+ALTER TABLE `curso`
+  ADD CONSTRAINT `curso_ibfk_1` FOREIGN KEY (`codprofesor`) REFERENCES `profesor` (`codprofesor`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE `matricula`
+  ADD CONSTRAINT `matricula_ibfk_1` FOREIGN KEY (`codalumno`) REFERENCES `alumno` (`codalumno`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `matricula_ibfk_2` FOREIGN KEY (`codcurso`) REFERENCES `curso` (`codcurso`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `nota`
+  ADD CONSTRAINT `nota_ibfk_1` FOREIGN KEY (`codalumno`) REFERENCES `alumno` (`codalumno`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`codalumno`) REFERENCES `alumno` (`codalumno`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
