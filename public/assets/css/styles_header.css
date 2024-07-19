@@ -1,0 +1,180 @@
+body {
+    font-family: 'Poppins'; /* Aplica la fuente Poppins a todo el cuerpo del documento */
+    color: #04457A; /* Color de texto predeterminado */
+        font-size: 19px; /* Tamaño de fuente predeterminado */
+
+}
+header {
+        background-color: #ffffff; /* Color de header */
+    color: #04457A;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra similar a la de Facebook */
+    padding: 12px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Cambiamos a un ancho del 100% */
+    margin: 0 auto;
+}
+
+.logo img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%; /* Para que la imagen sea un círculo */
+    object-fit: cover; /* Para ajustar la imagen al contenedor */
+}
+
+
+
+
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+   
+    text-decoration: none;
+}
+
+.contenedor-icono svg{
+margin-left: 10px; /* Agrega separación en el lado izquierdo */
+margin-right: 10px; /* Agrega separación en el lado derecho */
+
+width: 35px;
+height: 35px;
+color:#04457A ; 
+}
+
+
+
+
+
+
+
+
+/* Clase para usuario*/
+.usuario {
+    margin-right: 10px; /* Agrega margen a la derecha */
+}
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+/* Clase para la foto de perfil */
+.foto-perfil {
+    width: 55px;
+    height: 55px; 
+    border-radius: 50%; /* Para que la imagen sea un círculo */
+    overflow: hidden; /* Para ocultar cualquier parte de la imagen que exceda el círculo */
+    cursor: pointer;
+    margin-left: 10px; /* Agrega margen a la izquierda */
+}
+
+/* Clase para formulario de perfil que sale al dar clic en la foto de perfil*/
+.formulario-perfil {
+    display: none;
+    position: fixed;
+    top: 100px; /* Ajuste para que esté debajo del header */
+    right: 15px;
+    background-color: white;
+    padding-top: 50px; /* Aumenta el padding en la parte superior */
+    padding-bottom: 60px; /* Aumenta el padding en la parte inferior */
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 30px #D5D8DC;
+    z-index: 10000;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+}
+
+#formulario-perfil ul {
+    padding: 0;
+    margin: 0;
+}
+
+#formulario-perfil ul li {
+    list-style: none;
+    margin-bottom: 10px; /* Ajusta el valor según el espacio deseado */
+}
+
+.formulario-perfil ul li a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Hereda el color del texto */
+    font-weight: bold; /* Aplica negrita al texto */
+       border-bottom: 1px solid #E5E7E9; /* Agrega un borde inferior a cada elemento <li> */
+    padding-bottom: 5px; /* Agrega espacio debajo de cada elemento <li> */
+}
+
+.formulario-perfil ul li a:hover {
+    text-decoration: none; /* Elimina el subrayado al pasar el mouse */
+    color: inherit; /* Mantiene el color del texto al pasar el mouse */
+}
+
+.formulario-perfil ul li  {
+    border-bottom: 1px solid #E5E7E9; /* Agrega un borde inferior a cada elemento <li> */
+    padding-bottom: 5px; /* Agrega espacio debajo de cada elemento <li> */
+}
+
+.formulario-perfil ul li:last-child {
+    border-bottom: none; /* Elimina el borde inferior del último elemento <li> */
+}
+
+.formulario-perfil ul li + li {
+    margin-top: 10px; /* Agrega un margen superior al segundo <li> */
+}
+
+
+
+
+
+
+
+        .carnet-container {
+            border: 2px solid #007bff; /* Color del borde */
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #ffffff; /* Color del fondo */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .carnet {
+            text-align: center;
+        }
+
+        .carnet h2 {
+            color: #007bff; /* Color del título */
+            margin-bottom: 20px;
+        }
+
+        .carnet p {
+            margin: 10px 0;
+        }
+
+        .foto-alumno {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .qr-alumno {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 5px;
+        }
