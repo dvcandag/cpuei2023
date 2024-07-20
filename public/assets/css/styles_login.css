@@ -1,0 +1,79 @@
+/* Estilos generales para todo el formulario */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa; /* Color de fondo */
+    color: #333; /* Color de texto principal */
+}
+
+h3 {
+    font-size: 1.5rem; /* Tamaño de fuente para subtítulos */
+    font-weight: 600; /* Peso de la fuente para subtítulos */
+    text-align: center; /* Alineación del texto */
+    margin-bottom: 1rem; /* Espaciado inferior */
+}
+
+p {
+    font-size: 1rem; /* Tamaño de fuente para párrafos */
+    margin-bottom: 1rem; /* Espaciado inferior */
+}
+
+label {
+    display: block; /* Mostrar como bloque para que cada etiqueta esté en una línea nueva */
+    font-size: 1rem; /* Tamaño de fuente para etiquetas */
+    font-weight: 500; /* Peso de la fuente para etiquetas */
+    margin-bottom: 0.5rem; /* Espaciado inferior */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"] {
+    width: 100%; /* Ancho completo */
+    padding: 0.8rem; /* Relleno interno */
+    margin-bottom: 1rem; /* Espaciado inferior */
+    border: 1px solid #ccc; /* Borde con color gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 1rem; /* Tamaño de fuente */
+    font-family: 'Poppins', sans-serif; /* Fuente */
+}
+/* Estilos para el primer párrafo */
+/* Estilos para el <a> ¿Olvidaste tu contraseña? */
+p:first-of-type a {
+    color: #33B4F6;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+input::placeholder {
+    color: #999; /* Color del placeholder */
+    font-size: 1rem; /* Tamaño de fuente del placeholder */
+    font-family: 'Poppins', sans-serif; /* Fuente del placeholder */
+}
+
+/* Estilo del botón */
+button[type="submit"] {
+    background-color: #004481; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto del botón */
+    padding: 0.8rem 2rem; /* Relleno interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 1.2rem; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    display: block;
+    width: 100%; /* Ancho completo */
+}
+
+button[type="submit"]:hover {
+    background-color: #003060; /* Color de fondo del botón al pasar el cursor */
+}
+
+
+
+/* Estilos específicos para mensajes de error */
+.error {
+    color: #d9534f; /* Color del mensaje de error */
+    font-size: 0.9rem; /* Tamaño de fuente para mensajes de error */
+}
+
