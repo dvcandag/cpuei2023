@@ -1,0 +1,72 @@
+body {
+    font-family: 'Poppins'; /* Aplica la fuente Poppins a todo el cuerpo del documento */
+    color: #04457A; /* Color de texto predeterminado */
+        font-size: 19px; /* Tamaño de fuente predeterminado */
+
+}
+.container-fluid {
+    
+    font-size: 20px; /* Tamaño de letra deseado, por ejemplo, 16px */
+}
+.navbar-container {
+    background-color: #ffffff; /* Color de fondo blanco */
+    padding: 20px; /* Espacio de relleno de 20px */
+    border-bottom: 1px solid #cccccc; /* Borde inferior de 1px sólido con color gris */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra similar a la de Facebook */
+    min-width: 280px; /* Anchura mínima de 280px */
+}
+
+
+.navbar-container ul {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 5px; /* Agrega un padding de 3px a cada lado del contenedor <ul> */
+    margin: 0; /* Elimina el margen predeterminado */
+}
+.navbar-container ul li {
+    position: relative; /* Establece la posición relativa para poder posicionar el pseudo-elemento */
+    margin-bottom: 18px; /* Agrega espacio entre cada elemento de la lista */
+}
+
+
+.navbar-container ul li:after {
+    content: ""; /* Agrega un contenido pseudo-elemento para crear la línea de separación */
+    position: absolute; /* Establece la posición absoluta para el pseudo-elemento */
+    bottom: 0px; /* Ajusta la posición para que la línea esté debajo del elemento de la lista */
+    left: 2px; /* Ajusta la posición para que la línea comience desde el margen izquierdo */
+    width: 230px; /* Ancho igual al ancho del elemento de la lista más los márgenes izquierdo y derecho */
+    height: 1px; /* Altura de la línea */
+    background-color: #E5E7E9; /* Color de la línea */
+    top: 40px; /* Ajusta la posición vertical para que la línea esté en el centro vertical del elemento de la lista */
+    
+}
+
+.navbar-container ul li:last-child:after {
+    display: none; /* Oculta la línea de separación en el último elemento de la lista */
+}
+
+/* Eliminar la decoración de los enlaces */
+.navbar-container a {
+    text-decoration: none;
+
+}
+
+/* Cambiar el color del texto a negro */
+.navbar-container a {
+    color: #04457A;
+}
+
+
+
+/* Mostrar el menú desplegable al hacer hover */
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+    font-size: 16px;
+}
+
+/* Cambiar el color del menú desplegable al hacer clic */
+.dropdown-menu .dropdown-item:active {
+    background-color: #f2f2f2; /* Cambiar el color de fondo del menú desplegable al hacer clic */
+    color: black; /* Cambiar el color del texto del menú desplegable al hacer clic */
+
+}
+
