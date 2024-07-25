@@ -12,7 +12,7 @@ $alumno = $_SESSION['alumno'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carné del Alumno</title>
-    <link rel="stylesheet" type="text/css" href="../public/assets/css/styles_header.css">
+    <link rel="stylesheet" type="text/css" href="../public/assets/css/styles_carnet.css">
 </head>
 <body>
 
@@ -20,58 +20,32 @@ $alumno = $_SESSION['alumno'];
     <!-- Contenido del carnet -->
     <?php if (isset($alumno) && $alumno): ?>
         <div class="carnet">
-            <h2>Carné del Alumno</h2>
-            <p><strong>Nombre:</strong> <?= $alumno['nombrealumno'] . ' ' . $alumno['apaterno'] . ' ' . $alumno['amaterno'] ?></p>
-            <p><strong>Código:</strong> <?= $alumno['codalumno'] ?></p>
-            <p><strong>Escuela:</strong> <?= $alumno['escuela'] ?></p>
+        <p><?= $alumno['nombrealumno'] . ' ' . $alumno['apaterno'] . ' ' . $alumno['amaterno'] ?></p>
+        <p><strong>Código Univ.
+        </strong> <?= $alumno['codalumno'] ?></p>
+            <p><?= $alumno['escuela'] ?></p>
+            <h3>Puedes ingresar a la universidad mostrando tu código</h3>
             
            
-
-
-
-
-////////NO FUNCIONA 
-
- <?php if (isset($alumno['../qr_alumno']) && file_exists($alumno['qr_alumno'])): ?>
-                <img class="qr-alumno" src="<?= $alumno['../qr_alumnoqr_alumno'] ?>" alt="QR del alumno <?= $alumno['codalumno'] ?>">
-            <?php else: ?>
-                <p>No se encontró el código QR del alumno.</p>
-            <?php endif; ?>
-
-//////////SI FUNCIONA PERO SOLO PARA UNA ESPECIFICANDO
 <?php
-// Ruta directa al archivo del código QR del alumno
-$ruta_qr = '../database/qr-alumno/qr-11400001.png'; // Ajusta esta ruta según la ubicación y nombre de tu archivo QR
+// Verificar si el campo 'codalumno' está definido en los datos del alumno
+if (isset($alumno['codalumno'])) {
+    // Construir la ruta al código QR del alumno
+    $ruta_qr = '../database/qr-alumno/qr-' . $alumno['codalumno'] . '.png';
 
-// Verificar si el archivo existe antes de mostrarlo
-if (file_exists($ruta_qr)) {
-    // Mostrar el código QR del alumno si existe
-    echo '<img class="qr-alumno" src="' . $ruta_qr . '" alt="QR del alumno 11400001">';
+    // Verificar si el archivo existe
+    if (file_exists($ruta_qr)) {
+        // Mostrar el código QR del alumno si existe
+        echo '<img class="qr-alumno" src="' . $ruta_qr . '" alt="QR del alumno ' . $alumno['codalumno'] . '">';
+    } else {
+        // Mostrar un mensaje si el archivo no existe
+        echo "No se encontró el código QR del alumno.";
+    }
 } else {
-    // Mostrar un mensaje si el archivo no existe
-    echo "No se encontró el código QR del alumno.";
+    // Mostrar un mensaje si no se encontraron datos del alumno en la sesión
+    echo "No se encontraron datos del alumno en la sesión.";
 }
 ?>
-
-
-
-
-////////EN CORECION
-<?php
-// Verificar si el campo 'qr_alumno' está definido en los datos del alumno y si el archivo existe
-if (isset($alumno['qr_alumno']) && file_exists($alumno['qr_alumno'])) {
-    // Mostrar el código QR del alumno si existe
-    echo '<img class="qr-alumno" src="' . $alumno['qr_alumno'] . '" alt="QR del alumno ' . $alumno['codalumno'] . '">';
-} else {
-    // Mostrar un mensaje si el archivo no existe
-    echo "No se encontró el código QR del alumno.";
-}
-?>
-
-
-
-
-
 
         </div>
     <?php else: ?>
