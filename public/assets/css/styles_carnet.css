@@ -1,0 +1,73 @@
+/* Contenedor principal del carnet */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ocultar cualquier overflow globalmente */
+    box-sizing: border-box; /* incluye el ancho y alto total del padding y border */
+}
+/* Contenedor principal del carnet */
+.carnet-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* ocupa todo el ancho de la ventana */
+    height: 100vh; /* ocupe toda la altura de la ventana */
+    background-color: #f5f5f5;
+    box-sizing: border-box; 
+}
+
+
+/* Estilo del carnet */
+.carnet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff; /* Fondo blanco para el carnet */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+}
+
+/* Clase para la foto de perfil */
+.foto-perfil-carnet {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+/* Estilo para el código QR */
+.qr-alumno {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+/* Estilo para el Contenedor del texto h5 */
+.carnet h5 {
+    font-size: 14px;
+    color: #000;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    max-width: 250px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Estilo para el nombre del alumno */
+.carnet p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+}
