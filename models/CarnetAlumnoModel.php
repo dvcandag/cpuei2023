@@ -1,30 +1,28 @@
 <?php
 require_once 'config/database.php';
 
-class CarnetAlumnoModel
-{
-    public function obtenerDatosAlumno($codAlumno)
-    {
-        $conn = Database::getInstance()->getConnection();
+class CarnetAlumnoModel {
 
+    public function obtenerAlumnos() {
         try {
-            // Realizar una consulta para obtener datos del alumno desde las tablas alumno y usuario
+            $conn = Database::getInstance()->getConnection();
+
+            // Consulta para obtener todos los datos de los alumnos, incluyendo la ruta del QR si está disponible
             $query = "SELECT alumno.codalumno, alumno.nombrealumno, alumno.apaterno, alumno.amaterno,
-                             alumno.fotoalumno, alumno.escuela, usuario.qr_alumno
+                             alumno.escuela, usuario.qr_alumno AS qr_nombre, alumno.fotoalumno
                       FROM alumno
-                      LEFT JOIN usuario ON alumno.codalumno = usuario.codalumno
-                      WHERE alumno.codalumno = :codAlumno";
+                      LEFT JOIN usuario ON alumno.codalumno = usuario.codalumno";
 
             $stmt = $conn->prepare($query);
-            $stmt->bindParam(':codAlumno', $codAlumno);
             $stmt->execute();
-            
-            // Obtener el resultado de la consulta
-            $alumno = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $alumno;
+
+            // Obtener todos los resultados como un arreglo asociativo
+            $alumnos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $alumnos;
+
         } catch (PDOException $e) {
-            // Si hay un error, devuelve un mensaje de error
-            return "Error al obtener datos del alumno: " . $e->getMessage();
+            return "Error al obtener datos de los alumnos: " . $e->getMessage();
         }
     }
 }
