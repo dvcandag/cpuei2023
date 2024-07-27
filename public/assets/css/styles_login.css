@@ -1,79 +1,128 @@
-/* Estilos generales para todo el formulario */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa; /* Color de fondo */
-    color: #333; /* Color de texto principal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+
 }
 
-h3 {
-    font-size: 1.5rem; /* Tamaño de fuente para subtítulos */
-    font-weight: 600; /* Peso de la fuente para subtítulos */
-    text-align: center; /* Alineación del texto */
-    margin-bottom: 1rem; /* Espaciado inferior */
+.contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-p {
-    font-size: 1rem; /* Tamaño de fuente para párrafos */
-    margin-bottom: 1rem; /* Espaciado inferior */
+.contenedor-inicio-sesion, .contenedor-registro {
+    width: 120%;
+    max-width: 400px;
+    background-color: #fff;
+        border: 1px solid #ccc;
+
+    margin: 5px 0;
+padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izquierda */
+    text-align: center;
+    border-radius: 0px;
+
 }
 
-label {
-    display: block; /* Mostrar como bloque para que cada etiqueta esté en una línea nueva */
-    font-size: 1rem; /* Tamaño de fuente para etiquetas */
-    font-weight: 500; /* Peso de la fuente para etiquetas */
-    margin-bottom: 0.5rem; /* Espaciado inferior */
+.logo img {
+    width: 70px;
+    margin: 15px 0;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="number"] {
-    width: 100%; /* Ancho completo */
-    padding: 0.8rem; /* Relleno interno */
-    margin-bottom: 1rem; /* Espaciado inferior */
-    border: 1px solid #ccc; /* Borde con color gris claro */
-    border-radius: 4px; /* Bordes redondeados */
-    font-size: 1rem; /* Tamaño de fuente */
-    font-family: 'Poppins', sans-serif; /* Fuente */
-}
-/* Estilos para el primer párrafo */
-/* Estilos para el <a> ¿Olvidaste tu contraseña? */
-p:first-of-type a {
-    color: #33B4F6;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 25px;
+.formulario-inicio-sesion input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+   border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px;
+    background-color: #fafafa;
+    font-size: 14px;
 }
 
-input::placeholder {
-    color: #999; /* Color del placeholder */
-    font-size: 1rem; /* Tamaño de fuente del placeholder */
-    font-family: 'Poppins', sans-serif; /* Fuente del placeholder */
+.formulario-inicio-sesion button {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    background-color: #004481;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-/* Estilo del botón */
-button[type="submit"] {
-    background-color: #004481; /* Color de fondo del botón */
-    color: #ffffff; /* Color del texto del botón */
-    padding: 0.8rem 2rem; /* Relleno interno */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    font-size: 1.2rem; /* Tamaño de fuente */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+.formulario-inicio-sesion button:hover {
+    background-color: #003060;
+}
+
+.divisor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    color: #8e8e8e;
+    font-weight: bold;
+}
+
+.divisor hr {
+    flex: 1;
+    height: 1px;
+    border: none;
+    background-color: #dbdbdb;
+}
+
+.divisor span {
+    margin: 0 10px;
+}
+
+.inicio-sesion-facebook {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #385185;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.inicio-sesion-facebook img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.olvido-contrasena a {
     display: block;
-    width: 100%; /* Ancho completo */
+    margin-top: 15px;
+    color: #00376b;
+    text-decoration: none;
+    font-size: 12px;
 }
 
-button[type="submit"]:hover {
-    background-color: #003060; /* Color de fondo del botón al pasar el cursor */
+.olvido-contrasena a:hover {
+    text-decoration: underline;
 }
 
-
-
-/* Estilos específicos para mensajes de error */
-.error {
-    color: #d9534f; /* Color del mensaje de error */
-    font-size: 0.9rem; /* Tamaño de fuente para mensajes de error */
+.contenedor-registro p {
+    color: #8e8e8e;
+    font-size: 14px;
 }
 
+.contenedor-registro a {
+    color: #0095f6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contenedor-registro a:hover {
+    text-decoration: underline;
+}
