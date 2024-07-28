@@ -24,13 +24,11 @@ body {
     width: 120%;
     max-width: 400px;
     background-color: #fff;
-        border: 1px solid #ccc;
-
+    border: 1px solid #C0D0D7;
     margin: 5px 0;
-padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izquierda */
+    padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izquierda */
     text-align: center;
     border-radius: 0px;
-
 }
 
 .logo img {
@@ -38,39 +36,73 @@ padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izq
     margin: 15px 0;
 }
 
+.form-group {
+    margin: 5px 0;
+}
+
+.input-container {
+    position: relative;
+    width: 100%; /* el contenedor ocupa todo el ancho disponible */
+}
+
 .formulario-inicio-sesion input {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-   border: 1px solid #ccc; /* Borde gris claro */
+    border: 1px solid #C0D0D7; /* Borde gris claro */
     border-radius: 4px;
     background-color: #fafafa;
     font-size: 14px;
+    outline: none; /* Elimina el borde de enfoque predeterminado del navegador */
+}
+
+.formulario-inicio-sesion input:focus {
+    border-color: #447287; /* Cambia el color del borde al hacer clic */
+}
+
+.alternar-contraseña {
+    position: absolute;
+    right: 10px; /* Espacio desde el borde derecho del campo de entrada */
+    top: 45%; /* Centra verticalmente el ícono */
+    transform: translateY(-50%); /* Ajusta el ícono para que esté perfectamente centrado */
+    cursor: pointer;
+    color: #82A1AF;
+    font-size: 20px;
+    user-select: none;
+}
+
+.alternar-contraseña:hover {
+    color: #255B74; /* Cambia el color del ícono al pasar el ratón */
 }
 
 .formulario-inicio-sesion button {
     width: 100%;
     padding: 10px;
     margin: 15px 0;
-    background-color: #004481;
+    background-color: #82A1AF;
     border: none;
     border-radius: 4px;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
     font-size: 14px;
+
+    /* Colores que se usará */
+    #255B74,#447287,#63899B,#82A1AF,#A1B8C3,#C0D0D7,#DFE7EB;
+
 }
 
 .formulario-inicio-sesion button:hover {
-    background-color: #003060;
+    background-color: #255B74;
 }
+
 
 .divisor {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 15px 0;
-    color: #8e8e8e;
+    color: #C0D0D7;
     font-weight: bold;
 }
 
@@ -78,7 +110,7 @@ padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izq
     flex: 1;
     height: 1px;
     border: none;
-    background-color: #dbdbdb;
+    background-color: #C0D0D7;
 }
 
 .divisor span {
@@ -89,7 +121,7 @@ padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izq
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #385185;
+    color: #255B74;
     font-weight: bold;
     cursor: pointer;
     font-size: 14px;
@@ -103,13 +135,14 @@ padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izq
 .olvido-contrasena a {
     display: block;
     margin-top: 15px;
-    color: #00376b;
+    color: #8e8e8e;
     text-decoration: none;
     font-size: 12px;
 }
 
 .olvido-contrasena a:hover {
     text-decoration: underline;
+    color: #255B74;
 }
 
 .contenedor-registro p {
@@ -118,7 +151,7 @@ padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izq
 }
 
 .contenedor-registro a {
-    color: #0095f6;
+    color: #255B74;
     text-decoration: none;
     font-weight: bold;
 }
@@ -126,3 +159,4 @@ padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izq
 .contenedor-registro a:hover {
     text-decoration: underline;
 }
+
