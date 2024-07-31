@@ -1,70 +1,67 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f5f5;
-
-}
-
+/* Estilos para el contenedor de login */
 .contenedor-principal {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.contenedor-inicio-sesion, .contenedor-registro {
-    width: 120%;
-    max-width: 400px;
+/* Estilos para contenedores de inicio de sesión y registro */
+.contenedor-inicio-sesion,
+.contenedor-registro,
+.contenedor-nuevo-password,
+.contenedor-nuevo-registro,
+.contenedor-formulario-registrate-nuevo,
+.contenedor-formulario-usuario-existente {
+    width: 120%;           /* Ocupa el ancho completo del contenedor padre */
+    max-width: 350px;      /* Limita el ancho máximo */
     background-color: #fff;
     border: 1px solid #C0D0D7;
-    margin: 5px 0;
-    padding: 20px 40px 20px 40px; /* 20px arriba, 40px derecha, 20px abajo, 40px izquierda */
+    margin: 10px 0;
+    padding: 10px 40px;    /* 10px arriba y abajo, 40px derecha e izquierda */
     text-align: center;
-    border-radius: 0px;
+    border-radius: 0px;    /* Sin bordes redondeados */
 }
 
+/* Estilos para la imagen del logo */
 .logo img {
     width: 70px;
     margin: 15px 0;
 }
 
+/* Estilos para grupos de formularios */
 .form-group {
-    margin: 5px 0;
+    margin: 3px 0;
 }
 
+/* Contenedor para campos de entrada */
 .input-container {
     position: relative;
-    width: 100%; /* el contenedor ocupa todo el ancho disponible */
+    width: 100%;
 }
 
+/* Estilos para campos de entrada */
 .formulario-inicio-sesion input {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #C0D0D7; /* Borde gris claro */
+    border: 1px solid #C0D0D7;
     border-radius: 4px;
     background-color: #fafafa;
     font-size: 14px;
-    outline: none; /* Elimina el borde de enfoque predeterminado del navegador */
+    outline: none;
 }
 
+/* Estilos para el foco en campos de entrada */
 .formulario-inicio-sesion input:focus {
-    border-color: #447287; /* Cambia el color del borde al hacer clic */
+    border-color: #447287;
 }
 
+/* Estilos para el ícono de alternar contraseña */
 .alternar-contraseña {
     position: absolute;
-    right: 10px; /* Espacio desde el borde derecho del campo de entrada */
-    top: 45%; /* Centra verticalmente el ícono */
-    transform: translateY(-50%); /* Ajusta el ícono para que esté perfectamente centrado */
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
     color: #82A1AF;
     font-size: 20px;
@@ -72,13 +69,30 @@ body {
 }
 
 .alternar-contraseña:hover {
-    color: #255B74; /* Cambia el color del ícono al pasar el ratón */
+    color: #255B74;
 }
 
+/* Estilos para la vista ver contraseña */
+.icon-vista-contraseña {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    color: #82A1AF;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 2px; /* Espacio entre la imagen y el texto */
+}
+
+.icon-vista-contraseña:hover {
+    color: #255B74;
+}
+
+/* Estilos para botones de formulario */
 .formulario-inicio-sesion button {
     width: 100%;
     padding: 10px;
-    margin: 15px 0;
+    margin: 20px 0;
     background-color: #82A1AF;
     border: none;
     border-radius: 4px;
@@ -86,17 +100,13 @@ body {
     font-weight: bold;
     cursor: pointer;
     font-size: 14px;
-
-    /* Colores que se usará */
-    #255B74,#447287,#63899B,#82A1AF,#A1B8C3,#C0D0D7,#DFE7EB;
-
 }
 
 .formulario-inicio-sesion button:hover {
     background-color: #255B74;
 }
 
-
+/* Estilos para el divisor */
 .divisor {
     display: flex;
     align-items: center;
@@ -117,7 +127,8 @@ body {
     margin: 0 10px;
 }
 
-.inicio-sesion-facebook {
+/* Estilos para el inicio de sesión con Gmail */
+.inicio-sesion-gmail {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,19 +136,27 @@ body {
     font-weight: bold;
     cursor: pointer;
     font-size: 14px;
+    text-decoration: none;
 }
 
-.inicio-sesion-facebook img {
-    width: 20px;
-    margin-right: 10px;
+.icon-gmail {
+    font-size: 14px; /* Ajustar el tamaño del ícono */
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
 }
 
+.inicio-sesion-gmail:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para el enlace de olvido de contraseña */
 .olvido-contrasena a {
     display: block;
     margin-top: 15px;
     color: #8e8e8e;
     text-decoration: none;
     font-size: 12px;
+    margin-bottom: 15px; /* Espaciado de margen inferior */
+
 }
 
 .olvido-contrasena a:hover {
@@ -145,18 +164,52 @@ body {
     color: #255B74;
 }
 
-.contenedor-registro p {
+/* Estilos para texto de registro y políticas */
+.contenedor-registro p,
+.sugerencia-registrate,
+.contenedor-formulario-registrate-nuevo p,
+.contenedor-formulario-usuario-existente p {
     color: #8e8e8e;
     font-size: 14px;
+    margin: 10px;
 }
 
-.contenedor-registro a {
+.sugerencia-registrate a,
+.contenedor-registro a,
+.contenedor-formulario-registrate-nuevo a,
+.contenedor-formulario-usuario-existente a {
     color: #255B74;
     text-decoration: none;
     font-weight: bold;
 }
 
-.contenedor-registro a:hover {
+.sugerencia-registrate a:hover,
+.contenedor-registro a:hover,
+.contenedor-formulario-registrate-nuevo a:hover,
+.contenedor-formulario-usuario-existente a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos para la página nuevo_password.php */
+.sugerencia-nuevo-password h4 {
+    color: #255B74;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.sugerencia-nuevo-password p {
+    color: #8e8e8e;
+    font-size: 14px;
+    margin: 10px;
+}
+
+.sugerencia-nuevo-password a {
+    color: #255B74;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sugerencia-nuevo-password a:hover {
     text-decoration: underline;
 }
 
