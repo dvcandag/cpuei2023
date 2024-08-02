@@ -73,13 +73,16 @@ color:#04457A ;
 
 /* Clase para la foto de perfil */
 .foto-perfil {
-    width: 55px;
-    height: 55px; 
+    width: 40px; /* Nuevo ancho */
+    height: 40px; /* Nuevo alto */
     border-radius: 50%; /* Para que la imagen sea un círculo */
     overflow: hidden; /* Para ocultar cualquier parte de la imagen que exceda el círculo */
     cursor: pointer;
     margin-left: 10px; /* Agrega margen a la izquierda */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
 }
+
+
 
 /* Clase para formulario de perfil que sale al dar clic en la foto de perfil*/
 .formulario-perfil {
