@@ -1,0 +1,251 @@
+
+/* Estilos para el contenedor de registrate */
+.contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0 20px; /* Relleno superior grande y relleno inferior pequeño */
+    margin-top: 300px; /* Ajusta el margen superior según sea necesario */
+}
+
+
+/* Estilos para el logo */
+.logo img {
+    width: 70px;
+    margin: 15px 0;
+}
+
+/* Estilos para contenedores de formularios */
+.contenedor-formulario-registro,
+.contenedor-nuevo-registro {
+    width: 100%; /* Ajusta al contenedor padre */
+    max-width: 400px;
+    background-color: #fff;
+    border: 1px solid #c0d0d7;
+    margin: 5px 0;
+    padding: 20px 40px; /* Padding consistente */
+    text-align: center;
+    border-radius: 0; /* No hay radio en las esquinas */
+}
+
+.contenedor-nuevo-registro a {
+    color: #255b74;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contenedor-nuevo-registro a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para el inicio de sesión con Gmail */
+.inicio-sesion-gmail {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    color: #255b74;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.icon-gmail {
+    width: 10px; /* Ajusta el tamaño de la imagen */
+    margin-right: 8px; /* Espacio entre la imagen y el texto */
+}
+
+.inicio-sesion-gmail:hover {
+    text-decoration: underline; /* Subraya el enlace al pasar el cursor */
+}
+
+/* Estilos para el formulario de inicio de sesión */
+.formulario-inicio-sesion {
+    margin-top: 0; /* Ajusta el margen superior para subir el formulario de inicio de sesión */
+}
+
+/* Estilos para sugerencias y enlaces de registro */
+.sugerencia-registrate {
+    color: #8e8e8e;
+    font-size: 11px;
+    margin: 5px;
+}
+
+.sugerencia-registrate a {
+    color: #255b74;
+    font-size: 11px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sugerencia-registrate a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para la invitación a registrarse */
+.invitacion-registrate h4 {
+    color: #255b74;
+    font-size: 16px;
+    margin: 0;
+    text-align: left; /* Alinea el texto a la izquierda */
+    line-height: 1.2; /* Ajusta el espaciado entre líneas */
+    padding: 0;
+    margin-left: -10px; /* Ajusta el margen izquierdo para mover el texto más a la izquierda */
+}
+
+.invitacion-registrate h4 span {
+    font-weight: bold;
+    font-size: 12px; /* Tamaño más pequeño para "DEJA TUS DATOS" */
+}
+
+.invitacion-registrate h4 .contactamos {
+    font-size: 18px; /* Tamaño más grande para "TE CONTACTAMOS PRONTO" */
+}
+
+.invitacion-parrafo {
+    text-align: left; /* Alinea el texto a la izquierda */
+    margin: 6px 0;
+    margin-left: -10px; /* Ajusta el margen izquierdo para mover el texto más a la izquierda */
+}
+
+/* Estilos para sugerencias de nuevo registro */
+.sugerencia-nuevo-registro {
+    color: #8e8e8e;
+    font-size: 14px;
+    margin: 10px;
+}
+
+.sugerencia-nuevo-registro a {
+    color: #255b74;
+    text-decoration: none;
+}
+
+/* Estilos para políticas */
+.políticas {
+    font-size: 11px;
+}
+
+/* Estilos para formularios de inicio de sesión */
+.formulario-inicio-sesion input,
+.formulario-inicio-sesion select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #c0d0d7;
+    border-radius: 4px;
+    background-color: #fafafa;
+    font-size: 14px;
+    outline: none;
+}
+
+.formulario-inicio-sesion input:focus,
+.formulario-inicio-sesion select:focus {
+    border-color: #447287;
+}
+
+/* Estilos para grupos de formularios */
+.form-group-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espacio entre columnas */
+    margin: 5px 0;
+}
+
+.form-group,
+.form-group-DNI-fecha-nacimiento input {
+    flex: 1; /* Ocupa el mismo ancho disponible */
+}
+
+/* Estilos para botones de formularios */
+.formulario-inicio-sesion button {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0;
+    background-color: #82a1af;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.formulario-inicio-sesion button:hover {
+    background-color: #255b74;
+}
+
+/* Estilos para divisores */
+.divisor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0;
+    color: #c0d0d7;
+    font-weight: bold;
+}
+
+.divisor hr {
+    flex: 1;
+    height: 1px;
+    border: none;
+    background-color: #c0d0d7;
+}
+
+.divisor span {
+    margin: 0 10px;
+}
+
+/* Estilos para grupo DNI y fecha de nacimiento */
+.form-group-DNI-fecha-nacimiento {
+    display: flex; /* Organiza los elementos en una fila */
+    gap: 10px; /* Espacio entre los elementos */
+    margin: 5px 0; /* Margen superior e inferior */
+}
+
+.form-group-DNI-fecha-nacimiento input {
+    flex: 1; /* Ocupa el mismo ancho disponible */
+    padding: 10px;
+    border: 1px solid #c0d0d7;
+    border-radius: 4px;
+    background-color: #fafafa;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group-DNI-fecha-nacimiento input:focus {
+    border-color: #447287;
+}
+
+/* Estilos para select y sus opciones */
+.form-group-contacto select,
+.form-group-contacto select option,
+.formulario-inicio-sesion input[type="date"] {
+    color: #666666; /* Color del texto del select y opciones no seleccionadas por defecto */
+}
+
+/* Color del texto de la opción seleccionada */
+.form-group-contacto select option:checked {
+    color: #000000; /* Color del texto de la opción seleccionada */
+}
+
+/* Cambiar el color del texto del select al enfocarlo */
+.form-group-contacto select:focus,
+.formulario-inicio-sesion input[type="date"]:focus {
+    color: #000000; /* Color del texto del select o input de fecha cuando está enfocado */
+}
+
+/* Asegurar que el texto seleccionado permanezca negro */
+.form-group-contacto select:valid,
+.formulario-inicio-sesion input[type="date"]:valid {
+    color: #000000; /* Color del texto del select o input de fecha cuando es válido */
+}
+
+/* Cambiar el color del texto de las opciones al pasar el cursor */
+.form-group-contacto select option:hover {
+    color: #ff0000; /* Color del texto de las opciones del select al pasar el cursor */
+}
+
+/* Estilos para los inputs en general */
+.formulario-inicio-sesion input {
+    color: #000000; /* Color del texto de los inputs */
+}
