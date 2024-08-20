@@ -1,72 +1,107 @@
-body {
-    font-family: 'Poppins'; /* Aplica la fuente Poppins a todo el cuerpo del documento */
-    color: #04457A; /* Color de texto predeterminado */
-        font-size: 19px; /* Tamaño de fuente predeterminado */
-
-}
-.container-fluid {
-    
-    font-size: 20px; /* Tamaño de letra deseado, por ejemplo, 16px */
-}
+/* Estructura general del contenedor */
 .navbar-container {
-    background-color: #ffffff; /* Color de fondo blanco */
-    padding: 20px; /* Espacio de relleno de 20px */
-    border-bottom: 1px solid #cccccc; /* Borde inferior de 1px sólido con color gris */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra similar a la de Facebook */
-    min-width: 280px; /* Anchura mínima de 280px */
+    background-color: #255B74; /* Color de fondo de la barra lateral */
+    /* border-right: 1px solid #3a3b3c; /* Línea de separación */
+    height: 100vh; /* Altura completa del viewport */
+    padding-top: 20px; /* Espaciado superior */
+    position: fixed; /* Fijo en el lado izquierdo */
+    width: 250px; /* Ancho de la barra lateral */
+    top: 75px; /* Empieza justo debajo del header */
 }
 
-
-.navbar-container ul {
-    list-style-type: none; /* Elimina los puntos de la lista */
-    padding: 5px; /* Agrega un padding de 3px a cada lado del contenedor <ul> */
-    margin: 0; /* Elimina el margen predeterminado */
-}
-.navbar-container ul li {
-    position: relative; /* Establece la posición relativa para poder posicionar el pseudo-elemento */
-    margin-bottom: 18px; /* Agrega espacio entre cada elemento de la lista */
-}
-
-
-.navbar-container ul li:after {
-    content: ""; /* Agrega un contenido pseudo-elemento para crear la línea de separación */
-    position: absolute; /* Establece la posición absoluta para el pseudo-elemento */
-    bottom: 0px; /* Ajusta la posición para que la línea esté debajo del elemento de la lista */
-    left: 2px; /* Ajusta la posición para que la línea comience desde el margen izquierdo */
-    width: 230px; /* Ancho igual al ancho del elemento de la lista más los márgenes izquierdo y derecho */
-    height: 1px; /* Altura de la línea */
-    background-color: #E5E7E9; /* Color de la línea */
-    top: 40px; /* Ajusta la posición vertical para que la línea esté en el centro vertical del elemento de la lista */
-    
+/* Estilo para los enlaces de navegación */
+.nav-link, .dropdown-item {
+    color: #FFFFFF; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+    padding: 10px 15px; /* Espaciado interno */
+    display: flex; /* Flexbox para alineación de iconos y texto */
+    align-items: center; /* Alineación vertical de los elementos */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.2s; /* Transición suave para el color de fondo */
+    width: 220px; /* Ancho fijo para los enlaces */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+    overflow: hidden; /* Evita el desbordamiento del contenido */
+    white-space: nowrap; /* Evita el salto de línea en el texto */
 }
 
-.navbar-container ul li:last-child:after {
-    display: none; /* Oculta la línea de separación en el último elemento de la lista */
+/* Estilo para los enlaces cuando se pasa el mouse por encima */
+.nav-link:hover,
+.nav-item:hover .nav-link {
+    background-color: #447287; /* Color de fondo al pasar el ratón */
+    color: #050C10; /* Asegura que el color del texto se mantenga oscuro al pasar el ratón */
+    border-radius: 2px; /* Mantiene el border-radius al pasar el ratón */
 }
 
-/* Eliminar la decoración de los enlaces */
-.navbar-container a {
-    text-decoration: none;
-
+/* Estilo para los iconos dentro de los enlaces */
+.nav-link i, .dropdown-item i {
+    font-size: 12px; /* Tamaño del icono */
+    margin-left: auto; /* Empuja el ícono hacia el borde derecho */
+    padding-right: 1px; /* Espacio entre el ícono y el borde derecho del contenedor */
 }
 
-/* Cambiar el color del texto a negro */
-.navbar-container a {
-    color: #04457A;
+/* Estilo para alinear los íconos de las flechas más a la derecha */
+.alineacion-icono-desplegable {
+    margin-left: auto; /* Empuja el ícono hacia la derecha */
+    padding-right: 10px; /* Espacio entre el ícono y el borde derecho */
 }
 
-
-
-/* Mostrar el menú desplegable al hacer hover */
-.dropdown:hover .dropdown-menu {
-    display: block !important;
-    font-size: 16px;
+/* Asegura que el contenido dentro del contenedor se alinee correctamente */
+.nav-link span, .dropdown-item span {
+    flex-grow: 1; /* Hace que el texto ocupe el espacio disponible */
+    text-align: left; /* Alineación del texto a la izquierda */
+    font-size: 14px; /* Tamaño de fuente */
 }
 
-/* Cambiar el color del menú desplegable al hacer clic */
-.dropdown-menu .dropdown-item:active {
-    background-color: #f2f2f2; /* Cambiar el color de fondo del menú desplegable al hacer clic */
-    color: black; /* Cambiar el color del texto del menú desplegable al hacer clic */
+/* Estilo para el contenedor principal y el enlace de navegación */
+.nav-item {
+    position: relative; /* Necesario para el posicionamiento absoluto del dropdown */
+}
 
+/* Estilo para los elementos dropdown */
+.dropdown-menu {
+    background-color: #63899B; /* Color de fondo del menú desplegable */
+    border: none; /* Sin borde */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del menú */
+    padding: 0; /* Sin espaciado interno */
+    position: absolute; /* Posición absoluta para que se posicione correctamente */
+    left: 0; /* Alineación izquierda */
+    top: 100%; /* Posición debajo del elemento padre */
+    width: 100%; /* Ancho completo del elemento padre */
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+    display: none; /* Oculta el menú por defecto */
+}
+
+/* Estilo para mostrar el menú al pasar el ratón sobre el contenedor o el enlace */
+.nav-item:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block; /* Muestra el menú al pasar el mouse sobre el contenedor o el menú */
+}
+
+/* Estilo para los items del dropdown */
+.dropdown-item {
+    padding: 10px 15px; /* Espaciado interno */
+    color: #FFFFFF; /* Color del texto */
+    text-align: left; /* Alineación del texto */
+    width: 100%; /* Ancho completo del contenedor */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+    white-space: normal; /* Permite el ajuste de texto en varias líneas */
+    overflow: visible; /* Muestra el texto completo, permitiendo el ajuste en varias líneas */
+    font-size: 14px; /* Tamaño de fuente */
+    transition: background-color 0.2s; /* Transición suave para el color de fondo */
+}
+
+/* Estilo para los items del dropdown cuando se pasa el ratón */
+.dropdown-item:hover {
+    background-color: #82A1AF; /* Color de fondo al pasar el ratón */
+    color: #1A4152; /* Color del texto al pasar el ratón */
+    border-radius: 2px; /* Mantiene el border-radius al pasar el ratón */
+}
+
+/* Estilo para los items del dropdown cuando se enfocan o activan */
+.dropdown-item:focus,
+.dropdown-item:active {
+    color: #0F2731; /* Color de texto al hacer clic o seleccionar */
+    background-color: #DFE7EB; /* Color de fondo si lo deseas */
+    border-radius: 2px; /* Mantiene el border-radius al hacer clic o seleccionar */
 }
 
