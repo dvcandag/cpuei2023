@@ -25,39 +25,51 @@ $fechaActual = date('j \d\e F \d\e Y');
 
     
 
-    <!-- Contenido principal del dashboard -->
-    <div class="container-home">
-                    <div class="home">
-    <img src="../public/assets/images/galeria/portada.jpg">
-                    </div>
-                    <div class="nombre-modalidad">
-                        La modalidad en que estás inscrito es:
-                    </div>
-                </div>
+<!-- Contenido principal del dashboard -->
+<div class="container-home">
+    <div class="home slider">
+        <div class="slides">
+            <div class="slide">
+                    <img src="../public/assets/images/galeria/portada.jpg">
 
-    
-    <!-- Contenido principal para acceso directo Horario y tramites -->
-    <div class="container-acceso-directo">
-      
-        <!-- Columna 1 -->
-        <div class="col-12 mb-4">
-            <div class="acceso-horarios">
-                <div class="acceso-horarios-info">
-                    <span>Hoy, <?php echo $fechaActual; ?></span>
-                    <button class="acceso-btn">Ver mi horario</button>
-                </div>
             </div>
-        </div>
-        <!-- Columna 2 -->
-        <div class="col-12 mb-4">
-            <div class="acceso-tramites">
-                <div class="acceso-tramites-info">
-                    <span>Realiza tus trámites</span>
-                    <button class="acceso-btn">Ir a trámites</button>
-                </div>
+            <div class="slide">
+                <img src="../public/assets/images/galeria/foto-1.jpg">
             </div>
+            <div class="slide">
+                <img src="../public/assets/images/galeria/portada2.avif">
+            </div>
+            <div class="slide">
+                <img src="../public/assets/images/galeria/foto-2.jpg">
+            </div>
+            <!-- Agregar más slides según sea necesario -->
         </div>
+        <div id="pagination" class="indicadores">
+    <button class="indicador active" data-slide="0"></button>
+    <button class="indicador" data-slide="1"></button>
+    <button class="indicador" data-slide="2"></button>
+    <button class="indicador" data-slide="3"></button>
+</div>
+
     </div>
+    <div class="nombre-modalidad">
+        La modalidad en que estás inscrito es:
+    </div>
+</div>
+
+
+
+<div class="container-fecha">
+    <div class="fecha-info">
+        <span class="fecha-hoy">Hoy, <?php echo $fechaActual; ?></span>
+
+        <a href="#" class="btn-fecha-matricula">Fecha de matrícula</a>
+        <span class="mi-horario">
+            Horarios de Ciclo Agosto 2024
+            <a href="#" class="btn-ver-horario">Ver mi horario</a>
+        </span>
+    </div>
+</div>
 
 
 
@@ -70,17 +82,17 @@ $fechaActual = date('j \d\e F \d\e Y');
  -->
 <div class="acceso-container">
     <!-- Horarios de matrícula -->
-    <div class="acceso-directo-matricula-info">
+    <div class="acceso-directo-tramites-info">
         <button class="acceso-btn-container">
             <i class="fa-solid fa-calendar-check icon-left"></i>
             <div class="text-container">
-                <p>Horarios de matrícula de Ciclo Agosto 2024</p>
+                <p>Realiza tus trámites</p>
             </div>
         </button>
     </div>
 
     <!-- Información institucional -->
-    <div class="acceso-directo-matricula-info">
+    <div class="acceso-directo-tramites-info">
         <button class="acceso-btn-container">
             <i class="fa-solid fa-info-circle icon-left"></i>
             <div class="text-container">
@@ -96,7 +108,7 @@ $fechaActual = date('j \d\e F \d\e Y');
 
 
 
-
+<!-- Contenedor de "Te podría interesar" -->
 <div class="container-otros-accesos">
     <div class="otros-accesos">
         <h1>Te podría interesar:</h1>
@@ -146,6 +158,23 @@ $fechaActual = date('j \d\e F \d\e Y');
 </div>
 
 
-    <!-- Scripts al final del body si es necesario -->
+<footer class="container-footer">
+    <div class="footer">
+       
+        <p>&copy; 2024 CURSO-MVC - Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+    <script src="../public/assets/js/slider-dashboard.js"></script> <!-- Incluye tu archivo JavaScript aquí -->
+
+
+
 </body>
 </html>
