@@ -1,12 +1,14 @@
 function AlternarContraseña() {
     const passwordInput = document.getElementById('password');
-    const icon = document.querySelector('.alternar-contraseña');
+    const icon = document.querySelector('.icon-vista-contraseña i');
     
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        icon.textContent = '👁️'; // Cambia el ícono para indicar que la contraseña está visible
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
     } else {
         passwordInput.type = 'password';
-        icon.textContent = '👁️'; // Cambia el ícono para indicar que la contraseña está oculta
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
     }
 }
