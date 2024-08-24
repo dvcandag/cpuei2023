@@ -1,64 +1,82 @@
-body {
-    font-family: 'Poppins'; /* Aplica la fuente Poppins a todo el cuerpo del documento */
-    color: #04457A; /* Color de texto predeterminado */
-        font-size: 19px; /* Tamaño de fuente predeterminado */
-
-}
-header {
-        background-color: #ffffff; /* Color de header */
-    color: #04457A;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra similar a la de Facebook */
-    padding: 12px;
-}
-
+/* Estilos para el contenedor de carnet */
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; /* Cambiamos a un ancho del 100% */
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #255B74;
+    color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-sizing: border-box;
     margin: 0 auto;
+    position: fixed; /* Mantén el header fijo en la parte superior */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75px; /* Altura fija del header */
+    z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+    font-size: 12px;
 }
 
+.logo {
+    position: relative; /* Asegura que el indicador se posicione correctamente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: visible; /* Permite que el contenido hijo se extienda fuera del contenedor */
+    border: 1px solid #FFFFFF;
+    
+}
 .logo img {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%; /* Para que la imagen sea un círculo */
-    object-fit: cover; /* Para ajustar la imagen al contenedor */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 
+/* Estilos para los íconos */
+.contenedor-icono {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-
-
-nav ul {
-    list-style-type: none;
+.contenedor-icono ul {
+    list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 10px;
+.contenedor-icono li {
+    margin: 0 2px;
 }
 
-nav ul li a {
-   
-    text-decoration: none;
+.contenedor-icono a {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #FFFFFF;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
 }
 
-.contenedor-icono svg{
-margin-left: 10px; /* Agrega separación en el lado izquierdo */
-margin-right: 10px; /* Agrega separación en el lado derecho */
-
-width: 35px;
-height: 35px;
-color:#04457A ; 
+.contenedor-icono a:hover {
+    color: #1A4152;
+    background-color: #82A1AF;
 }
 
-
-
-
-
+/* Estilo para los items del dropdown cuando se pasa el ratón */
+.dropdown-item:hover {
+    background-color: #82A1AF; /* Color de fondo al pasar el ratón */
+    color: #1A4152; /* Color del texto al pasar el ratón */
+    border-radius: 2px; /* Mantiene el border-radius al pasar el ratón */
+}
 
 
 
@@ -71,35 +89,69 @@ color:#04457A ;
     align-items: center;
 }
 
+
 /* Clase para la foto de perfil */
 .foto-perfil {
-    width: 40px; /* Nuevo ancho */
-    height: 40px; /* Nuevo alto */
-    border-radius: 50%; /* Para que la imagen sea un círculo */
-    overflow: hidden; /* Para ocultar cualquier parte de la imagen que exceda el círculo */
+    position: relative; /* Asegura que el indicador se posicione correctamente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: visible; /* Permite que el contenido hijo se extienda fuera del contenedor */
+    border: 1px solid #FFFFFF;
+    margin-left: 10px;
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Indicador de flecha */
+.foto-perfil::after {
+    content: "\f078"; /* Código del ícono "chevron-down" de Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    font-size: 8px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #255B74;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    width: 15px; /* Tamaño del círculo */
+    height: 15px; /* Tamaño del círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    margin-left: 10px; /* Agrega margen a la izquierda */
-    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+    z-index: 10; /* Asegura que el indicador esté por encima de la foto de perfil */
 }
 
 
 
-/* Clase para formulario de perfil que sale al dar clic en la foto de perfil*/
+/* Estilo para el formulario de perfil */
 .formulario-perfil {
     display: none;
     position: fixed;
-    top: 100px; /* Ajuste para que esté debajo del header */
+    top: 90px; /* Ajuste para que esté debajo del header */
     right: 15px;
-    background-color: white;
-    padding-top: 50px; /* Aumenta el padding en la parte superior */
-    padding-bottom: 60px; /* Aumenta el padding en la parte inferior */
+    background-color: #DFE7EB;
+    padding-top: 50px;
+    padding-bottom: 60px;
     padding-left: 40px;
     padding-right: 40px;
-    border-radius: 12px;
-    box-shadow: 0px 0px 30px #D5D8DC;
+    border-radius: 6px;
+    box-shadow: 0px 0px 30px #447287;
     z-index: 10000;
     flex-direction: column;
-    align-items: center; /* Centra el contenido horizontalmente */
+    align-items: center;
 }
 
 #formulario-perfil ul {
@@ -109,75 +161,128 @@ color:#04457A ;
 
 #formulario-perfil ul li {
     list-style: none;
-    margin-bottom: 10px; /* Ajusta el valor según el espacio deseado */
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .formulario-perfil ul li a {
-    text-decoration: none; /* Elimina el subrayado */
-    color: inherit; /* Hereda el color del texto */
-    font-weight: bold; /* Aplica negrita al texto */
-       border-bottom: 1px solid #E5E7E9; /* Agrega un borde inferior a cada elemento <li> */
-    padding-bottom: 5px; /* Agrega espacio debajo de cada elemento <li> */
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    border-bottom: 1px solid #c0d0d7;
+    padding-bottom: 5px;
+    font-size: 14px;
 }
 
 .formulario-perfil ul li a:hover {
-    text-decoration: none; /* Elimina el subrayado al pasar el mouse */
-    color: inherit; /* Mantiene el color del texto al pasar el mouse */
+    text-decoration: none;
+    color: inherit;
 }
 
-.formulario-perfil ul li  {
-    border-bottom: 1px solid #E5E7E9; /* Agrega un borde inferior a cada elemento <li> */
-    padding-bottom: 5px; /* Agrega espacio debajo de cada elemento <li> */
+.formulario-perfil ul li {
+    border-bottom: 1px solid #c0d0d7;
+    padding-bottom: 5px;
 }
 
 .formulario-perfil ul li:last-child {
-    border-bottom: none; /* Elimina el borde inferior del último elemento <li> */
+    border-bottom: none;
 }
 
 .formulario-perfil ul li + li {
-    margin-top: 10px; /* Agrega un margen superior al segundo <li> */
+    margin-top: 10px;
+}
+
+strong {
+    color: #255B74;
+}
+
+
+/* Estilo para el enlace "Cerrar sesión" */
+.cerrar-sesion {
+    color: #255B74;
+    font-size: 12px;
+    margin-top: 20px; /* Ajusta este valor según sea necesario */
 }
 
 
 
+/* Media Queries para adaptar el diseño en diferentes dispositivos */
 
+/* Para dispositivos móviles (menos de 768px) */
+@media (max-width: 767px) {
+    .header-container {
+        padding: 8px 10px; /* Ajusta el padding del header */
+        height: 75px; /* Ajusta la altura del header */
+        font-size: 12px; /* Ajusta el tamaño de la fuente */
+    }
 
+    .logo {
+        width: 35px;
+        height: 35px;
+    }
 
+    .logo img {
+        width: 100%;
+        height: 100%;
+    }
 
-        .carnet-container {
-            border: 2px solid #007bff; /* Color del borde */
-            border-radius: 10px;
-            padding: 20px;
-            background-color: #ffffff; /* Color del fondo */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-            max-width: 400px;
-            width: 100%;
-        }
+    .contenedor-icono {
+        flex-direction: column; /* Cambia la dirección de los íconos a columna en dispositivos pequeños */
+    }
 
-        .carnet {
-            text-align: center;
-        }
+    .contenedor-icono a {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
 
-        .carnet h2 {
-            color: #007bff; /* Color del título */
-            margin-bottom: 20px;
-        }
+    .foto-perfil {
+        width: 35px;
+        height: 35px;
+    }
 
-        .carnet p {
-            margin: 10px 0;
-        }
+    .foto-perfil::after {
+        font-size: 6px;
+        width: 12px;
+        height: 12px;
+    }
 
-        .foto-alumno {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
+    .formulario-perfil {
+        top: 90px; /* Ajusta el top para que esté debajo del header */
+        padding-top: 30px; /* Ajusta el padding superior */
+        padding-bottom: 40px; /* Ajusta el padding inferior */
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 90%; /* Ajusta el ancho */
+        right: 5%; /* Ajusta la posición derecha */
+    }
+}
 
-        .qr-alumno {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            border-radius: 5px;
-        }
+/* Para tabletas (entre 768px y 992px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .header-container {
+        padding: 10px 15px; /* Ajusta el padding del header */
+        height: 75px; /* Ajusta la altura del header */
+        font-size: 12px; /* Ajusta el tamaño de la fuente */
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .contenedor-icono a {
+        padding: 9px 15px;
+        font-size: 15px;
+    }
+
+    .foto-perfil {
+        width: 40px;
+        height: 40px;
+    }
+
+    .foto-perfil::after {
+        font-size: 7px;
+        width: 14px;
+        height: 14px;
+    }
+}
