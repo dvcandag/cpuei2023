@@ -5,6 +5,8 @@
 
 <link rel="stylesheet" type="text/css" href="../public/assets/css/styles_cursos.css">
 
+<link rel="stylesheet" type="text/css" href="../public/assets/css/styles_global.css">
+
 <div class="container-notas">
      <div class="palabra-atras">
     <a href="dashboard.php" class="enlace-retroceso">
@@ -17,7 +19,7 @@
 
 
    <div class="mis-cursos">
-    <h2>Mis cursos</h2>
+    <h5>Mis cursos</h5>
     <p>Periodo:</p>
     <div class="contenedor-seleccion">
         <select id="seleccion-curso">
@@ -75,17 +77,21 @@
 
 
 
-
-    
-    <div class="curso-detalle">
+<div class="curso-detalle">
+    <div class="curso-header" onclick="AlternarContenido(this)">
         <h3>Taller de investigación - sistemas (1SI95)</h3>
         <p class="estado-curso">Aprobado | Promedio: 17</p>
-        
+        <button type="button" class="toggle-button">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    </div>
+    
+    <div class="curso-content">
         <div class="docente-info">
-            <h4>Docente:</h4>
-            <p>Alejandria Vallejos, Patricia Abigail</p>
-            <p>Chayan Coloma, Alejandro</p>
-        </div>
+    <h4>Docente:</h4>
+    <p class="docente-nombres">Alejandria Vallejos, Patricia Abigail</p>
+</div>
+
         
         <div class="modalidad-curso">
             <h4>Modalidad de curso:</h4>
@@ -106,28 +112,39 @@
         </div>
         
         <div class="evaluaciones">
-            <h4>Evaluaciones:</h4>
-            <p>Avance de proyecto final 1 (APF1): 15</p>
-            <p>Avance de proyecto final 2 (APF2): 15</p>
-            <p>Avance de proyecto final 3 (APF3): 15</p>
-            <p>Participación en clase (PA): 18</p>
-            <p>Proyecto final (PROY): 20</p>
-        </div>
+    <h4>Evaluaciones:</h4>
+    <div class="evaluacion">
+        <span>Avance de proyecto final 1 (APF1):</span>
+        <span class="valor-notas">15</span>
+    </div>
+    <div class="evaluacion">
+        <span>Avance de proyecto final 2 (APF2):</span>
+        <span class="valor-notas">15</span>
+    </div>
+    <div class="evaluacion">
+        <span>Avance de proyecto final 3 (APF3):</span>
+        <span class="valor-notas">15</span>
+    </div>
+    <div class="evaluacion">
+        <span>Participación en clase (PA):</span>
+        <span class="valor-notas">18</span>
+    </div>
+    <div class="evaluacion">
+        <span>Proyecto final (PROY):</span>
+        <span class="valor-notas">20</span>
+    </div>
+</div>
+
         
         <div class="formula">
             <h4>Fórmula:</h4>
             <p>10%*[APF1] + 20%*[APF2] + 20%*[APF3] + 10%*[PA] + 40%*[PROY]</p>
         </div>
         
-        <div class="grade">
+        <div class="calificaion-final">
             <p><strong>Promedio:</strong> 17</p>
             <p class="estado-final">Aprobado</p>
         </div>
     </div>
-    
-    <div class="asistencia">
-        <h4>Registro de asistencia</h4>
-        <p>Conoce el detalle de tu asistencia al curso.</p>
-        <a href="#" class="ver-asistencia">Ver asistencia</a>
-    </div>
 </div>
+    <script src="../public/assets/js/script_AlternarContenido.js"></script>
