@@ -1,0 +1,254 @@
+config/config.php
+<?php
+define('URL', 'http://localhost:80/cpuei2023/');
+
+define('HOST', 'localhost');
+define('DB', 'cpuei2023');
+define('USER', 'root');
+define('PASSWORD', '');
+define('CHARSET', 'utf8mb4');
+
+
+
+?>
+
+
+config/database.php
+
+<?php
+require_once 'config.php';
+
+class Database {
+    private static $instance = null;
+    private $conn;
+
+    private function __construct() {
+        $host = HOST;
+        $db   = DB;
+        $user = USER;
+        $pass = PASSWORD;
+        $charset = CHARSET;
+
+        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+        $options = [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ];
+
+        try {
+            $this->conn = new PDO($dsn, $user, $pass, $options);
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        }
+    }
+
+    public static function getInstance() {
+        if (!self::$instance) {
+            self::$instance = new Database();
+        }
+        return self::$instance;
+    }
+
+    public function getConnection() {
+        return $this->conn;
+    }
+}
+
+
+
+// Creacion de test de conexion 
+
+try {
+    // Crear una conexión a la base de datos utilizando las constantes definidas
+    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASSWORD);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Realizar una consulta de prueba
+    $query = "SELECT 1";
+    $stmt = $conn->query($query);
+
+    // Verificar si la consulta se ejecutó con éxito
+    if ($stmt) {
+        echo "¡Conexión exitosa a la base de datos!";
+    } else {
+        echo "Error al ejecutar la consulta.";
+    }
+} catch (PDOException $e) {
+    // Capturar cualquier error al conectar a la base de datos
+    echo "Error al conectar a la base de datos: " . $e->getMessage();
+}
+// find de test de conexion 
+
+?>
+
+ models/LoginModel.php
+<?php
+require_once 'config/database.php';
+
+
+class LoginModel {
+    public function getUserByUsername($username) {
+    $conn = Database::getInstance()->getConnection();
+    $query = "SELECT * FROM usuario WHERE codalumno = :username";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':username', $username);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Depuración: Imprimir los datos del usuario obtenidos de la base de datos
+    var_dump($user);
+
+    return $user;
+}
+
+}
+
+
+
+
+
+?>
+
+
+
+
+models/DashboardModel.php
+<?php
+require_once 'config/database.php';
+
+class DashboardModel {
+    public function getAllAlumnos() {
+        $conn = Database::getInstance()->getConnection();
+        $query = "SELECT * FROM alumno";
+        $stmt = $conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+?>
+
+ views/dashboard.php
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit;
+}
+$username = $_SESSION['username'];
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Bienvenido, <?php echo $username; ?></h1>
+    <a href="logout.php">Cerrar sesión</a>
+
+
+ <h1>Listado de Alumnos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Escuela</th>
+                <th>Aula</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($alumnos as $alumno): ?>
+                <tr>
+                    <td><?php echo $alumno['codalumno']; ?></td>
+                    <td><?php echo $alumno['nombrealumno']; ?></td>
+                    <td><?php echo $alumno['apaterno']; ?></td>
+                    <td><?php echo $alumno['amaterno']; ?></td>
+                    <td><?php echo $alumno['escuela']; ?></td>
+                    <td><?php echo $alumno['aula']; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+
+
+    
+</body>
+</html>
+
+
+
+views/login.php
+
+<!-- Formulario de inicio de sesión -->
+<form method="POST" action="index.php?action=login">
+    <input type="text" name="username" placeholder="Nombre de usuario" required>
+    <input type="password" name="password" placeholder="Contraseña" required>
+    <button type="submit">Iniciar sesión</button>
+</form>
+
+
+ controllers/DashboardController.php
+
+<?php
+require_once 'models/LoginModel.php';
+
+class LoginController {
+    public function showLoginForm() {
+        include "views/login.php";
+    }
+
+    public function login() {
+      
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (!isset($_POST['codalumno']) || !isset($_POST['password']) || empty($_POST['codalumno']) || empty($_POST['password'])) {
+                echo "Por favor, ingrese el código de alumno y la contraseña.";
+                return;
+            }
+            $username = $_POST['codalumno'];
+            $password = $_POST['password'];
+
+            // Verificar las credenciales del usuario
+            $loginModel = new LoginModel();
+            $user = $loginModel->getUserByUsername($username);
+
+            // Verificar si el usuario existe y la contraseña coincide
+            if ($user && password_verify($password, $user['password'])) {
+                // Iniciar sesión y redirigir al dashboard
+                session_start();
+                $_SESSION["username"] = $username;
+                header("Location: views/dashboard.php");
+                exit;
+            } else {
+                // Mensaje de error específico para identificar el problema
+                if (!$user) {
+                    echo "Usuario no encontrado. Por favor, regístrese antes de iniciar sesión.";
+                } else {
+                    echo "Credenciales incorrectas. Por favor, inténtelo de nuevo.";
+                }
+            }
+        }
+    }
+}
+?>
+
+
+LoginController.php
+
+<?php
+require_once 'models/DashboardModel.php';
+
+class DashboardController {
+    public function showDashboard() {
+        $dashboardModel = new DashboardModel();
+        $alumnos = $dashboardModel->getAllAlumnos();
+        // Aquí puedes incluir cualquier otra lógica necesaria antes de mostrar la vista
+        include "views/dashboard.php";
+    }
+}
+?>
+

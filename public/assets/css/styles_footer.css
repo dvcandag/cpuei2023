@@ -1,0 +1,48 @@
+/* Estilos para el footer */
+footer {
+    background-color: #282c34; /* Color de fondo oscuro */
+    color: #f5f5f5; /* Color de texto claro */
+    padding: 20px 0; /* Espaciado superior e inferior */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+
+.footer-container {
+    display: flex; /* Flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center; /* Alinear verticalmente */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor */
+    padding: 0 20px; /* Espaciado horizontal */
+}
+
+
+/* Estilos para el footer */
+footer {
+    background-color: #282c34; /* Color de fondo oscuro */
+    color: #f5f5f5; /* Color de texto claro */
+    padding: 20px 0; /* Espaciado superior e inferior */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    text-align: center; /* Centrar texto horizontalmente */
+}
+
+/* Contenedor del footer */
+.footer-container {
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor horizontalmente */
+    padding: 0 20px; /* Espaciado horizontal */
+}
+
+/* Alineación vertical y espaciado de los elementos */
+.footer-left,
+.footer-right {
+    display: inline-block; /* Alinear elementos en línea */
+    vertical-align: middle; /* Alinear verticalmente */
+}
+
+.footer-left {
+    float: left; /* Alinear a la izquierda */
+}
+
+.footer-right {
+    float: right; /* Alinear a la derecha */
+}
