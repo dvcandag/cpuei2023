@@ -11,10 +11,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 60px; /* Tamaño ajustado */
+    height: 60px; /* Tamaño ajustado */
     border-radius: 50%;
     border: 1px solid #ffffff;
+    margin-right: 25px; /* Espacio para separar del resto de los elementos */
 }
 
 .logo img {
@@ -37,7 +38,6 @@
     height: 40px;
     border-radius: 50%;
     border: 1px solid #ffffff;
-    margin-left: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,50 +93,52 @@
     border-radius: 50%;
 }
 
-
-
-
-
-
 /* Estilos para el formulario de búsqueda */
 .formulario-busqueda {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
+    max-width: 600px; /* Limita el ancho del formulario */
+    background-color: #FFFFFF; /* Fondo claro similar al de Huawei */
+    border-radius: 30px; /* Borde redondeado */
+    padding: 4px 4px; /* Espaciado interno */
+    margin: 0 1rem; /* Añade margen horizontal para separarlo de los íconos */
 }
 
-.formulario-busqueda input {
+.input-busqueda {
     flex: 1;
-    padding-right: 3rem; /* Espacio para el botón */
+    border: none; /* Elimina el borde */
     font-size: 1rem;
-    border-radius: 50px;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-.formulario-busqueda input:focus {
-    border-color: #007bff; /* Cambia el color del borde al enfocar */
+    padding: 3px 10px; /* Espaciado interno */
+    border-radius: 10px; /* Esquinas redondeadas */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Transición suave */
+    outline: none; /* Elimina el borde de enfoque por defecto */
 }
 
 .formulario-busqueda button {
     position: absolute;
-    right: 10px; /* Ajusta según el espacio deseado */
+    right: 2px; /* Espacio a la derecha */
     border: none;
     background: transparent;
     font-size: 1.5rem;
+    color: #888; /* Color del icono de búsqueda */
     cursor: pointer;
     z-index: 2;
+    transition: color 0.3s ease;
 }
 
+.formulario-busqueda button:hover {
+    color: #ff0000; /* Cambia el color del icono al pasar el cursor */
+}
 
-
-.formulario-busqueda input::placeholder {
-    color: black;
+.input-busqueda::placeholder {
+    color: #999; /* Color del texto del placeholder */
 }
 
 /* Estilos del botón */
 button.btn {
-    color: #255b74;
+    color: #999;
     border: none;
     padding: 0.4rem 1rem;
     font-size: 1.2rem;
@@ -147,8 +149,7 @@ button.btn {
 }
 
 button.btn:hover {
-        color: red;
-
+    color: #255b74;
 }
 
 /* Icono de búsqueda para pantallas pequeñas */
@@ -158,6 +159,7 @@ button.btn:hover {
     cursor: pointer;
     margin-right: 1rem;
 }
+
 
 /* Lightbox para el buscador en pantallas pequeñas */
 .search-lightbox {
@@ -221,10 +223,53 @@ button.btn:hover {
     color: #ff0000;
 }
 
+/* Estilos para los íconos */
+.contenedor-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Tamaño del círculo */
+    height: 40px; /* Tamaño del círculo */
+    border-radius: 50%; /* Hace el contenedor redondeado */
+    background-color: #fff; /* Color de fondo del círculo */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); /* Sombra ligera para un efecto de elevación */
+    margin-right: 0.1px; /* Espacio entre íconos y otros elementos */
+}
+
+/* Estilo para el ícono de búsqueda en pantallas pequeñas */
+.contenedor-icono.d-block.d-md-none {
+    margin-right: 0.1px; /* Asegura el mismo espaciado en pantallas pequeñas */
+}
+
+/* Estilo para los íconos en el header */
+.header-container .nav-link .contenedor-icono {
+    margin-right: 0.1px; /* Espacio entre íconos y otros elementos */
+}
+
+
+
+/* Estilo de todos los íconos dentro de contenedor-icono */
+.contenedor-icono i {
+    font-size: 1.2rem; /* Tamaño del ícono */
+    color: #255B74; /* Color del ícono */
+    transition: color 0.3s ease;
+}
+
+/* Estilo del ícono de búsqueda */
+.search-icon {
+    font-size: 1.2rem; /* Tamaño del ícono */
+}
+
+/* Cambio de color al pasar el ratón */
+.contenedor-icono:hover i {
+    color: #257470; /* Color del ícono al pasar el ratón */
+}
+
+
 /* Estilos para dispositivos pequeños */
 @media (max-width: 768px) {
     .search-form input {
-        font-size: 0.9rem;
+    font-size: 1rem; 
     }
 
     .search-form button {
