@@ -30,6 +30,8 @@
     display: flex;
     align-items: center;
     margin-left: 1rem;
+        cursor: pointer;
+
 }
 
 .foto-perfil {
@@ -41,6 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .foto-perfil img {
@@ -71,27 +74,6 @@
     z-index: 10;
 }
 
-/* Enlaces de navegación */
-.nav-link {
-    color: #fff;
-    margin-right: 1rem;
-    position: relative;
-    font-size: 1.2rem;
-}
-
-.nav-link:hover {
-    color: #d1d3e2;
-}
-
-.nav-link .badge {
-    position: absolute;
-    top: 0;
-    right: -8px;
-    background-color: #f6c23e;
-    color: #000;
-    font-size: 0.75rem;
-    border-radius: 50%;
-}
 
 /* Estilos para el formulario de búsqueda */
 .formulario-busqueda {
@@ -100,7 +82,7 @@
     align-items: center;
     width: 100%;
     max-width: 600px; /* Limita el ancho del formulario */
-    background-color: #FFFFFF; /* Fondo claro similar al de Huawei */
+    background-color: #FFFFFF; /* Fondo claro */
     border-radius: 30px; /* Borde redondeado */
     padding: 4px 4px; /* Espaciado interno */
     margin: 0 1rem; /* Añade margen horizontal para separarlo de los íconos */
@@ -152,76 +134,7 @@ button.btn:hover {
     color: #255b74;
 }
 
-/* Icono de búsqueda para pantallas pequeñas */
-.search-icon {
-    font-size: 1.5rem;
-    color: #fff;
-    cursor: pointer;
-    margin-right: 1rem;
-}
 
-
-/* Lightbox para el buscador en pantallas pequeñas */
-.search-lightbox {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Inicialmente fuera de la pantalla */
-    width: 80%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1050;
-    transition: right 0.4s ease-in-out;
-}
-
-.search-lightbox.active {
-    right: 0; /* Se despliega desde la derecha */
-}
-
-.search-box {
-    padding: 1rem;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 360px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    outline: none;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease;
-}
-
-.search-box input:focus {
-    border-color: #007bff;
-}
-
-.search-box input::placeholder {
-    color: #aaa;
-}
-
-.close-lightbox {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 2rem;
-    color: #ffffff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-lightbox:hover {
-    color: #ff0000;
-}
 
 /* Estilos para los íconos */
 .contenedor-icono {
@@ -238,15 +151,14 @@ button.btn:hover {
 
 /* Estilo para el ícono de búsqueda en pantallas pequeñas */
 .contenedor-icono.d-block.d-md-none {
+    cursor: pointer;
     margin-right: 0.1px; /* Asegura el mismo espaciado en pantallas pequeñas */
 }
 
 /* Estilo para los íconos en el header */
-.header-container .nav-link .contenedor-icono {
+.header-container .contenedor-icono {
     margin-right: 0.1px; /* Espacio entre íconos y otros elementos */
 }
-
-
 
 /* Estilo de todos los íconos dentro de contenedor-icono */
 .contenedor-icono i {
@@ -266,14 +178,244 @@ button.btn:hover {
 }
 
 
-/* Estilos para dispositivos pequeños */
-@media (max-width: 768px) {
-    .search-form input {
-    font-size: 1rem; 
-    }
 
-    .search-form button {
-        font-size: 1rem;
-        padding: 0.3rem 0.8rem;
+
+
+
+/* Estilo para search en pantallas pequeñas */
+.despliegue-search-lateral {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%; /* el fondo ocupa todo el ancho de pantalla */
+    height: 15vh; /* el fondo ocupa el 15%  del alto de pantalla */
+    background-color: rgba(26, 65, 82, 0.95); /* Fondo semi-transparente oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: right 0.5s ease; /* Animación suave para despliegue */
+    z-index: 1000; /* Para asegurarse que quede encima del contenido */
+}
+
+/* Cuando el lightbox está activo */
+.despliegue-search-lateral.active {
+    right: 0;
+}
+
+/* Estilos para la caja de búsqueda */
+.search-box {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 50px;
+    padding: 10px 20px;
+}
+
+/* Estilo para el input de búsqueda */
+.search-box input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #1A4152;
+    padding: 2px;
+    border-radius: 50px;
+    background-color: transparent;
+    padding-left: 10px;
+    animation: fadeInUp 0.4s ease;
+}
+
+/* Placeholder estilizado */
+.search-box input::placeholder {
+    color: #9aaab2;
+    opacity: 1;
+}
+
+/* Estilo para el ícono de cerrar */
+.close-lightbox {
+    display: none;
+    
+}
+
+/* Muestra el ícono de cerrar cuando el lightbox esté activo */
+.despliegue-search-lateral.active .close-lightbox {
+    display: block;
+}
+
+
+
+/* Animación de aparición para el input */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
+
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .despliegue-search-lateral .search-box {
+        width: 95%;
+    }
+
+    
+}
+
+
+
+
+
+
+
+/* Estilo general para el contenedor del perfil */
+.formulario-perfil {
+   display: none; /* Oculto por defecto */
+    flex-direction: column;
+    position: fixed;
+    top: 80px; /* Ajuste para que esté debajo del header */
+    right: 10px;
+    background-color: #FFFFFF; /* Fondo blanco para un look limpio */
+    padding: 20px;
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    z-index: 1000;
+    width: 300px; /* Ajusta el ancho según sea necesario */
+}
+
+/* Estilo para las secciones del perfil */
+.perfil-info {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden; /* Para evitar desbordamientos */
+}
+
+/* Estilo del botón de alternar */
+.toggle-checkbox {
+    display: none;
+}
+
+.toggle-button {
+    background: #82A1AF; /* Color de fondo suave */
+    color: #000000; /* Texto en negro */
+    padding: 12px 16px; /* Espacio alrededor del texto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.toggle-button:hover {
+    background-color: #A1B8C3; /* Color más claro al pasar el cursor */
+}
+
+.toggle-button i {
+    transition: transform 0.3s ease; /* Transición suave para la rotación */
+}
+
+/* Mostrar el contenido cuando el checkbox está marcado */
+.toggle-checkbox:checked ~ .info-personal {
+    display: block;
+}
+
+.info-personal {
+    display: none;
+    padding: 12px;
+    background-color: #F8F9FA; /* Color de fondo claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.05); /* Sombra interna muy sutil */
+    list-style: none;
+    margin: 0;
+}
+
+.info-personal li {
+    padding: 10px 0;
+    border-bottom: 1px solid #DEE2E6; /* Borde sutil entre elementos */
+    font-size: 14px;
+    color: #000000; /* Texto en negro */
+}
+
+.info-personal li:last-child {
+    border-bottom: none;
+}
+
+/* Estilo del botón de cerrar sesión para que tenga el mismo ancho que perfil-info */
+.logout-button {
+    background-color: #255B74; /* Color de fondo azul oscuro */
+    color: #FFFFFF; /* Texto en blanco */
+    border: none;
+    padding: 12px 0; /* Espacio vertical ajustado para igualar el tamaño del botón */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center; /* Centra el texto */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.logout-button:hover {
+    background-color: #447287; /* Color más claro al pasar el cursor */
+}
+
+/* Estilo para el switch de modo oscuro */
+.switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 24px;
+    background-color: #C0D0D7; /* Fondo del slider */
+    border-radius: 24px; /* Bordes redondeados del slider */
+    transition: background-color 0.4s;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: #FFFFFF; /* Fondo del botón del slider */
+    transition: transform 0.4s;
+    left: 4px;
+    top: 4px;
+}
+
+input:checked + .slider {
+    background-color: #82A1AF; /* Color de fondo cuando está activado */
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px); /* Mueve el botón del slider */
+}
+
+.mode-label {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #000000; /* Texto en negro */
+}
+
