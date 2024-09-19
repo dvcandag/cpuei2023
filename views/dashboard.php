@@ -1,4 +1,12 @@
-<!-- dashboard.php -->
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header("Location: index.php?action=showLoginForm");
+    exit;
+}
+
+// Código para mostrar el dashboard
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +19,7 @@
 </head>
 <body>
     
+    <!-- Aquí va el contenido del dashboard -->
     <?php include '../views/template/header.php'; ?>
     <?php include '../views/template/navbar.php'; ?>
 
