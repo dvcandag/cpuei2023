@@ -1,9 +1,9 @@
 <?php
 session_start();
-// Incluir archivos de configuración
+
+// Incluir archivos de configuración y controladores
 require_once 'config/config.php';
 require_once 'config/database.php';
-
 require_once 'controllers/LoginController.php';
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'showLoginForm';
@@ -18,12 +18,11 @@ switch ($action) {
         $loginController->login();
         break;
     case 'logout':
-        // Redirigir a logout.php para manejar el logout
+        // Redirigir a logout.php para manejar el cierre de sesión
         header("Location: logout.php");
         exit;
-    
     default:
-        // Manejar una acción no válida
+        $loginController->showLoginForm();
         break;
 }
 ?>
