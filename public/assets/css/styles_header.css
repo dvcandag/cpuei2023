@@ -278,17 +278,18 @@ button.btn:hover {
 
 /* Estilo general para el contenedor del perfil */
 .formulario-perfil {
-   display: none; /* Oculto por defecto */
+    display: none; /* Oculto por defecto */
     flex-direction: column;
     position: fixed;
     top: 80px; /* Ajuste para que esté debajo del header */
     right: 10px;
     background-color: #FFFFFF; /* Fondo blanco para un look limpio */
-    padding: 20px;
+    padding: 15px; /* Espacio interno del contenedor */
     border-radius: 12px; /* Bordes más redondeados */
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más suave */
     z-index: 1000;
-    width: 300px; /* Ajusta el ancho según sea necesario */
+    width: 320px; /* Ajusta el ancho según sea necesario */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 /* Estilo para las secciones del perfil */
@@ -303,25 +304,42 @@ button.btn:hover {
     display: none;
 }
 
+/* Estilo del botón de alternar */
 .toggle-button {
     background: #FFFFFF; /* Color de fondo suave */
     color: #000000; /* Texto en negro */
     padding: 12px 16px; /* Espacio alrededor del texto */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Alinear íconos y texto verticalmente */
+    justify-content: flex-start; /* Alinear el texto al inicio */
     cursor: pointer;
     border: none;
     border-radius: 8px; /* Bordes redondeados */
     transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+    position: relative; /* Posiciona el ícono de flecha */
+    padding-left: 13px; /* Espacio a la izquierda del texto */
+    padding-right: 25px; /* Espacio a la derecha del texto (para el ícono final) */
 }
-
+/* Cambiar el color de fondo cuando el checkbox está marcado */
+.toggle-checkbox:checked + .toggle-button {
+    background-color: #FAFAFA; /* Color más claro cuando está activo */
+}
 .toggle-button:hover {
     background-color: #FAFAFA; /* Color más claro al pasar el cursor */
 }
+/* Alinear ícono al principio del texto */
+.toggle-button i:first-child {
+    margin-right: 12px; /* Espacio entre el ícono y el texto */
+    font-size: 16px; /* Tamaño del ícono */
+}
 
-.toggle-button i {
-    transition: transform 0.3s ease; /* Transición suave para la rotación */
+/* Alinear ícono al final del texto */
+.toggle-button i:last-child {
+    position: absolute;
+    right: 10px; /* Ajusta el espacio desde el borde derecho del contenedor */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px; /* Tamaño del ícono */
 }
 
 /* Mostrar el contenido cuando el checkbox está marcado */
@@ -331,38 +349,59 @@ button.btn:hover {
 
 .info-personal {
     display: none;
-    padding: 12px;
-    background-color: #F8F9FA; /* Color de fondo claro */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.05); /* Sombra interna muy sutil */
-    list-style: none;
+    padding: 0; /* Eliminar padding para los elementos de la lista */
     margin: 0;
+    list-style: none; /* Eliminar viñetas */
 }
 
 .info-personal li {
-    padding: 10px 0;
-    border-bottom: 1px solid #DEE2E6; /* Borde sutil entre elementos */
+    padding: 10px 16px; /* Espacio alrededor del texto */
+    border-bottom: 1px solid #F5F5F5; /* Borde sutil entre elementos */
     color: #000000; /* Texto en negro */
+        cursor: pointer;
+
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.info-personal li:hover {
+    background-color: #FAFAFA; /* Color de fondo al pasar el cursor */
 }
 
 .info-personal li:last-child {
-    border-bottom: none;
+    border-bottom: none; /* Eliminar borde en el último elemento */
 }
 
-/* Estilo del botón de cerrar sesión para que tenga el mismo ancho que perfil-info */
+/* Estilo del botón de cerrar sesión  */
 .logout-button {
-    background-color: #FFFFFF; /* Color de fondo azul oscuro */
+    background: #FFFFFF; /* Color de fondo del botón */
+    color: #000000; /* Color del texto */
+    padding: 12px 16px; /* Espacio alrededor del texto */
     border: none;
-    padding: 12px 0; /* Espacio vertical ajustado para igualar el tamaño del botón */
     border-radius: 8px; /* Bordes redondeados */
     cursor: pointer;
-    font-weight: bold;
     width: 100%; /* Ocupa todo el ancho del contenedor */
     transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+    display: flex;
+    align-items: center; /* Centra verticalmente el texto y el ícono */
+    justify-content: flex-start; /* Alinea el texto a la izquierda */
+    position: relative; /* Posiciona el ícono de flecha */
+    padding-left: 13px; /* Espacio a la izquierda del texto */
+    padding-right: 25px; /* Espacio a la derecha del texto (para el ícono final) */
+}
+
+
+/* Alinear ícono al principio del texto en el botón de cerrar sesión */
+.logout-button i {
+    margin-right: 12px; /* Espacio entre el ícono y el texto */
+    font-size: 16px; /* Tamaño del ícono */
 }
 
 .logout-button:hover {
     background-color: #FAFAFA; /* Color más claro al pasar el cursor */
+}
+
+.logout-button:focus {
+    outline: none; /* Eliminar el contorno cuando el botón está enfocado */
 }
 
 /* Estilo para el switch de modo oscuro */
@@ -382,10 +421,10 @@ button.btn:hover {
 .slider {
     position: relative;
     cursor: pointer;
-    width: 100%;
+    width: 50px; /* Ajusta el tamaño del slider */
     height: 24px;
-    background-color: #C0D0D7; /* Fondo del slider */
     border-radius: 24px; /* Bordes redondeados del slider */
+    background-color: #C0C0C0; /* Color de fondo del slider en estado desactivado */
     transition: background-color 0.4s;
 }
 
@@ -406,12 +445,11 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(20px); /* Mueve el botón del slider */
+    transform: translateX(26px); /* Mueve el botón del slider */
 }
 
 .mode-label {
-    margin-left: 10px;
-    font-size: 14px;
+    margin-left: 2px;
+    font-size: 12px;
     color: #000000; /* Texto en negro */
 }
-
