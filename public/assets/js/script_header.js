@@ -24,3 +24,22 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    var logoutButton = document.getElementById("logoutButton");
+    
+    // Añadir evento de clic al botón de cerrar sesión
+    logoutButton.addEventListener("click", logout);
+});
+
+// alert de aviso de cierre de sesión
+function logout() {
+    if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+        // Crear formulario dinámicamente
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'logout.php'; // Asegúrate de que esta sea la URL correcta
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
