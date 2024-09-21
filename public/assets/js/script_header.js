@@ -43,3 +43,24 @@ function logout() {
         form.submit();
     }
 }
+
+// Para capitalizar palabras que estan en DB en mayusculas
+document.addEventListener("DOMContentLoaded", function() {
+    function capitalizeWords(text) {
+        return text.split(' ').map(word => {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }).join(' ');
+    }
+
+    // Selecciona solo los labels con la clase texto-capitalizado
+    const textElements = document.querySelectorAll("label.texto-capitalizado");
+
+    textElements.forEach(function(element) {
+        // Aplica la capitalización al texto del label
+        element.childNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                node.textContent = capitalizeWords(node.textContent.trim());
+            }
+        });
+    });
+});
