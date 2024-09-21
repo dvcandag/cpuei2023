@@ -290,6 +290,9 @@ button.btn:hover {
     z-index: 1000;
     width: 320px; /* Ajusta el ancho según sea necesario */
     box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+
+.texto-capitalizado {
+    text-transform: capitalize;
 }
 
 /* Estilo para las secciones del perfil */
@@ -370,6 +373,9 @@ button.btn:hover {
 .info-personal li:last-child {
     border-bottom: none; /* Eliminar borde en el último elemento */
 }
+
+
+
 
 /* Estilo del botón de cerrar sesión  */
 .logout-button {
