@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -87,11 +89,17 @@
     <div class="formulario-perfil" id="formulario-perfil">
         <div class="perfil-info">
             <input type="checkbox" id="toggleProfile1" class="toggle-checkbox">
-            <label for="toggleProfile1" class="toggle-button">
-                <i class="fas fa-user"></i> <!-- Icono antes del texto -->
-                <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?></h1>
-                <i class="fas fa-chevron-down"></i>
-            </label>
+<label for="toggleProfile1" class="toggle-button texto-capitalizado">
+    <i class="fas fa-user"></i>
+    <?php echo htmlspecialchars($_SESSION['nombre_completo'] ?? 'Usuario'); ?>
+    <i class="fas fa-chevron-down"></i>
+</label>
+
+
+
+
+
+
             <ul class="info-personal">
                 <li><strong>Código:</strong> 123456</li>
                 <li><strong>DNI:</strong> 123456</li>

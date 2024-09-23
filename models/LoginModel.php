@@ -1,11 +1,13 @@
 <?php
-
 require_once 'config/database.php';
 
 class LoginModel {
     public function getUserByUsername($username) {
         $conn = Database::getInstance()->getConnection();
-        $query = "SELECT * FROM usuario WHERE codalumno = :username";
+        $query = "SELECT u.*, a.nombrealumno, a.apaterno, a.amaterno 
+                  FROM usuario u
+                  JOIN alumno a ON u.codalumno = a.codalumno
+                  WHERE u.codalumno = :username";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':username', $username);
         $stmt->execute();
@@ -15,4 +17,3 @@ class LoginModel {
     }
 }
 ?>
-

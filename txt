@@ -9,6 +9,7 @@ cursomvc/
 │   ├── DashboardController.php
 │   ├── New_PasswordController.php
 │   ├── CursosController.php
+│   ├── HeaderController.php
 │   ├── LoginController.php
 │   └── CarnetAlumnoController.php
 │
@@ -17,6 +18,7 @@ cursomvc/
 │   ├── DashboardModel.php
 │   ├── New_PasswordModel.php
 │   ├── CursosModel.php
+│   ├── HeaderModel.php
 │   └── CarnetAlumnoModel.php
 │
 ├── views/
@@ -28,6 +30,7 @@ cursomvc/
 │   ├── dashboard.php
 │   ├── login.php
 │   ├── logout.php
+│   ├── CursosView.php
 │   ├── nuevo_password.php
 │   ├── carnet-alumno.php
 │   └── registrate.php

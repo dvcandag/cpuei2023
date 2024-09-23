@@ -1,12 +1,14 @@
 <?php
 session_start();
-if (!isset($_SESSION["username"])) {
+
+// Verifica si la sesión está activa
+if (!isset($_SESSION['username'])) {
+    // Si no hay sesión activa, redirigir al login
     header("Location: index.php?action=showLoginForm");
     exit;
 }
-
-// Código para mostrar el dashboard
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +28,9 @@ if (!isset($_SESSION["username"])) {
 
     
     <?php include '../views/template/footer.php'; ?>
+
+    <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION["username"]); ?></h1>
+    <a href="index.php">Cerrar Sesión</a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../public/assets/js/custom.js"></script>

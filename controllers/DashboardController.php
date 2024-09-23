@@ -2,21 +2,16 @@
 require_once 'models/DashboardModel.php';
 
 class DashboardController {
-    public function index() {
+    public function showDashboard() {
         session_start();
-        if (!isset($_SESSION['username'])) {
-            header("Location: index.php");
+        if (!isset($_SESSION["username"])) {
+            header("Location: index.php?action=showLoginForm");
             exit;
         }
-        $username = $_SESSION['username'];
-
-          // Obtener datos del alumno desde la sesión
-        $alumno = $_SESSION['alumno'];
-
-        $notas = $_SESSION['notas']; 
-
-        // Renderizar la vista
+        
+        // Cargar la vista del dashboard
         include "views/dashboard.php";
     }
 }
 ?>
+
