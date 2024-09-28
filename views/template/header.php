@@ -1,5 +1,15 @@
+<?php
 
 
+$alumno = $_SESSION['alumno'];
+
+// Función para obtener la ruta de la foto del alumno
+function obtenerRutaFoto($dni) {
+    return '../database/foto-alumno/' . $dni . '.png';
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,10 +49,11 @@
                 <!-- Grupo de íconos -->
                 <div class="d-flex align-items-center">
 
-                    <!-- Icono de búsqueda para pantallas pequeñas -->
-                    <div class="contenedor-icono d-block d-md-none me-2">
-                        <i class="fas fa-search" id="searchIcon"></i>
-                    </div>
+                    <!-- Icono de búsqueda para pantallas pequeñas usando boostrap -->
+                    <div class="contenedor-icono me-2 d-block d-sm-none d-flex justify-content-center align-items-center">
+    <i class="fas fa-search" id="searchIcon"></i>
+</div>
+
 
                     <!-- Links e iconos -->
                     <a href="#" class="me-2">
@@ -50,7 +61,7 @@
                             <i class="fas fa-home"></i> <!-- Icono de Home -->
                         </div>
                     </a>
-                    <a href="#" class="me-2 position-relative">
+                    <a href="carnet-alumno.php" class="me-2 position-relative" target="_blank">
                         <div class="contenedor-icono">
                             <i class="fas fa-id-card"></i> <!-- Icono de Tarjeta de Identificación -->
                         </div>
@@ -67,12 +78,30 @@
                     </a>
                 </div>
 
-                <!-- Grupo para foto o perfil -->
-                <div class="profile-info">
-                    <div class="foto-perfil" id="profile-photo">
-                        <img src="../public/assets/images/alumnos/foto-1.jpg">
-                    </div>
-                </div>
+                <!-- Grupo para foto de perfil -->
+<div class="profile-info">
+    <?php
+    
+    $foto = '../public/assets/images/placeholder/placeholder.png'; // Foto por defecto
+
+    // Verificar si tiene de nombre de numero de su dni
+    if (isset($alumno['dni'])) {
+        $ruta_foto = obtenerRutaFoto($alumno['dni']);
+
+        // Verificar si la foto existe
+        if (file_exists($ruta_foto)) {
+            $foto = htmlspecialchars($ruta_foto); // Asignar la ruta de la foto si existe
+        }
+    }
+    ?>
+    <div class="foto-perfil" id="profile-photo">
+        <img src="<?= $foto ?>">
+    </div>
+</div>
+
+
+
+
             </div>
         </div>
     </header>
