@@ -147,29 +147,32 @@ button.btn:hover {
     background-color: #fff; /* Color de fondo del círculo */
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); /* Sombra ligera para un efecto de elevación */
     margin-right: 0.1px; /* Espacio entre íconos y otros elementos */
-}
+    padding: 0; /* Sin padding */}
 
-/* Estilo para el ícono de búsqueda en pantallas pequeñas */
-.contenedor-icono.d-block.d-md-none {
-    cursor: pointer;
-    margin-right: 0.1px; /* Asegura el mismo espaciado en pantallas pequeñas */
-}
 
-/* Estilo para los íconos en el header */
-.header-container .contenedor-icono {
-    margin-right: 0.1px; /* Espacio entre íconos y otros elementos */
-}
+
 
 /* Estilo de todos los íconos dentro de contenedor-icono */
 .contenedor-icono i {
     font-size: 1.2rem; /* Tamaño del ícono */
     color: #255B74; /* Color del ícono */
     transition: color 0.3s ease;
+    margin: 0; /* Sin margen */
+    padding: 0; /* Sin padding */
+    line-height: 1; /* Asegura que el alto de línea no interfiera con el centrado */
+    vertical-align: middle; /* Alineación vertical del ícono */
+}
+/* Estilo para el ícono de búsqueda en pantallas pequeñas */
+.contenedor-icono.d-block.d-md-none {
+    cursor: pointer;
+    margin-right: 0.1px; /* Asegura el mismo espaciado en pantallas pequeñas */
 }
 
 /* Estilo del ícono de búsqueda */
 .search-icon {
     font-size: 1.2rem; /* Tamaño del ícono */
+
+
 }
 
 /* Cambio de color al pasar el ratón */
