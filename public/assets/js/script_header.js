@@ -44,7 +44,7 @@ function logout() {
     }
 }
 
-// Para capitalizar palabras que estan en DB en mayusculas
+// Para capitalizar palabras que estan en DB en mayusculas (NOMBRE ALUMNO)
 document.addEventListener("DOMContentLoaded", function() {
     function capitalizeWords(text) {
         return text.split(' ').map(word => {
@@ -60,6 +60,35 @@ document.addEventListener("DOMContentLoaded", function() {
         element.childNodes.forEach(node => {
             if (node.nodeType === Node.TEXT_NODE) {
                 node.textContent = capitalizeWords(node.textContent.trim());
+            }
+        });
+    });
+});
+
+
+// Para capitalizar palabras que estan en DB en mayusculas (ESCUELA)
+document.addEventListener("DOMContentLoaded", function() {
+    function capitalizeWords(text) {
+        return text.split(' ').map(word => {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }).join(' ');
+    }
+
+    // Selecciona solo los <li> con la clase texto-capitalizado
+    const textElements = document.querySelectorAll("li.texto-capitalizado");
+
+    textElements.forEach(function(element) {
+        // Aplica la capitalización al texto del <li>
+        element.childNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                // Solo capitaliza el texto que sigue al "Escuela: "
+                const label = node.textContent.trim();
+                // Si el texto contiene "Escuela:", separa y capitaliza solo la parte que sigue
+                const parts = label.split(': ');
+                if (parts.length > 1) {
+                    parts[1] = capitalizeWords(parts[1]);
+                }
+                node.textContent = parts.join(': ');
             }
         });
     });
