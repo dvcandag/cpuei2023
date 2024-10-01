@@ -16,7 +16,7 @@
     max-width: 350px;      /* Limita el ancho máximo */
     background-color: #fff;
     border: 1px solid #C0D0D7;
-    margin: 10px 0;
+    margin-top: 50px; /* Ajusta el margen superior según sea necesario */
     padding: 10px 40px;    /* 10px arriba y abajo, 40px derecha e izquierda */
     text-align: center;
     border-radius: 0px;    /* Sin bordes redondeados */
