@@ -45,7 +45,7 @@ function obtenerRutaQR($codalumno) {
                 if (file_exists($ruta_foto)) {
                     echo '<img class="foto-perfil-carnet" src="' . $ruta_foto . '" alt="Foto del alumno ' . htmlspecialchars($alumno['nombrealumno']) . '" title="Foto del alumno ' . htmlspecialchars($alumno['nombrealumno']) . '">';
                 } else {
-                    echo '<img class="foto-perfil-carnet" src="../public/assets/images/placeholder/placeholder.png" alt="Foto no disponible" title="No se encontró la foto del alumno">';
+                    echo '<img class="foto-perfil-carnet" src="../public/assets/images/placeholder/placeholder.png"';
                 }
                 ?>
             <?php endif; ?>
@@ -64,7 +64,7 @@ function obtenerRutaQR($codalumno) {
                 </div>
 
                 <div class="detalle-facultad">
-                    <?= htmlspecialchars($alumno['escuela']) ?>
+                    <?= htmlspecialchars($alumno['escuela_nombre']) ?>
                 </div>
 
                 <!-- Divisor -->
