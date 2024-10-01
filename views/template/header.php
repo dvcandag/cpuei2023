@@ -1,21 +1,20 @@
 <?php
 
-
+// valor almacenado en la sesión
 $alumno = $_SESSION['alumno'];
 
-// Función para obtener la ruta de la foto del alumno
+// Función para obtener la ruta de la foto del alumno desde la carpeta local
 function obtenerRutaFoto($dni) {
     return '../database/foto-alumno/' . $dni . '.png';
 }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header Elegante</title>
+    <title>Header</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -48,12 +47,10 @@ function obtenerRutaFoto($dni) {
 
                 <!-- Grupo de íconos -->
                 <div class="d-flex align-items-center">
-
-                    <!-- Icono de búsqueda para pantallas pequeñas usando boostrap -->
+                    <!-- Icono de búsqueda para pantallas pequeñas usando Bootstrap -->
                     <div class="contenedor-icono me-2 d-block d-sm-none d-flex justify-content-center align-items-center">
-    <i class="fas fa-search" id="searchIcon"></i>
-</div>
-
+                        <i class="fas fa-search" id="searchIcon"></i>
+                    </div>
 
                     <!-- Links e iconos -->
                     <a href="#" class="me-2">
@@ -79,29 +76,24 @@ function obtenerRutaFoto($dni) {
                 </div>
 
                 <!-- Grupo para foto de perfil -->
-<div class="profile-info">
-    <?php
-    
-    $foto = '../public/assets/images/placeholder/placeholder.png'; // Foto por defecto
+                <div class="profile-info">
+                    <?php
+                    $foto = '../public/assets/images/placeholder/placeholder.png'; // Foto por defecto
 
-    // Verificar si tiene de nombre de numero de su dni
-    if (isset($alumno['dni'])) {
-        $ruta_foto = obtenerRutaFoto($alumno['dni']);
+                    // Verificar si tiene DNI
+                    if (isset($alumno['dni'])) {
+                        $ruta_foto = obtenerRutaFoto($alumno['dni']);
 
-        // Verificar si la foto existe
-        if (file_exists($ruta_foto)) {
-            $foto = htmlspecialchars($ruta_foto); // Asignar la ruta de la foto si existe
-        }
-    }
-    ?>
-    <div class="foto-perfil" id="profile-photo">
-        <img src="<?= $foto ?>">
-    </div>
-</div>
-
-
-
-
+                        // Verificar si la foto existe
+                        if (file_exists($ruta_foto)) {
+                            $foto = htmlspecialchars($ruta_foto); // Asignar la ruta de la foto si existe
+                        }
+                    }
+                    ?>
+                    <div class="foto-perfil" id="profile-photo">
+                        <img src="<?= $foto ?>" alt="Foto de perfil">
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -118,46 +110,43 @@ function obtenerRutaFoto($dni) {
     <div class="formulario-perfil" id="formulario-perfil">
         <div class="perfil-info">
             <input type="checkbox" id="toggleProfile1" class="toggle-checkbox">
-<label for="toggleProfile1" class="toggle-button texto-capitalizado">
-    <i class="fas fa-user"></i>
-    <?php echo htmlspecialchars($_SESSION['nombre_completo'] ?? 'Usuario'); ?>
-    <i class="fas fa-chevron-down"></i>
-</label>
-
-
-
-
-
-
+            <label for="toggleProfile1" class="toggle-button texto-capitalizado">
+                <i class="fas fa-user"></i>
+                <?php echo htmlspecialchars($_SESSION['nombre_completo'] ?? 'Usuario'); ?>
+                <i class="fas fa-chevron-down"></i>
+            </label>
             <ul class="info-personal">
-                <li><strong>Código:</strong> 123456</li>
-                <li><strong>DNI:</strong> 123456</li>
-                <li><strong>Fecha de Nacimiento:</strong> 123456</li>
-                <li><strong>Correo:</strong> 123456</li>
-                <li><strong>Escuela:</strong> Ingeniería de Sistemas</li>
-                <li><strong>Ciclo:</strong> A-101</li>
+                <li>Código: <?= htmlspecialchars($alumno['codalumno'] ?? 'N/A'); ?></li>
+                <li>DNI: <?= htmlspecialchars($alumno['dni'] ?? 'N/A'); ?></li>
+                <li>Fecha de Nacimiento: <?= htmlspecialchars($alumno['fecha_nacimiento'] ?? 'N/A'); ?></li>
+                <li>Correo: <?= htmlspecialchars($alumno['correo'] ?? 'N/A'); ?></li>
+<li class="texto-capitalizado">Escuela: <?= htmlspecialchars($alumno['escuela_nombre'] ?? 'N/A'); ?></li>
+
+                <li>Ciclo: <?= htmlspecialchars($alumno['aula'] ?? 'N/A'); ?></li>
             </ul>
         </div>
 
         <div class="perfil-info">
             <input type="checkbox" id="toggleProfile2" class="toggle-checkbox">
             <label for="toggleProfile2" class="toggle-button">
-                <i class="fas fa-cog"></i> <!-- Icono antes del texto -->
+                <i class="fas fa-cog"></i> <!-- Icono de Configuración -->
                 Configuración y privacidad
                 <i class="fas fa-chevron-down"></i>
             </label>
             <ul class="info-personal">
-                <li>Datos personales</a></li>
-                <li>Contraseña y seguridad</a></li>
-                <li>Registro de actividad</a></li>
-                <li>Idioma</a></li>
+                <li>Datos personales</li>
+                <li>
+                    <a href="nuevo_password.php">Contraseña y seguridad</a>
+                </li>
+                <li>Registro de actividad</li>
+                <li>Idioma</li>
             </ul>
         </div>
 
         <div class="perfil-info">
             <input type="checkbox" id="toggleProfile4" class="toggle-checkbox">
             <label for="toggleProfile4" class="toggle-button">
-                <i class="fas fa-desktop"></i> <!-- Icono alternativo para pantalla -->
+                <i class="fas fa-desktop"></i> <!-- Icono de Pantalla -->
                 Pantalla y accesibilidad
                 <i class="fas fa-chevron-down"></i>
             </label>
@@ -182,7 +171,7 @@ function obtenerRutaFoto($dni) {
         <div class="perfil-info">
             <input type="checkbox" id="toggleProfile3" class="toggle-checkbox">
             <label for="toggleProfile3" class="toggle-button">
-                <i class="fas fa-question-circle"></i> <!-- Icono antes del texto -->
+                <i class="fas fa-question-circle"></i> <!-- Icono de Ayuda -->
                 Ayuda y soporte técnico
                 <i class="fas fa-chevron-down"></i>
             </label>
