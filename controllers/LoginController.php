@@ -27,7 +27,7 @@ class LoginController {
 
                 // Guardar los datos del usuario en la sesión
                 $_SESSION["username"] = $username;
-                $_SESSION["nombre_completo"] = $user['nombrealumno'] . ' ' . $user['apaterno'] . ' ' . $user['amaterno']; // Nombre completo
+                $_SESSION["nombre_completo"] = $user['nombrealumno'] . ' ' . $user['apaterno'] . ' ' . $user['amaterno']; // Nombre completo y muestra en header.php
                 
                 // Obtener los datos del alumno desde el DashboardModel
                 $dashboardModel = new DashboardModel();
