@@ -82,9 +82,9 @@
     align-items: center;
     width: 100%;
     max-width: 600px; /* Limita el ancho del formulario */
-    background-color: #FFFFFF; /* Fondo claro */
-    border-radius: 30px; /* Borde redondeado */
-    padding: 4px 4px; /* Espaciado interno */
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    padding: 4px 4px;
     margin: 0 1rem; /* Añade margen horizontal para separarlo de los íconos */
 }
 
@@ -93,7 +93,7 @@
     border: none; /* Elimina el borde */
     font-size: 1rem;
     padding: 3px 10px; /* Espaciado interno */
-    border-radius: 10px; /* Esquinas redondeadas */
+    border-radius: 10px;
     transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Transición suave */
     outline: none; /* Elimina el borde de enfoque por defecto */
 }
@@ -134,8 +134,6 @@ button.btn:hover {
     color: #255b74;
 }
 
-
-
 /* Estilos para los íconos */
 .contenedor-icono {
     display: flex;
@@ -147,18 +145,16 @@ button.btn:hover {
     background-color: #fff; /* Color de fondo del círculo */
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); /* Sombra ligera para un efecto de elevación */
     margin-right: 0.1px; /* Espacio entre íconos y otros elementos */
-    padding: 0; /* Sin padding */}
-
-
-
+    padding: 0; /* Sin padding */
+}
 
 /* Estilo de todos los íconos dentro de contenedor-icono */
 .contenedor-icono i {
     font-size: 1.2rem; /* Tamaño del ícono */
-    color: #255B74; /* Color del ícono */
+    color: #255B74;
     transition: color 0.3s ease;
-    margin: 0; /* Sin margen */
-    padding: 0; /* Sin padding */
+    margin: 0;
+    padding: 0;
     line-height: 1; /* Asegura que el alto de línea no interfiera con el centrado */
     vertical-align: middle; /* Alineación vertical del ícono */
 }
@@ -179,11 +175,6 @@ button.btn:hover {
 .contenedor-icono:hover i {
     color: #257470; /* Color del ícono al pasar el ratón */
 }
-
-
-
-
-
 
 /* Estilo para search en pantallas pequeñas */
 .despliegue-search-lateral {
@@ -249,8 +240,6 @@ button.btn:hover {
     display: block;
 }
 
-
-
 /* Animación de aparición para el input */
 @keyframes fadeInUp {
     from {
@@ -263,7 +252,6 @@ button.btn:hover {
     }
 }
 
-
 /* Media queries para pantallas pequeñas */
 @media (max-width: 768px) {
     .despliegue-search-lateral .search-box {
@@ -273,12 +261,6 @@ button.btn:hover {
     
 }
 
-
-
-
-
-
-
 /* Estilo general para el contenedor del perfil */
 .formulario-perfil {
     display: none; /* Oculto por defecto */
@@ -286,16 +268,16 @@ button.btn:hover {
     position: fixed;
     top: 80px; /* Ajuste para que esté debajo del header */
     right: 10px;
-    background-color: #FFFFFF; /* Fondo blanco para un look limpio */
+    background-color: #FFFFFF;
     padding: 15px; /* Espacio interno del contenedor */
-    border-radius: 12px; /* Bordes más redondeados */
+    border-radius: 12px; 
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más suave */
     z-index: 1000;
     width: 320px; /* Ajusta el ancho según sea necesario */
     box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 
 .texto-capitalizado {
-    text-transform: capitalize;
+    text-transform: capitalize; 
 }
 
 /* Estilo para las secciones del perfil */
@@ -312,7 +294,7 @@ button.btn:hover {
 
 /* Estilo del botón de alternar */
 .toggle-button {
-    background: #FFFFFF; /* Color de fondo suave */
+    background: #FFFFFF;
     color: #000000; /* Texto en negro */
     padding: 12px 16px; /* Espacio alrededor del texto */
     display: flex;
@@ -320,7 +302,7 @@ button.btn:hover {
     justify-content: flex-start; /* Alinear el texto al inicio */
     cursor: pointer;
     border: none;
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 8px;
     transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
     position: relative; /* Posiciona el ícono de flecha */
     padding-left: 13px; /* Espacio a la izquierda del texto */
@@ -355,18 +337,24 @@ button.btn:hover {
 
 .info-personal {
     display: none;
-    padding: 0; /* Eliminar padding para los elementos de la lista */
+    padding: 0;
     margin: 0;
     list-style: none; /* Eliminar viñetas */
 }
 
-.info-personal li {
+.info-personal li, 
+.info-personal a { 
     padding: 10px 16px; /* Espacio alrededor del texto */
     border-bottom: 1px solid #F5F5F5; /* Borde sutil entre elementos */
     color: #000000; /* Texto en negro */
-        cursor: pointer;
-
+    cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el enlace */
     transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.info-personal a {
+    text-decoration: none; /* Sin subrayado en el texto del enlace */
+    padding: 0; /* Eliminar padding para los elementos de la lista */
+
 }
 
 .info-personal li:hover {
@@ -374,24 +362,21 @@ button.btn:hover {
 }
 
 .info-personal li:last-child {
-    border-bottom: none; /* Eliminar borde en el último elemento */
+    border-bottom: none; /* Elimina borde en el último elemento */
 }
-
-
-
 
 /* Estilo del botón de cerrar sesión  */
 .logout-button {
-    background: #FFFFFF; /* Color de fondo del botón */
-    color: #000000; /* Color del texto */
+    background: #FFFFFF;
+    color: #000000;
     padding: 12px 16px; /* Espacio alrededor del texto */
     border: none;
-    border-radius: 8px; /* Bordes redondeados */
+    border-radius: 8px;
     cursor: pointer;
     width: 100%; /* Ocupa todo el ancho del contenedor */
     transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
     display: flex;
-    align-items: center; /* Centra verticalmente el texto y el ícono */
+    align-items: center; 
     justify-content: flex-start; /* Alinea el texto a la izquierda */
     position: relative; /* Posiciona el ícono de flecha */
     padding-left: 13px; /* Espacio a la izquierda del texto */
