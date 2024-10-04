@@ -1,11 +1,13 @@
 /* Estilos para el header */
 .header-container {
-    background-color: #255B74;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
-    color: #FFFFFF;
+    background-color: #255B74; /* Color de fondo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra del header */
+    padding: 16px; /* Espaciado interno */
+    color: #FFFFFF; /* Color del texto */
+    height: 80px; /* Altura fija de 80px */
+    display: flex; /* Permite alinear elementos dentro del header */
+    align-items: center; /* Centra verticalmente los elementos dentro del header */
 }
-
 /* Logo */
 .logo {
     display: flex;
@@ -92,7 +94,7 @@
     flex: 1;
     border: none; /* Elimina el borde */
     font-size: 1rem;
-    padding: 3px 10px; /* Espaciado interno */
+    padding: 5px 10px; /* Espaciado interno */
     border-radius: 10px;
     transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Transición suave */
     outline: none; /* Elimina el borde de enfoque por defecto */
@@ -182,7 +184,7 @@ button.btn:hover {
     top: 0;
     right: -100%;
     width: 100%; /* el fondo ocupa todo el ancho de pantalla */
-    height: 15vh; /* el fondo ocupa el 15%  del alto de pantalla */
+    height: 80px; /* Altura fija de 80px */
     background-color: rgba(26, 65, 82, 0.95); /* Fondo semi-transparente oscuro */
     display: flex;
     justify-content: center;
@@ -256,6 +258,7 @@ button.btn:hover {
 @media (max-width: 768px) {
     .despliegue-search-lateral .search-box {
         width: 95%;
+
     }
 
     
