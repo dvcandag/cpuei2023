@@ -1,48 +1,32 @@
 /* Estilos para el footer */
-footer {
-    background-color: #282c34; /* Color de fondo oscuro */
-    color: #f5f5f5; /* Color de texto claro */
-    padding: 20px 0; /* Espaciado superior e inferior */
-    font-size: 14px; /* Tamaño de fuente más pequeño */
+.footer {
+    background-color: #F0F0F0; /* Color de fondo del footer */
+    height: 50px; /* Altura del footer */
+    width: calc(100% - 250px); /* Ancho total menos el espacio del navbar */
+    margin: 0; /* Sin márgenes */
+    padding: 0 20px; /* Espaciado interno ajustado a 20px (izquierda y derecha) */
+    box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
+    display: flex; /* Flexbox para centrar el contenido */
+    justify-content: center; /* Centramos horizontalmente */
+    align-items: center; /* Centramos verticalmente */
+    position: fixed; /* Fijar el footer en la parte inferior */
+    bottom: 0; /* Alineado al fondo de la ventana */
+    left: 250px; /* Alineado justo al lado derecho del navbar */
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    overflow: hidden; /* Oculta el contenido que sobresale */
 }
 
-.footer-container {
-    display: flex; /* Flexbox para alinear elementos */
-    justify-content: space-between; /* Espacio entre los elementos */
-    align-items: center; /* Alinear verticalmente */
-    max-width: 1200px; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centrar el contenedor */
-    padding: 0 20px; /* Espaciado horizontal */
+/* PANTALLA GRANDE (más de 576px) */
+@media (min-width: 576px) {
+    .footer {
+        left: 210px; /* Alineado al lado derecho del navbar */
+        width: calc(100% - 210px); /* Ancho total menos el ancho del navbar en pantallas grandes */
+    }
 }
 
-
-/* Estilos para el footer */
-footer {
-    background-color: #282c34; /* Color de fondo oscuro */
-    color: #f5f5f5; /* Color de texto claro */
-    padding: 20px 0; /* Espaciado superior e inferior */
-    font-size: 14px; /* Tamaño de fuente más pequeño */
-    text-align: center; /* Centrar texto horizontalmente */
-}
-
-/* Contenedor del footer */
-.footer-container {
-    max-width: 1200px; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centrar el contenedor horizontalmente */
-    padding: 0 20px; /* Espaciado horizontal */
-}
-
-/* Alineación vertical y espaciado de los elementos */
-.footer-left,
-.footer-right {
-    display: inline-block; /* Alinear elementos en línea */
-    vertical-align: middle; /* Alinear verticalmente */
-}
-
-.footer-left {
-    float: left; /* Alinear a la izquierda */
-}
-
-.footer-right {
-    float: right; /* Alinear a la derecha */
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+    .footer {
+        display: none; /* Oculta el footer en pantallas pequeñas */
+    }
 }
