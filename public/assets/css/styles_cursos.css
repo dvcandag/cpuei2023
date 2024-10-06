@@ -1,13 +1,24 @@
 /* General container */
 .container-notas {
-    
-      margin-left: 250px !important; /* Asegura que se respete el espacio para la barra lateral */
+    margin-left: auto; /* Para centrar el contenido */
+    margin-right: auto; /* Centrado horizontalmente */
     padding: 20px;
-    margin-top: 75px; /* Espacio para el encabezado */
-    width: calc(100% - 250px); /* Ajustar el ancho según la barra lateral */
+    height: calc(100vh - 80px); /* Altura total menos la altura del header (80px) */
+    width: 100%; /* Ocupa el 90% del ancho de la pantalla */
+    margin-top: 0; /* Sin márgenes superiores */
     max-width: 1200px; /* Máximo ancho para el contenido */
     box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho */
 }
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+    .container-notas {
+        margin-left: 0px; /* Sin margen a la izquierda */
+        margin-right: 0px; /* Sin margen a la derecha */
+        width: 100%; /* Ocupa el 100% del ancho de la pantalla */
+    }
+}
+
 
 
 /* palabra-atras */
@@ -26,7 +37,7 @@
     padding: 10px 15px;
     font-size: 12px;
     font-weight: 450;
-    color: #e30613; /* Color rojo similar al de UTP */
+    color: #e30613; 
 }
 
 .enlace-retroceso:hover {
