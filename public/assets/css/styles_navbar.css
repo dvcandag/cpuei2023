@@ -1,31 +1,93 @@
-/* CSS para mover la barra lateral al lado derecho */
-#accordionSidebar {
-    right: 0;
-    left: auto;
-    position: fixed;
-    height: 100%;
-    overflow-y: auto;
-    z-index: 100;
+/* Estilos Generales (Aplicables a Todas las Pantallas) */
+.navbar-container {
+    background-color: #f0f2f5; /* Color de fondo */
+    padding: 20px; /* Espaciado interno */
+    transition: width 0.3s ease; /* Transición suave para cambios de tamaño */
+    height: 100vh; /* Ocupar toda la altura de la ventana */
+    position: fixed; /* Fijar la navbar para que no se desplace al hacer scroll */
+    left: 0; /* Alinear al borde izquierdo */
+    top: 80px; /* Alineado justo debajo del header */
+
 }
 
-#accordionSidebar .nav-link {
-    text-align: right;
+/* Estilo de los enlaces */
+.nav-link {
+    display: flex; /* Flex para alinear íconos y texto */
+    align-items: center; /* Alinear verticalmente ícono y texto */
+    color: #1c1e21; /* Color del texto */
+    font-size: 14px; /* Tamaño de fuente */
+    padding: 10px 15px; /* Padding horizontal y vertical */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 8px; /* Bordes redondeados */
+    height: 40px; /* Altura fija */
+    transition: background-color 0.2s ease; /* Transición suave */
+    gap: 1px; /* Espaciado fijo entre ícono y texto */
 }
 
-.sidebar-brand {
-    justify-content: flex-end;
+.nav-item {
+    width: 100%; /* Ancho completo */
 }
 
-.sidebar-brand-text {
-    margin-left: 1rem;
-    margin-right: 0;
+/* Tamaño y alineación de los íconos */
+.nav-link i {
+    font-size: 16px; /* Tamaño del ícono */
+    color: #65676b; /* Color del ícono */
+    display: flex;
+    justify-content: center; /* Centrar ícono horizontalmente */
+    align-items: center; /* Centrar ícono verticalmente */
+    min-width: 20px; /* Asegurar un ancho mínimo para el ícono */
+    height: 40px; /* Altura del ícono alineada con la altura del link */
 }
 
-.sidebar-card {
-    text-align: right;
+/* Estilo del texto */
+.nav-link span {
+    flex-grow: 1; /* Deja que el texto ocupe el espacio disponible */
+    text-align: left; /* Alinear texto a la izquierda */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; /* Ocultar texto desbordado */
+    text-overflow: ellipsis; /* Mostrar "..." si el texto es muy largo */
 }
 
-#sidebarToggle {
-    right: 1rem;
-    left: auto;
+/* Hover para cambiar color de fondo */
+.nav-link:hover {
+    background-color: #e4e6eb; /* Color al hacer hover */
+}
+
+
+
+
+/* PANTALLA GRANDE (más de 576px) */
+@media (min-width: 576px) {
+    .navbar-container {
+        width: 210px; /* Ancho adecuado para pantallas grandes */
+    }
+
+    .nav-link i {
+        margin-right: 2px; /* Separación entre ícono y texto */
+    }
+
+    .nav-link span {
+        font-size: 14px; /* Tamaño del texto */
+        display: inline; /* Mostrar el texto en pantallas grandes */
+    }
+}
+
+/* PANTALLA PEQUEÑA (menos de 576px) */
+@media (max-width: 576px) {
+    .navbar-container {
+        width: 70px; /* Ancho reducido para pantallas pequeñas */
+        padding: 0; /* Eliminar padding para que se ajuste mejor */
+    }
+
+    .nav-link {
+        justify-content: center; /* Centrar contenido en pantallas pequeñas */
+    }
+
+    .nav-link i {
+        margin-right: 0; /* Eliminar margen entre ícono y texto en pantallas pequeñas */
+    }
+
+    .nav-link span {
+        display: none; /* Ocultar el texto en pantallas pequeñas */
+    }
 }
