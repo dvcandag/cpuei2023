@@ -1,13 +1,25 @@
 /* Estilos para el header */
+
+/* Estilos para el header */
 .header-container {
     background-color: #255B74; /* Color de fondo */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra del header */
     padding: 16px; /* Espaciado interno */
     color: #FFFFFF; /* Color del texto */
     height: 80px; /* Altura fija de 80px */
-    display: flex; /* Permite alinear elementos dentro del header */
-    align-items: center; /* Centra verticalmente los elementos dentro del header */
+    display: flex; /* Alinear elementos dentro del header */
+    align-items: center; /* Centra verticalmente los elementos */
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0; /* Posición desde la parte superior de la pantalla */
+    left: 0; /* Alineación desde el lado izquierdo */
+    width: 100%; /* Abarca todo el ancho de la pantalla */
+    z-index: 1000; /* Asegura que el header esté encima de otros elementos */
 }
+
+
+
+
+
 /* Logo */
 .logo {
     display: flex;
