@@ -3,9 +3,11 @@
 <!-- Incluye Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<link rel="stylesheet" type="text/css" href="../public/assets/css/styles_global.css">
+
 <link rel="stylesheet" type="text/css" href="../public/assets/css/styles_cursos.css">
 
-<link rel="stylesheet" type="text/css" href="../public/assets/css/styles_global.css">
+
 
 <div class="container-notas">
      <div class="palabra-atras">
@@ -96,8 +98,11 @@
     <div class="curso-content">
         <div class="docente-info">
     <h4>Docente:</h4>
-    <p class="docente-nombres">Alejandria Vallejos, Patricia Abigail</p>
+    <div class="docente-nombres">
+        <p>Alejandria Vallejos, Patricia Abigail</p>
+    </div>
 </div>
+
 
         
         <div class="modalidad-curso">
