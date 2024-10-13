@@ -1,31 +1,38 @@
-/* General container */
+/* Estilos para el contenedor de notas */
 .container-notas {
-    margin-left: auto; /* Para centrar el contenido */
-    margin-right: auto; /* Centrado horizontalmente */
-    padding: 20px;
-    height: calc(100vh - 80px); /* Altura total menos la altura del header (80px) */
-    width: 100%; /* Ocupa el 90% del ancho de la pantalla */
-    margin-top: 0; /* Sin márgenes superiores */
-    max-width: 1200px; /* Máximo ancho para el contenido */
-    box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho */
+    margin: 75px auto 0; /* Mantener margen superior */
+    padding: 20px; /* Espaciado interno */
+    width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
+    max-width: 1200px; /* Ancho máximo del contenido */
+    box-sizing: border-box; /* Incluye el padding y borde en el cálculo del ancho */
 }
 
-/* Ajustes para pantallas pequeñas */
-@media (max-width: 576px) {
-    .container-notas {
-        margin-left: 0px; /* Sin margen a la izquierda */
-        margin-right: 0px; /* Sin margen a la derecha */
-        width: 100%; /* Ocupa el 100% del ancho de la pantalla */
+/* PANTALLA GRANDE (más de 576px) */
+@media (min-width: 576px) {
+       .container-notas {
+        left: 210px; /* Alineado al borde derecho de la navbar */
+        position: absolute; /* Mantener posición absoluta para evitar superposición */
+        width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
     }
 }
 
-
+/* PANTALLA PEQUEÑA (menos de 576px) */
+@media (max-width: 576px) {
+    .container-notas {
+        width: calc(100% - 0px); /* Ajustar ancho total en pantallas pequeñas */
+        padding-left: 80px; /* Ajustar el espaciado para pantallas pequeñas */
+                padding-right: 10px; /* Ajustar el espaciado para pantallas pequeñas */
+position: absolute; /* Cambiar a relative para evitar superposición */
+    }
+}
 
 /* palabra-atras */
 .palabra-atras {
     display: inline-block;
-        margin-bottom: 15px; /* Espacio adicional debajo del botón de retroceso */
-
+    margin-bottom: 15px; /* Espacio adicional debajo del botón de retroceso */
+    border: 1px solid #f0f2f5;
+    border-radius: 4px;
+    background-color: #f0f2f5; /* Fondo gris claro al pasar el cursor */
 }
 
 .enlace-retroceso {
@@ -43,16 +50,13 @@
 .enlace-retroceso:hover {
     background-color: #255B74; /* Fondo gris claro al pasar el cursor */
     border-radius: 4px;
-    color: #FFFFFF; /* Color rojo similar al de UTP */
-
+    color: #FFFFFF;
 }
 
 .enlace-retroceso i {
     font-size: 16px; /* Tamaño del icono */
     margin-right: 8px; /* Espacio entre el icono y el texto */
 }
-
-
 
 /* desde aca comienza para el select */
 .mis-cursos {
@@ -76,7 +80,7 @@
     border: 1px solid #C0D0D7;
     border-radius: 4px;
     padding: 10px 40px 10px 15px; /* Ajusta el padding para el espacio del ícono */
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     color: #333;
     width: 100%;
@@ -104,11 +108,6 @@
     color: #050C10; /* Color del ícono */
 }
 
-
-
-
-
-
 /* desde aca comienza para el resumen general */
 .resumen-general {
     margin-top: 15px; /* Espacio encima del contenedor */
@@ -123,26 +122,37 @@
 }
 
 .resumen-header {
-    padding: 10px;
-    border-bottom: 1px solid #DFE7EB;
+    padding: 0px;
     font-size: 16px;
     font-weight: 600;
     color: #050C10;
+    margin-bottom: 10px; /* Espacio debajo del encabezado */
+    position: relative; /* Posicionar la línea de manera controlada */
 }
+
+.resumen-header::after {
+    content: ""; /* Pseudo-elemento para la línea */
+    display: block;
+    width: 100%; /* Ajusta el porcentaje para controlar el ancho de la línea */
+    height: 1px; /* Altura de la línea */
+    background-color: #DFE7EB; /* Color de la línea */
+    margin: 10px auto; /* Espacio y centrado automático */
+}
+
 
 .resumen-contenido {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual ancho */
-    gap: 0px; /* Espacio entre los ítems */
-    padding: 10px 0;
+    gap: 10px; /* Espacio entre los ítems */
+    padding: 0px ;
 }
 
 .resumen-indicador {
-    padding: 10px;
+    padding: 0px;
     border-radius: 4px;
     display: flex;
     align-items: center;
-    gap: 8px; /* Espacio entre la etiqueta y el dato */
+    gap: 10px; /* Espacio entre la indicador y el dato */
 }
 .resumen-etiqueta {
     font-weight: 450;
@@ -153,7 +163,7 @@
     color: #555;
 }
 
-/* Contenedor principal */
+/* Contenedor principal del curso */
 .curso-detalle {
     border: 1px solid #C0D0D7;
     border-radius: 8px; /* Bordes más redondeados */
@@ -179,12 +189,12 @@
 /* Estilo del título y estado del curso */
 .curso-header h3 {
     margin: 0;
-    font-size: 1.25em; /* Tamaño de fuente más grande para el título */
+    font-size: 16px; /* Tamaño de fuente más grande para el título */
 }
 
 .curso-header p.estado-curso {
     margin: 0;
-    font-size: 0.9em; /* Tamaño de fuente más pequeño para el estado */
+    font-size: 12px; /* Tamaño de fuente más pequeño para el estado */
 }
 
 /* Botón de alternar */
@@ -212,10 +222,10 @@
     align-items: center; /* Centrar verticalmente */
 }
 
-/* Título de la sección */
+/* Título de la sección docente-info */
 .docente-info h4 {
     margin: 0; /* Eliminar márgenes */
-    font-size: 1.2em; /* Tamaño de fuente del título */
+    font-size: 14px; /* Tamaño título */
     color: #050C10; /* Color del texto */
     font-weight: bold; /* Negrita para el título */
     margin-right: 10px; /* Reducir espacio entre el título y los nombres */
@@ -231,7 +241,7 @@
 /* Nombres de los docentes */
 .docente-nombres p {
     margin: 0; /* Eliminar márgenes */
-    font-size: 1em; /* Tamaño de fuente */
+    font-size: 12px;; /* Tamaño de fuente */
     color: #333; /* Color del texto */
 }
 
@@ -244,7 +254,7 @@
 /* Título de la sección */
 .modalidad-curso h4 {
     margin: 0; /* Eliminar márgenes */
-    font-size: 1.2em; /* Tamaño de fuente del título */
+    font-size: 14px;
     color: #050C10; /* Color del texto */
     font-weight: bold; /* Negrita para el título */
     margin-right: 10px; /* Reducir espacio entre el título y el contenido */
@@ -253,7 +263,7 @@
 /* Contenido de la modalidad del curso */
 .modalidad-curso p {
     margin: 0; /* Eliminar márgenes */
-    font-size: 1em; /* Tamaño de fuente */
+    font-size: 12px;
     color: #333; /* Color del texto */
 }
 
@@ -266,8 +276,7 @@
 /* Título de la sección */
 .horario h4 {
     margin: 0; /* Eliminar márgenes */
-    font-size: 1.2em; /* Tamaño de fuente del título */
-    color: #050C10; /* Color del texto */
+    font-size: 14px;    color: #050C10; /* Color del texto */
     font-weight: bold; /* Negrita para el título */
     margin-bottom: 5px; /* Reducir espacio debajo del título */
 }
@@ -275,15 +284,11 @@
 /* Contenido del horario con viñetas */
 .horario p {
     margin: 0; /* Eliminar márgenes */
-    font-size: 1em; /* Tamaño de fuente */
+    font-size: 12px;
     color: #333; /* Color del texto */
     list-style-type: disc; /* Tipo de viñeta */
     margin-left: 20px; /* Espacio a la izquierda para la viñeta */
 }
-
-
-
-
 
 /* Contenedor de créditos */
 .creditos {
@@ -300,7 +305,7 @@
 /* Estilo de cada párrafo dentro del contenedor de créditos */
 .creditos p {
     margin: 0;
-    font-size: 0.9em; /* Tamaño de fuente ajustado */
+    font-size: 12px;
     color: #333; /* Color del texto */
 }
 
@@ -308,10 +313,6 @@
 .creditos p + p {
     margin-left: 20px; /* Espaciado entre párrafos para separación visual */
 }
-
-
-
-
 
 /* Contenedor de evaluaciones */
 .evaluaciones {
@@ -323,8 +324,7 @@
 
 /* Título de la sección */
 .evaluaciones h4 {
-    margin: 5px; /* Margen alrededor del título */
-    font-size: 1.2em; /* Tamaño de fuente del título */
+    font-size: 14px;
     color: #050C10; /* Color del texto */
 }
 
@@ -349,9 +349,6 @@
     color: #050C10; /* Color del texto */
 }
 
-
-
-
 /* Contenedor de la fórmula */
 .formula {
     background-color: #F9F9F9; /* Fondo claro para resaltar la fórmula */
@@ -367,7 +364,7 @@
 .formula h4 {
     margin: 0; /* Eliminar márgenes */
     color: #050C10; /* Color del texto del título */
-    font-size: 1.2em; /* Tamaño de fuente ajustado */
+    font-size: 14px;
     font-weight: bold; /* Negrita para el título */
     border-bottom: 2px solid #e0e0e0; /* Línea debajo del título */
     padding-bottom: 5px; /* Espaciado debajo del título */
@@ -376,7 +373,7 @@
 /* Estilo del contenido de la fórmula */
 .formula p {
     margin: 0; /* Eliminar márgenes */
-    font-size: 1em; /* Tamaño de fuente ajustado */
+    font-size: 12px;
     color: #333; /* Color del texto */
     white-space: pre-wrap; /* Mantener espacios en blanco y saltos de línea */
     line-height: 1.5; /* Altura de línea para mejor legibilidad */
@@ -397,8 +394,7 @@
 /* Contenido del promedio */
 .calificaion-final p {
     margin: 0; /* Eliminar márgenes */
-    font-size: 1em; /* Tamaño de fuente ajustado */
-    color: #050C10; /* Color del texto */
+    font-size: 12px;    color: #050C10; /* Color del texto */
 }
 
 /* Estado final */
