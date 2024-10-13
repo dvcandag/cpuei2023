@@ -1,0 +1,261 @@
+/* Estilos generales */
+.container-home {
+    margin: 75px auto 0; /* Mantener margen superior */
+    padding: 20px; /* Espaciado interno */
+    width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
+    max-width: 1200px; /* Ancho máximo del contenido */
+    box-sizing: border-box; /* Incluye el padding y borde en el cálculo del ancho */
+}
+
+/* PANTALLA GRANDE (más de 576px) */
+@media (min-width: 576px) {
+       .container-home {
+        left: 210px; /* Alineado al borde derecho de la navbar */
+        position: absolute; /* Mantener posición absoluta para evitar superposición */
+        width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
+    }
+}
+
+/* PANTALLA PEQUEÑA (menos de 576px) */
+@media (max-width: 576px) {
+    .container-home {
+        width: calc(100% - 0px); /* Ajustar ancho total en pantallas pequeñas */
+        padding-left: 80px; /* Ajustar el espaciado para pantallas pequeñas */
+                padding-right: 10px; /* Ajustar el espaciado para pantallas pequeñas */
+position: absolute; /* Cambiar a relative para evitar superposición */
+    }
+}
+
+/* Ajustes para .home */
+.home {
+    position: relative;
+    width: 100%; /* Ancho completo del contenedor */
+    height: 400px; /* Aumenta la altura para hacerla más prominente */
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DFE7EB;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* PANTALLA PEQUEÑA (menos de 576px) */
+@media (max-width: 576px) {
+    .home {
+        height: 250px; /* Altura ajustada para pantallas pequeñas */
+    }
+}
+
+/* PANTALLA GRANDE (más de 576px) */
+@media (min-width: 576px) {
+    .home {
+        height: 400px; /* Altura fija en pantallas grandes */
+    }
+}
+
+
+/* Slider */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+}
+
+.slide img {
+
+    width: 100%; /* Asegúrate de que ocupen el ancho completo de la diapositiva */
+    height: 100%; /* Asegúrate de que ocupen toda la altura de la diapositiva */
+    object-fit: cover; /* Mantiene la proporción y cubre el área del contenedor */
+    position: relative; /* Necesario si se usa z-index */
+    z-index: 1; /* Asegúrate de que tenga un z-index mayor que otros elementos que podrían cubrirlo */
+}
+
+
+.indicadores {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 25px;
+}
+
+.indicador {
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: #D5D7D8;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.4s, transform 0.3s;
+    border: none;
+}
+
+.indicador:hover {
+    opacity: 0.7;
+}
+
+.indicador.active {
+    background-color: #FFFFFF;
+}
+
+.indicador:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid #F1F1F2;
+    opacity: 0;
+    transition: width 0.4s, height 0.4s, opacity 0.4s;
+}
+
+.indicador.active:before {
+    width: 40px;
+    height: 40px;
+    opacity: 0.9;
+}
+
+.nombre-modalidad {
+    margin-top: 0;
+    font-size: 16px;
+    color: #0F2731;
+    background-color: #DFE7EB;
+    padding: 14px;
+    border-radius: 0 0 10px 10px;
+    max-width: 100%;
+    line-height: 1.6;
+    text-align: center;
+    position: relative;
+    transition: box-shadow 0.3s, background-color 0.3s, transform 0.3s;
+}
+
+.nombre-modalidad:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
+}
+
+/* Estilos para el contenedor de la fecha */
+.fecha-container {
+    background-color: #F0F0F0;
+    width: calc(100% - 40px); /* Ancho total menos el espaciado lateral (20px por lado) */
+    margin-left: 20px; /* Espaciado desde el borde izquierdo */
+    margin-right: 20px; /* Espaciado desde el borde derecho */
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* Cambiado a relative para que se alinee correctamente */
+    top: 80px;
+    left: 0; /* No requiere alineación específica */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* PANTALLA PEQUEÑA (menos de 576px) */
+@media (max-width: 576px) {
+    .fecha-container {
+        width: calc(100% - 20px); /* Ajuste de ancho para pantallas pequeñas */
+        margin-left: 10px; /* Espaciado en pantallas pequeñas */
+        margin-right: 10px; /* Espaciado en pantallas pequeñas */
+    }
+}
+
+/* Bloque de información dentro de .fecha-container */
+.fecha-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los elementos */
+}
+
+/* Estilos para el texto de la fecha */
+.fecha-hoy {
+    font-size: 14px;
+    color: #2D2D2D; /* Texto en gris oscuro */
+    font-weight: 400;
+    text-align: center; /* Centrar texto */
+    border-bottom: 2px solid #256474; /* Línea de acento */
+    padding-bottom: 2px; /* Espaciado para la línea */
+    margin-top: 20px; /* Añadir margen superior */
+}
+
+/* Estilos para los botones */
+.btn-fecha-matricula,
+.btn-ver-horario {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px; /* Botones completamente redondeados */
+    transition: all 0.3s ease;
+    color: #FFFFFF; /* Texto en blanco */
+}
+
+/* Botón de fecha de matrícula */
+.btn-fecha-matricula {
+    background-color: #255B74; /* Fondo azul profundo */
+    min-width: 170px; /* Ancho mínimo */
+}
+
+.btn-fecha-matricula:hover {
+    background-color: #256474; /* Azul más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
+        color: #FFFFFF; /* Mantener el texto blanco en hover */
+
+}
+
+/* Botón para ver el horario */
+.btn-ver-horario {
+    background-color: #256D74; /* Fondo azul brillante */
+    min-width: 140px; /* Ancho mínimo */
+    max-width: 160px; /* Ancho máximo */
+}
+
+.btn-ver-horario:hover {
+    background-color: #255B74; /* Azul más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Estilos para el texto del horario */
+.mi-horario {
+    font-size: 14px;
+    color: #2D2D2D; /* Texto en gris oscuro */
+    font-weight: 400;
+    text-align: center; /* Texto centrado */
+    display: flex;
+    justify-content: center; /* Centrar contenido */
+    align-items: center;
+    gap: 10px; /* Espacio entre el texto y el botón */
+}
+
+.mi-horario a {
+    color: #FFFFFF; /* Texto blanco */
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.mi-horario a:hover {
+    color: #FFFFFF; /* Mantener el texto blanco en hover */
+}
