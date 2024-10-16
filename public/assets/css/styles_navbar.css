@@ -2,7 +2,7 @@
 .navbar-container {
     background-color: #f0f2f5; /* Color de fondo */
     padding: 20px; /* Espaciado interno */
-    transition: width 0.3s ease; /* Transición suave para cambios de tamaño */
+    /*transition: width 0.3s ease; /* Transición suave para cambios de tamaño */
     height: 100vh; /* Ocupar toda la altura de la ventana */
     position: fixed; /* Fijar la navbar para que no se desplace al hacer scroll */
     left: 0; /* Alinear al borde izquierdo */
@@ -20,7 +20,7 @@
     text-decoration: none; /* Sin subrayado */
     border-radius: 8px; /* Bordes redondeados */
     height: 40px; /* Altura fija */
-    transition: background-color 0.2s ease; /* Transición suave */
+    /*transition: background-color 0.2s ease; /* Transición suave */
     gap: 1px; /* Espaciado fijo entre ícono y texto */
 }
 
