@@ -1,77 +1,3 @@
-/* Estilos para el contenedor del dashboard */
-.dashboard-container {
-    background-color: #F0F0F0; /* Color de fondo del contenedor */
-    height: calc(100vh - 80px); /* Altura total menos la altura del header (80px) */
-    width: calc(100% - 250px); /* Ancho total menos el espacio del navbar (250px) */
-    margin: 0; /* Sin márgenes */
-    padding: 20px; /* Espaciado interno ajustado a 16px */
-    box-sizing: border-box; /* Incluye el padding en el cálculo del ancho/alto */
-    overflow: auto; /* Permite el desplazamiento si el contenido excede la altura */
-    position: absolute; /* Cambiar a absolute para alinearse correctamente */
-    top: 80px; /* Alineado justo debajo del header */
-    left: 250px; /* Alineado justo al lado derecho del navbar */
-}
-
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 768px) {
-    .dashboard-container {
-        top: 80px; /* Alineado debajo del header */
-        left: 70px; /* Alineado al borde derecho del navbar reducido */
-        width: calc(100% - 70px); /* Ancho total menos el ancho del navbar en pantallas pequeñas */
-        height: calc(100vh - 80px); /* Altura adecuada en pantallas pequeñas */
-        padding: 10px; /* Ajustar el padding si es necesario para pantallas pequeñas */
-        position: absolute; /* Mantener la posición absoluta para evitar superposición */
-    }
-}
-
-/* PANTALLA GRANDE (más de 576px) */
-@media (min-width: 576px) {
-    .navbar-container {
-        width: 210px; /* Ancho adecuado para pantallas grandes */
-    }
-
-    .nav-link i {
-        margin-right: 2px; /* Separación entre ícono y texto */
-    }
-
-    .nav-link span {
-        font-size: 14px; /* Tamaño del texto */
-        display: inline; /* Mostrar el texto en pantallas grandes */
-    }
-
-    /* Asegura que el dashboard ocupe todo el ancho a la derecha del navbar */
-    .dashboard-container {
-        left: 210px; /* Alineado al lado derecho del navbar */
-        width: calc(100% - 210px); /* Ancho total menos el ancho del navbar en pantallas grandes */
-    }
-}
-
-/* PANTALLA PEQUEÑA (menos de 576px) */
-@media (max-width: 576px) {
-    .navbar-container {
-        width: 70px; /* Ancho reducido para pantallas pequeñas */
-        padding: 0; /* Eliminar padding para que se ajuste mejor */
-    }
-
-    .nav-link {
-        justify-content: center; /* Centrar contenido en pantallas pequeñas */
-    }
-
-    .nav-link i {
-        margin-right: 0; /* Eliminar margen entre ícono y texto en pantallas pequeñas */
-    }
-
-    .nav-link span {
-        display: none; /* Ocultar el texto en pantallas pequeñas */
-    }
-
-    /* Asegura que el dashboard se ajuste al ancho del navbar en pantallas pequeñas */
-    .dashboard-container {
-        left: 70px; /* Alineado al borde derecho del navbar reducido */
-        width: calc(100% - 70px); /* Ancho total menos el ancho del navbar en pantallas pequeñas */
-        position: absolute; /* Mantener posición absoluta para evitar superposición */
-    }
-}
 
 
 /* PERSONAIZACION DE SCROLL */
@@ -110,3 +36,6 @@
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra suave para contenedor de desplazamiento */
     overflow: auto; /* Permite el desplazamiento */
 }
+
+
+
