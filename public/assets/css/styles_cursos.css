@@ -1,10 +1,11 @@
 /* Estilos para el contenedor de notas */
 .container-notas {
-    margin: 75px auto 0; /* Mantener margen superior */
+    margin: 80px 0 0 0px; /* Margen superior de 80px y desplazamiento a la derecha */
     padding: 20px; /* Espaciado interno */
     width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
     max-width: 1200px; /* Ancho máximo del contenido */
     box-sizing: border-box; /* Incluye el padding y borde en el cálculo del ancho */
+    position: relative; /* Asegura que el contenedor esté en el flujo del documento */
 }
 
 /* PANTALLA GRANDE (más de 576px) */
@@ -21,8 +22,7 @@
     .container-notas {
         width: calc(100% - 0px); /* Ajustar ancho total en pantallas pequeñas */
         padding-left: 80px; /* Ajustar el espaciado para pantallas pequeñas */
-                padding-right: 10px; /* Ajustar el espaciado para pantallas pequeñas */
-position: absolute; /* Cambiar a relative para evitar superposición */
+        padding-right: 10px; /* Ajustar el espaciado para pantallas pequeñas */
     }
 }
 
