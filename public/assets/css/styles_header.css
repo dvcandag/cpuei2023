@@ -1,6 +1,4 @@
 /* Estilos para el header */
-
-/* Estilos para el header */
 .header-container {
     background-color: #255B74; /* Color de fondo */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra del header */
@@ -9,16 +7,12 @@
     height: 80px; /* Altura fija de 80px */
     display: flex; /* Alinear elementos dentro del header */
     align-items: center; /* Centra verticalmente los elementos */
-    position: fixed; /* Fija el header en la parte superior */
+    position: fixed; /* Fijo en la parte superior */
     top: 0; /* Posición desde la parte superior de la pantalla */
     left: 0; /* Alineación desde el lado izquierdo */
     width: 100%; /* Abarca todo el ancho de la pantalla */
     z-index: 1000; /* Asegura que el header esté encima de otros elementos */
 }
-
-
-
-
 
 /* Logo */
 .logo {
@@ -160,6 +154,8 @@ button.btn:hover {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); /* Sombra ligera para un efecto de elevación */
     margin-right: 0.1px; /* Espacio entre íconos y otros elementos */
     padding: 0; /* Sin padding */
+    cursor: pointer;
+
 }
 
 /* Estilo de todos los íconos dentro de contenedor-icono */
@@ -172,9 +168,11 @@ button.btn:hover {
     line-height: 1; /* Asegura que el alto de línea no interfiera con el centrado */
     vertical-align: middle; /* Alineación vertical del ícono */
 }
+
 /* Estilo para el ícono de búsqueda en pantallas pequeñas */
 .contenedor-icono.d-block.d-md-none {
     cursor: pointer;
+
     margin-right: 0.1px; /* Asegura el mismo espaciado en pantallas pequeñas */
 }
 
