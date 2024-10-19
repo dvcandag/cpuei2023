@@ -2,12 +2,13 @@
 .navbar-container {
     background-color: #f0f2f5; /* Color de fondo */
     padding: 20px; /* Espaciado interno */
-    /*transition: width 0.3s ease; /* Transición suave para cambios de tamaño */
-    height: 100vh; /* Ocupar toda la altura de la ventana */
-    position: fixed; /* Fijar la navbar para que no se desplace al hacer scroll */
-    left: 0; /* Alinear al borde izquierdo */
+    position: fixed; /* Fijo al lado izquierdo de la pantalla */
+    height: calc(100vh - 80px); /* Altura ajustada para que esté debajo del header */
     top: 80px; /* Alineado justo debajo del header */
-
+    left: 0; /* Alinear al borde izquierdo */
+    width: 210px; /* Ancho fijo para la navbar */
+    box-sizing: border-box; /* Incluye el padding y borde en el cálculo del ancho */
+    z-index: 1000; /* Asegura que la navbar esté por encima de otros elementos */
 }
 
 /* Estilo de los enlaces */
@@ -90,4 +91,5 @@
     .nav-link span {
         display: none; /* Ocultar el texto en pantallas pequeñas */
     }
+ 
 }
