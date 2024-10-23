@@ -12,8 +12,8 @@
 }
 
 /* Estilo de los enlaces */
-.nav-link {
-    display: flex; /* Flex para alinear íconos y texto */
+.enlace-navegacion {
+    display: flex; /* Flex para alinear íconos  y texto */
     align-items: center; /* Alinear verticalmente ícono y texto */
     color: #1c1e21; /* Color del texto */
     font-size: 14px; /* Tamaño de fuente */
@@ -21,27 +21,27 @@
     text-decoration: none; /* Sin subrayado */
     border-radius: 8px; /* Bordes redondeados */
     height: 40px; /* Altura fija */
-    /*transition: background-color 0.2s ease; /* Transición suave */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Transición suave */
     gap: 1px; /* Espaciado fijo entre ícono y texto */
 }
 
-.nav-item {
+.elemento-navegacion {
     width: 100%; /* Ancho completo */
 }
 
-/* Tamaño y alineación de los íconos */
-.nav-link i {
+/* Estilo de los íconos en los enlaces de navegación */
+.enlace-navegacion i {
     font-size: 16px; /* Tamaño del ícono */
-    color: #65676b; /* Color del ícono */
-    display: flex;
-    justify-content: center; /* Centrar ícono horizontalmente */
-    align-items: center; /* Centrar ícono verticalmente */
-    min-width: 20px; /* Asegurar un ancho mínimo para el ícono */
-    height: 40px; /* Altura del ícono alineada con la altura del link */
+    color: #255B74; /* Color del ícono */
+    display: flex; /* Usar flexbox para centrar el ícono */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    min-width: 20px; /* Ancho mínimo del ícono */
+    height: 40px; /* Altura del ícono igual a la altura del enlace */
 }
 
 /* Estilo del texto */
-.nav-link span {
+.enlace-navegacion span {
     flex-grow: 1; /* Deja que el texto ocupe el espacio disponible */
     text-align: left; /* Alinear texto a la izquierda */
     white-space: nowrap; /* Evita que el texto se divida en varias líneas */
@@ -49,13 +49,27 @@
     text-overflow: ellipsis; /* Mostrar "..." si el texto es muy largo */
 }
 
-/* Hover para cambiar color de fondo */
-.nav-link:hover {
+/* Hover para cambiar color de fondo e ícono */
+.enlace-navegacion:hover {
     background-color: #e4e6eb; /* Color al hacer hover */
+    color: #255B74; /* Color del texto al hacer hover */
 }
 
+.enlace-navegacion:hover i {
+    color: #255B74; /* se cambiar color del ícono también al hacer hover */
+}
 
+/* Estado activo (mantener el fondo rojo) */
+.enlace-navegacion.active, 
+.enlace-navegacion.active:focus, 
+.enlace-navegacion.active:visited {
+    background-color: #255B74 !important; /* color fondo */
+    color: #ffffff !important; /* Texto color blanco */
+}
 
+.enlace-navegacion.active i {
+    color: #ffffff !important; /* Color del ícono blanco cuando está activo */
+}
 
 /* PANTALLA GRANDE (más de 576px) */
 @media (min-width: 576px) {
@@ -63,11 +77,11 @@
         width: 210px; /* Ancho adecuado para pantallas grandes */
     }
 
-    .nav-link i {
+    .enlace-navegacion i {
         margin-right: 2px; /* Separación entre ícono y texto */
     }
 
-    .nav-link span {
+    .enlace-navegacion span {
         font-size: 14px; /* Tamaño del texto */
         display: inline; /* Mostrar el texto en pantallas grandes */
     }
@@ -77,19 +91,18 @@
 @media (max-width: 576px) {
     .navbar-container {
         width: 70px; /* Ancho reducido para pantallas pequeñas */
-        padding: 0; /* Eliminar padding para que se ajuste mejor */
+        padding: 0; /* Elimina padding para que se ajuste mejor */
     }
 
-    .nav-link {
+    .enlace-navegacion {
         justify-content: center; /* Centrar contenido en pantallas pequeñas */
     }
 
-    .nav-link i {
+    .enlace-navegacion i {
         margin-right: 0; /* Eliminar margen entre ícono y texto en pantallas pequeñas */
     }
 
-    .nav-link span {
+    .enlace-navegacion span {
         display: none; /* Ocultar el texto en pantallas pequeñas */
     }
- 
 }
