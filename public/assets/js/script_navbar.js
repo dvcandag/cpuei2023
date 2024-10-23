@@ -1,5 +1,5 @@
-// Suponiendo que tus enlaces tienen la clase 'nav-link'
-const links = document.querySelectorAll('.nav-link');
+// Suponiendo que tus enlaces tienen la clase 'enlace-navegacion'
+const links = document.querySelectorAll('.enlace-navegacion');
 
 links.forEach(link => {
     link.addEventListener('click', () => {
