@@ -1,11 +1,13 @@
-// Suponiendo que tus enlaces tienen la clase 'enlace-navegacion'
+// Selecciona todos los enlaces que tienen la clase 'enlace-navegacion'
 const links = document.querySelectorAll('.enlace-navegacion');
 
+// Itera sobre cada enlace para agregar un evento de clic
 links.forEach(link => {
     link.addEventListener('click', () => {
-        // Eliminar la clase 'active' de todos los enlaces
+        // Elimina la clase 'active' de todos los enlaces para asegurarse de que solo un enlace esté activo
         links.forEach(l => l.classList.remove('active'));
-        // Añadir la clase 'active' al enlace que fue clicado
+        
+        // Añade la clase 'active' al enlace que fue clicado, indicando que es el enlace seleccionado
         link.classList.add('active');
     });
 });
