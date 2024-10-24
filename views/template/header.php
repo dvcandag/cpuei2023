@@ -23,6 +23,7 @@ function obtenerRutaFoto($dni) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <!-- CSS Personalizado -->
+    <link rel="stylesheet" type="text/css" href="../public/assets/css/styles_global.css">
     <link rel="stylesheet" type="text/css" href="../public/assets/css/styles_header.css">
 </head>
 <body>
@@ -53,7 +54,7 @@ function obtenerRutaFoto($dni) {
                     </div>
 
                     <!-- Links e iconos -->
-                    <a href="#" class="me-2">
+                    <a href="../views/dashboard.php" class="me-2">
                         <div class="contenedor-icono">
                             <i class="fas fa-home"></i> <!-- Icono de Home -->
                         </div>
