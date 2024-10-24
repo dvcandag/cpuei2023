@@ -14,6 +14,9 @@
     left: 250px; /* Alineado justo al lado derecho del navbar */
     z-index: 1000; /* Asegura que esté encima de otros elementos */
     overflow: hidden; /* Oculta el contenido que sobresale */
+    opacity: 0; /* Ocultar inicialmente */
+    visibility: hidden; /* Ocultar visualmente */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Transición suave */
 }
 
 /* PANTALLA GRANDE (más de 576px) */
@@ -29,4 +32,10 @@
     .footer {
         display: none; /* Oculta el footer en pantallas pequeñas */
     }
+}
+
+/* Mostrar el footer cuando se haga scroll */
+.footer.visible {
+    opacity: 1; /* Mostrar footer */
+    visibility: visible; /* Hacer visible el footer */
 }
