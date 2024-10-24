@@ -1,7 +1,32 @@
 /* Contenido Principal */
+.container-dashboard {
+    margin: 80px 0 0 0px; /* Margen superior de 80px y desplazamiento a la derecha */
+    padding: 20px; /* Espaciado interno */
+    width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
+    max-width: 1200px; /* Ancho máximo del contenido */
+    box-sizing: border-box; /* Incluye el padding y borde en el cálculo del ancho */
+    position: relative; /* Asegura que el contenedor esté en el flujo del documento */
+}
 
+/* PANTALLA GRANDE (más de 576px) */
+@media (min-width: 576px) {
+       .container-dashboard {
+        left: 210px; /* Alineado al borde derecho de la navbar */
+        position: absolute; /* Mantener posición absoluta para evitar superposición */
+        width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
+    }
+}
 
+/* PANTALLA PEQUEÑA (menos de 576px) */
+@media (max-width: 576px) {
+    .container-dashboard {
+        width: calc(100% - 0px); /* Ajustar ancho total en pantallas pequeñas */
+        padding-left: 80px; /* Ajustar el espaciado para pantallas pequeñas */
+        padding-right: 10px; /* Ajustar el espaciado para pantallas pequeñas */
+    }
+}
 
+/* Contenido Principal */
 
 .container-home,
 .container-fecha,
