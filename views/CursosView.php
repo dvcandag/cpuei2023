@@ -46,7 +46,7 @@
     
     <div class="resumen-general">
     <header class="resumen-header">
-        <span>Resumen general</span>
+        <span>Resumen general del ciclo</span>
     </header>
     <div class="resumen-contenido">
         <div class="resumen-indicador">
@@ -58,17 +58,10 @@
             <div class="resumen-dato">01</div>
         </div>
         <div class="resumen-indicador">
-            <div class="resumen-etiqueta">Promedio:</div>
-            <div class="resumen-dato">17.00</div>
-        </div>
-        <div class="resumen-indicador">
             <div class="resumen-etiqueta">Ciclo relativo:</div>
             <div class="resumen-dato">10</div>
         </div>
-        <div class="resumen-indicador">
-            <div class="resumen-etiqueta">Cantidad de créditos:</div>
-            <div class="resumen-dato">4</div>
-        </div>
+        
         <div class="resumen-indicador">
             <div class="resumen-etiqueta">Horas semanales:</div>
             <div class="resumen-dato">4</div>
@@ -78,9 +71,10 @@
             <div class="resumen-dato">21</div>
         </div>
         <div class="resumen-indicador">
-            <div class="resumen-etiqueta">Horas semanales:</div>
-            <div class="resumen-dato">48</div>
+            <div class="resumen-etiqueta">Orden de mérito:</div>
+            <div class="resumen-dato">10</div>
         </div>
+        
     </div>
 </div>
 
@@ -159,4 +153,4 @@
         </div>
     </div>
 </div>
-    <script src="../public/assets/js/script_AlternarContenido.js"></script>
+    <script src="../public/assets/js/AlternarContenidoCursos.js"></script>
