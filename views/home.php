@@ -48,7 +48,8 @@
                 <a href="#" class="btn-fecha-matricula">Fecha de matrícula</a>
                 <span class="mi-horario">
                     Horarios de Ciclo Agosto 2024
-                    <a href="#" class="btn-ver-horario">Ver mi horario</a>
+                    
+                    <a href="#" class="btn-ver-horario enlace-ver-horario" data-view="HorarioAlumnoView">Ver mi horario</a>
                 </span>
             </div>
         </div>
@@ -59,5 +60,7 @@
     <!-- Incluye los scripts -->
     <script src="../public/assets/js/slider-dashboard.js"></script>
     <script src="../public/assets/js/script_AlternarContenido.js"></script>
+        <script src="../public/assets/js/script_home.js"></script>
+
 </body>
 </html>
