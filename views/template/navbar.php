@@ -29,7 +29,7 @@
                             </a>
                         </li>
                         <li class="elemento-navegacion">
-                            <a href="#" class="enlace-navegacion" data-view="CursosView">
+                            <a href="#" class="enlace-navegacion" data-view="CursosMatriculadosView">
                                 <i class="fa-solid fa-book"></i>
                                 <span class="ms-1 d-none d-sm-inline">Cursos</span>
                             </a>
