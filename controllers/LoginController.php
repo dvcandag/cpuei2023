@@ -1,7 +1,9 @@
 <?php
+
 require_once 'models/LoginModel.php';
 require_once 'models/DashboardModel.php';
 require_once 'controllers/CursosController.php';
+require_once 'controllers/HorarioAlumnoController.php';
 
 class LoginController {
     public function showLoginForm() {
@@ -23,31 +25,30 @@ class LoginController {
 
             // Verificar que el usuario existe y la contraseña es correcta
             if ($user && password_verify($password, $user['password'])) {
-                session_start();
+                // Verificar si la sesión ya está iniciada
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
 
-                // Guardar los datos del usuario en la sesión
-                $_SESSION["username"] = $username;
-                $_SESSION["nombre_completo"] = $user['nombrealumno'] . ' ' . $user['apaterno'] . ' ' . $user['amaterno']; // Nombre completo y muestra en header.php
+                 // Guardamos el código de alumno en la sesión
+
+$_SESSION["username"] = $username;
+$_SESSION["nombre_completo"] = $user['nombrealumno'] . ' ' . $user['apaterno'] . ' ' . $user['amaterno']; // Nombre completo y muestra en header.php
+$_SESSION["codalumno"] = $user['codalumno'];  // Guardamos codalumno en la sesión
+
                 
-                // Obtener los datos del alumno desde el DashboardModel
+                // Obtener los datos del alumno en perfil del Dashboard
                 $dashboardModel = new DashboardModel();
                 $alumno = $dashboardModel->getAlumnoByCodalumno($username);
                 $_SESSION["alumno"] = $alumno;
 
-                // Obtener los cursos matriculados y guardarlos en la sesión
-                $cursosController = new CursosController();
-                $cursosMatriculados = $cursosController->mostrarCursosMatriculados($username);
-                if ($cursosMatriculados) {
-                    $_SESSION['cursosMatriculados'] = $cursosMatriculados;
-                }
-
-                // Obtener las notas del alumno y guardarlas en la sesión
-                $notas = $dashboardModel->getNotasByCodalumno($alumno['codalumno']);
-                $_SESSION['notas'] = $notas;
+             
+                
 
                 // Redirigir al panel de control (dashboard)
-                header("Location: views/dashboard.php");
+            header("Location: " . URL . "views/dashboard.php");
                 exit;
+
             } else {
                 // Credenciales incorrectas
                 echo "<script>alert('Credenciales incorrectas.');</script>";
