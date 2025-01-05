@@ -40,6 +40,10 @@ $fechaActual = date('d-m-Y'); // Formato de día-mes-año
         <?php include '../views/home.php'; ?>
     </div>
 
+
+
+
+
     <!-- Incluye el pie de página -->
     <?php include '../views/template/footer.php'; ?>
 
