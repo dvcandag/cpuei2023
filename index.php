@@ -1,34 +1,56 @@
 <?php
 session_start();
 
-// Incluir archivos de configuración y controladores
+// Habilitar el reporte de errores
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once 'config/config.php';
 require_once 'config/database.php';
 require_once 'controllers/LoginController.php';
-require_once 'controllers/HeaderController.php';  // Incluir el HeaderController
+require_once 'controllers/HeaderController.php';
+require_once 'controllers/DashboardController.php';
+require_once 'controllers/CursosController.php';
+require_once 'controllers/HorarioAlumnoController.php';
 
-$action = isset($_GET['action']) ? $_GET['action'] : 'showLoginForm';
+$action = $_GET['action'] ?? 'showLoginForm';
 
 $loginController = new LoginController();
-$headerController = new HeaderController();  // Crear instancia del HeaderController
+$headerController = new HeaderController();
+$cursosController = new CursosController();
+$dashboardController = new DashboardController();
+$horarioAlumnoController = new HorarioAlumnoController();
 
-// Mostrar el header si el usuario está autenticado
-if (isset($_SESSION['usuario_id'])) {
-    // Solo mostrar el header si el usuario está logueado
-    $headerController->index();  // Cargar el header
+if (isset($_SESSION['username'])) {
+    // No es necesario llamar a $headerController->index() aquí si no existe este método
 }
 
 switch ($action) {
     case 'showLoginForm':
         $loginController->showLoginForm();
         break;
+
     case 'login':
         $loginController->login();
         break;
+
     case 'logout':
-        // Redirigir a logout.php para manejar el cierre de sesión
-        header("Location: logout.php");
+        session_destroy();
+        header("Location: index.php?action=showLoginForm");
         exit;
+
+    case 'mostrarCursosMatriculados':
+        $cursosController->mostrarCursosMatriculados();
+        break;
+
+    case 'dashboard':
+        $dashboardController->showDashboard();
+        break;
+
+    case 'mostrarHorario':
+        $horarioAlumnoController->mostrarHorario();
+        break;
+
     default:
         $loginController->showLoginForm();
         break;
