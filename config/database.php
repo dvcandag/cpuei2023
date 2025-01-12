@@ -1,18 +1,15 @@
 <?php
 require_once 'config.php';
 
+
+// Clase para gestionar la base de datos con el patrón Singleton
 class Database {
-    private static $instance = null;
-    private $conn;
+    private static ?Database $instance = null; // Declaración de tipo para la instancia única
+    private PDO $conn; // Tipado de la conexión PDO
 
+    // Constructor privado para evitar la creación directa
     private function __construct() {
-        $host = HOST;
-        $db   = DB;
-        $user = USER;
-        $pass = PASSWORD;
-        $charset = CHARSET;
-
-        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+        $dsn = "mysql:host=" . HOST . ";dbname=" . DB . ";charset=" . CHARSET;
         $options = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -20,52 +17,47 @@ class Database {
         ];
 
         try {
-            $this->conn = new PDO($dsn, $user, $pass, $options);
+            // Establecer la conexión
+            $this->conn = new PDO($dsn, USER, PASSWORD, $options);
         } catch (PDOException $e) {
-            throw new PDOException($e->getMessage(), (int)$e->getCode());
+            // Lanzar una excepción si falla la conexión
+            throw new PDOException("Error al conectar a la base de datos: " . $e->getMessage(), (int)$e->getCode());
         }
     }
 
-    public static function getInstance() {
-        if (!self::$instance) {
+    // Método para obtener la instancia única
+    public static function getInstance(): Database {
+        if (self::$instance === null) {
             self::$instance = new Database();
         }
         return self::$instance;
     }
 
-    public function getConnection() {
+    // Método para obtener la conexión PDO
+    public function getConnection(): PDO {
         return $this->conn;
     }
 }
 
-
-
-// Creacion de test de conexion 
+// Creación de prueba de conexión
 
 try {
-    // Crear una conexión a la base de datos utilizando las constantes definidas
-    $conn = new PDO("mysql:host=" . HOST . ";dbname=" . DB, USER, PASSWORD);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Obtener la conexión utilizando el patrón Singleton
+    $db = Database::getInstance();
+    $conn = $db->getConnection();
 
     // Realizar una consulta de prueba
     $query = "SELECT 1";
     $stmt = $conn->query($query);
 
-    // Verificar si la consulta se ejecutó con éxito
+    // Verificar si la consulta fue exitosa
     if ($stmt) {
         //echo "¡Conexión exitosa a la base de datos!";
     } else {
         //echo "Error al ejecutar la consulta.";
     }
 } catch (PDOException $e) {
-    // Capturar cualquier error al conectar a la base de datos
+    // Manejo de excepciones
     //echo "Error al conectar a la base de datos: " . $e->getMessage();
 }
-// find de test de conexion 
-
-
-
-
-
 ?>
-
