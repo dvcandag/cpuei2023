@@ -29,12 +29,14 @@ $fechaActual = date('d-m-Y'); // Formato de día-mes-año
 </head>
 <body>
 
-    <!-- Incluye el encabezado -->
+    <!--Incluye el encabezado -->
     <?php include '../views/template/header.php'; ?>
 
     <!-- Incluye la barra de navegación -->
     <?php include '../views/template/navbar.php'; ?>
 
+    <!-- Contenedor donde se cargará el contenido dinámico -->
+    <div id="contenido" class="container-dashboard">
     <!-- Contenedor donde se cargará el contenido dinámico -->
     <div id="contenido" class="container-dashboard">
         <?php include '../views/home.php'; ?>
@@ -49,6 +51,8 @@ $fechaActual = date('d-m-Y'); // Formato de día-mes-año
 
     <!-- Incluye los archivos JavaScript -->
     <script src="../public/assets/js/slider-dashboard.js"></script>
+    <script src="../public/assets/js/script_matricula.js"></script>
+    <script type="../public/assets/js/script_mostrar_formulario_matricula.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

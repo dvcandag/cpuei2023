@@ -6,6 +6,8 @@ if (!isset($_SESSION['username'])) {
 }
 
 $horario = $_SESSION['horario'] ?? [];
+$progresoPeriodo = $_SESSION['progresoPeriodo'] ?? [];
+
 ?>
 
 <!DOCTYPE html>
@@ -49,16 +51,34 @@ $horario = $_SESSION['horario'] ?? [];
 
 
                     
-                    <!-- Este bloque se muestra solo una vez por día -->
-                    <div class="card-footer">
-                        <div class="progress-container">
-                            <div class="progress-bar">
-                                <div class="relleno-progress-bar" style="width: 70%;"></div>
-                            </div>
-                            <div class="progress-label">70%</div>
-                            <div class="progress-label">490 / 500</div>
-                        </div>
-                    </div>
+<!-- Este bloque se muestra solo una vez por día y semana durante la duracion de periodo -->
+                    
+<?php
+if (isset($progresoPeriodo[$clase['codcurso']])): 
+    $progreso = $progresoPeriodo[$clase['codcurso']];
+    $porcentajeProgreso = $progreso['porcentaje'];
+    $diasTranscurridos = $progreso['diasTranscurridos'];
+    $diasTotales = $progreso['diasTotales'];
+?>
+    <!-- Este bloque se muestra solo una vez por día y semana durante la duración del período -->
+   <div class="card-footer">
+                                                <div class="progress-container">
+                                                    <div class="progress-bar">
+                                                        <div class="relleno-progress-bar" style="width: <?= $porcentajeProgreso ?>%;"></div>
+                                                    </div>
+                                                    <div class="progress-label"><?= round($porcentajeProgreso, 2) ?>%</div>
+                                                    <div class="progress-label"><?= $diasTranscurridos ?> / <?= $diasTotales ?> días</div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                    
+                                   
+
+
+
+
+
+
                 </div>
             <?php endforeach; ?>
         </div>
@@ -66,17 +86,6 @@ $horario = $_SESSION['horario'] ?? [];
         <p>No se encontraron horarios para este alumno.</p>
     <?php endif; ?>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
     <?php include 'template/footer.php'; ?>

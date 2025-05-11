@@ -3,7 +3,6 @@
 require_once 'models/LoginModel.php';
 require_once 'models/DashboardModel.php';
 require_once 'controllers/CursosController.php';
-require_once 'controllers/HorarioAlumnoController.php';
 
 class LoginController {
     public function showLoginForm() {

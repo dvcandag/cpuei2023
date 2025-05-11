@@ -12,6 +12,8 @@ require_once 'controllers/HeaderController.php';
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/CursosController.php';
 require_once 'controllers/HorarioAlumnoController.php';
+require_once 'controllers/MatriculaController.php';
+
 
 $action = $_GET['action'] ?? 'showLoginForm';
 
@@ -20,6 +22,8 @@ $headerController = new HeaderController();
 $cursosController = new CursosController();
 $dashboardController = new DashboardController();
 $horarioAlumnoController = new HorarioAlumnoController();
+$matriculaController = new MatriculaController(); 
+
 
 if (isset($_SESSION['username'])) {
     // No es necesario llamar a $headerController->index() aquí si no existe este método
@@ -49,6 +53,18 @@ switch ($action) {
 
     case 'mostrarHorario':
         $horarioAlumnoController->mostrarHorario();
+        break;
+
+    case 'mostrarMatricula': // por ver Acción para mostrar el formulario de matrícula
+        $matriculaController->mostrarFormularioMatricula();
+        break;    
+case 'seleccionarPeriodo':///va
+        $controller = new MatriculaController();
+        $controller->seleccionarPeriodo();
+        break;
+
+case 'obtenerCursosPorPeriodo': // Nueva acción para obtener cursos por período
+        $matriculaController->obtenerCursosPorPeriodo();
         break;
 
     default:

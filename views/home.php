@@ -45,10 +45,13 @@
         <div class="container-fecha">
             <div class="fecha-info">
                 <span class="fecha-hoy">Hoy, <?php echo $fechaActual; ?></span>
-                <a href="#" class="btn-fecha-matricula">Fecha de matrícula</a>
+                <!-- Enlace para mostrar el formulario de matrícula -->
+                <a href="#" class="btn-fecha-matricula enlace-ver-formulario-matricula" 
+   data-view="mostrarMatricula" data-codperiodo="1">Fecha de matrícula</a>
+
                 <span class="mi-horario">
                     Horarios de Ciclo Agosto 2024
-                    
+                <!-- Enlace para mostrar el horario -->
                     <a href="#" class="btn-ver-horario enlace-ver-horario" data-view="HorarioAlumnoView">Ver mi horario</a>
                 </span>
             </div>
@@ -61,6 +64,8 @@
     <script src="../public/assets/js/slider-dashboard.js"></script>
     <script src="../public/assets/js/script_AlternarContenido.js"></script>
         <script src="../public/assets/js/script_home.js"></script>
+        <script src="../public/assets/js/script_mostrar_formulario_matricula.js"></script>
+
 
 </body>
 </html>

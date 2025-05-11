@@ -11,14 +11,7 @@ class DashboardModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getNotasByCodalumno($codmatricula) {
-    $conn = Database::getInstance()->getConnection();
-    $query = "SELECT * FROM nota WHERE codmatricula = :codmatricula";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':codmatricula', $codmatricula);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+
 
 }
 ?>

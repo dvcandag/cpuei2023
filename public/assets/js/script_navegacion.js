@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Función para cargar el contenido dinámicamente desde la URL de la acción 'mostrarHorario'
+    // Función mostrarHorario dando clic en el NAVBAR
     function cargarHorario() {
         fetch('http://localhost/cpuei2023/index.php?action=mostrarHorario') // Se hace la solicitud al controlador
             .then(response => {
