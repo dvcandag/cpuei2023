@@ -1,0 +1,7 @@
+Comentarios:
+
+.script_home.js y script_navegacion.js {
+   Implementación de la función `cargarHorario()` para cargar dinámicamente el contenido del horario desde el controlador. La función realiza una solicitud `fetch` a la acción `mostrarHorario` en el servidor y actualiza el contenedor principal con el contenido recibido. Este cambio permite una navegación más fluida sin recargar toda la página, optimizando la experiencia del usuario. Además, se asegura de manejar errores en caso de fallos en la solicitud.
+   //Cambiar la ruta segun requerida('http://localhost/cpuei2023/index.php?action=mostrarHorario')
+
+

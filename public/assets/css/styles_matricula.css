@@ -1,0 +1,292 @@
+/* Estilos para el contenedor de container-horario-alumno */
+.container-matricula {
+   margin: 75px auto 0; /* Mantener margen superior */
+    padding: 20px; /* Espaciado interno */
+    width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
+    max-width: 1200px; /* Ancho máximo del contenido */
+    box-sizing: border-box; /* Incluye el padding y borde en el cálculo del ancho */
+
+}
+
+/* PANTALLA GRANDE (más de 576px) */
+@media (min-width: 576px) {
+    .container-matricula {
+        left: 210px; /* Alineado al borde derecho de la barra de navegación */
+        position: absolute; /* Mantener posición absoluta para evitar superposición */
+        width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la barra de navegación */
+    }
+}
+
+/* PANTALLA PEQUEÑA (menos de 576px) */
+@media (max-width: 576px) {
+    .container-matricula {
+        width: calc(100% - 0px); /* Ajustar ancho total en pantallas pequeñas */
+        padding-left: 80px; /* Ajustar el espacio para pantallas pequeñas */
+        padding-right: 10px; /* Ajustar el espacio para pantallas pequeñas */
+        position: relative; /* Cambiar a relativo para evitar superposición */
+    }
+}
+
+
+/* Estilos para el título */
+h1 {
+  color: #255b74;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left; /* Centrar el título */
+}
+
+
+/* Estilos para el contenedor del select de periodos */
+.container-periodo {
+    margin-bottom: 20px; /* Espacio debajo del contenedor */
+    position: relative; /* Para posicionar el ícono de flecha */
+    width: 100%; /* Ocupar todo el ancho disponible */
+    max-width: 400px; /* Ancho máximo */
+}
+
+/* Estilos para el select */
+#seleccionar-lista-periodo {
+    width: 100%;
+    padding: 10px 40px 10px 15px; /* Espaciado interno */
+    font-size: 14px;
+    font-weight: 400;
+    color: #050C10; /* Color del texto */
+    background-color: #FFFFFF; /* Fondo blanco */
+    border: 1px solid #C0D0D7; /* Borde gris */
+    border-radius: 8px; /* Bordes redondeados */
+    appearance: none; /* Eliminar el estilo predeterminado del navegador */
+    cursor: pointer; /* Cambiar el cursor al pasar */
+    outline: none; /* Eliminar el borde azul al hacer clic */
+}
+
+/* Estilos para el select cuando está enfocado */
+#seleccionar-lista-periodo:focus {
+    border-color: #63899B; /* Cambiar el color del borde al enfocar */
+}
+
+/* Icono de flecha */
+.container-periodo::after {
+    content: "\f078"; /* Código de ícono de FontAwesome para la flecha */
+    font-family: "Font Awesome 5 Free"; /* Usar FontAwesome */
+    font-weight: 800;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Evitar que el ícono interfiera con el clic */
+    color: #050C10; /* Color del ícono */
+    font-size: 14px;
+}
+
+/* Estilos para las opciones del select */
+#seleccionar-lista-periodo option {
+    font-size: 14px;
+    color: #050C10; /* Color del texto */
+    background-color: #FFFFFF; /* Fondo blanco */
+}
+
+/* Estilos para la opción deshabilitada (Seleccione periodo) */
+#seleccionar-lista-periodo option[disabled] {
+    color: #999; /* Color gris para el texto deshabilitado */
+    display: none; /* Oculta la opción deshabilitada */
+}
+
+/* Fin de estilos para el contenedor del select de periodos */
+
+
+
+
+/* estilos para cursos disponibles */
+.container-curso-disponible {
+    border: 1px solid #C0D0D7;
+    border-radius: 8px; /* Bordes más redondeados */
+    margin-bottom: 20px;
+    overflow: hidden; /* Asegura que el contenido no se desborde */
+}
+
+/* Encabezado del curso */
+.container-header-curso-disponible {
+    background-color: #447287; /* Color de fondo más oscuro para mayor contraste */
+    color: #ffffff; /* Texto en blanco para contraste */
+    padding: 15px 20px; /* Más espacio para una mejor apariencia */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container-header-curso-disponible:hover {
+    background-color: #63899B; /* Color más oscuro al pasar el cursor */
+}
+
+/* Estilo del título y estado del curso */
+.container-header-curso-disponible h2 {
+    margin: 0;
+    font-size: 14px; /* Tamaño de fuente más grande para el título */
+}
+
+
+
+
+
+
+/* Contenido del curso */
+.curso-disponible {
+    display: none;
+    padding: 20px; /* Más espacio para el contenido */
+    background-color: #f0f0f0; /* Color de fondo más claro */
+}
+
+/* Estilos para los subtítulos h3 */
+h3 {
+    font-size: 14px; /* Tamaño de la fuente */
+    font-weight: 600; /* Grosor de la fuente (semibold) */
+    color: #255b74; /* Color azul oscuro */
+    margin-bottom: 15px; /* Espacio inferior */
+    padding-bottom: 5px; /* Espacio debajo del texto */
+    border-bottom: 2px solid #C0D0D7; /* Línea inferior gris */
+    position: relative; /* Para posicionar elementos adicionales */
+}
+
+/* Opcional: Añadir un ícono o decoración al subtítulo */
+h3::after {
+    content: ""; /* Puedes usar un ícono aquí si lo deseas */
+    position: absolute;
+    bottom: -2px; /* Alinear con la línea inferior */
+    left: 0;
+    width: 50px; /* Ancho de la decoración */
+    height: 2px; /* Altura de la decoración */
+}
+
+
+
+
+/* Estilos para el contenedor de cursos disponibles */
+.container-listado-curso {
+    margin-top: 10px; /* Espacio superior */
+    padding: 0; /* Sin padding interno */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Estilos para cada curso */
+.listado-curso {
+    padding: 5px; /* Espaciado interno */
+    border-bottom: 1px solid #C0D0D7; /* Línea separadora */
+    display: flex;
+    align-items: center;
+    gap: 3px; /* Espacio entre el checkbox y el texto */
+}
+
+/* Eliminar la línea del último curso */
+.listado-curso:last-child {
+    border-bottom: none;
+}
+
+/* Estilos para el checkbox y el nombre del curso */
+.listado-curso label {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el checkbox y el texto */
+    font-size: 14px;
+    color: #050C10; /* Color del texto */
+    cursor: pointer; /* Cambiar el cursor al pasar */
+}
+
+.listado-curso input[type="checkbox"] {
+    width: 12px; /* Tamaño del checkbox */
+    height: 12px;
+    cursor: pointer;
+}
+
+/* Estilos para resaltar cursos desaprobados */
+.curso-desaprobado {
+    border-left: 4px solid #ff4d4d; /* Borde izquierdo rojo */
+}
+.curso-desaprobado span {
+    color: #ff4d4d; /* Color rojo para el texto adicional */
+    font-size: 14px; /* Reducir el tamaño de la fuente si es necesario */
+}
+
+
+
+
+
+/* Estilos para el Listado de cursos seleccionados */
+.container-curso-seleccionado {
+    margin-top: 15px; /* Espacio encima del contenedor */
+    margin-bottom: 20px; /* Espacio debajo del contenedor */
+    padding: 20px; /* Espaciado interno */
+    width: 100%; /* Ocupar todo el ancho del contenedor */
+    max-width: 1200px; /* Ancho máximo */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho */
+    border: 1px solid #C0D0D7;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+.header-container-listado {
+    padding: 0px;
+    font-size: 16px;
+    
+    color: #050C10;
+    margin-bottom: 10px; /* Espacio debajo del encabezado */
+    position: relative; /* Posicionar la línea de manera controlada */
+}
+.header-container-listado::after {
+    content: ""; /* Pseudo-elemento para la línea */
+    display: block;
+    width: 100%; /* Ancho completo */
+    height: 2px; /* Altura de la línea */
+    background-color: #DFE7EB; 
+    margin: 10px auto; /* Espacio y centrado automático */
+}
+.container-listado {
+    display: block; /* Cambiamos de grid a block para una sola columna */
+    padding: 0px;
+}
+.cursos-seleccionados {
+    padding: 5px 0; /* Espaciado vertical */
+    border-bottom: 1px solid #DFE7EB; /* Línea separadora */
+    display: flex;
+    justify-content: space-between; /* Alinear elementos a los extremos */
+    align-items: center;
+    gap: 10px; /* Espacio entre la etiqueta y el dato */
+}
+.cursos-seleccionados:last-child {
+    border-bottom: none; /* Eliminar la línea del último elemento */
+}
+.nombre-curso {
+    font-size: 14px;
+    color: #050C10;
+}
+.credito-curso, .horario-curso {
+    color: #555;
+    text-align: right; /* Alinear los datos a la derecha */
+}
+
+
+/* Estilos para el botón registra tu matrícula */
+.registrar-matricula button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #82a1af;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    box-sizing: border-box; 
+}
+.registrar-matricula button:hover {
+    background-color: #255b74;
+}
+
+/* Estilos para el mensaje de curso desaprobado */
+.curso-item span {
+    font-size: 14px;
+    color: #ff0000;
+    margin-left: 10px;
+}
+

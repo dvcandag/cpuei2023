@@ -1,0 +1,115 @@
+/* Estilos para el contenedor de pagos */
+
+.container-pagos {
+    margin: 75px auto 0; /* Mantener margen superior */
+    padding: 20px; /* Espaciado interno */
+    width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
+    max-width: 1200px; /* Ancho máximo del contenido */
+    box-sizing: border-box; /* Incluye el padding y borde en el cálculo del ancho */
+}
+
+/* PANTALLA GRANDE (más de 576px) */
+@media (min-width: 576px) {
+       .container-pagos {
+        left: 210px; /* Alineado al borde derecho de la navbar */
+        position: absolute; /* Mantener posición absoluta para evitar superposición */
+        width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
+    }
+}
+
+/* PANTALLA PEQUEÑA (menos de 576px) */
+@media (max-width: 576px) {
+    .container-pagos {
+        width: calc(100% - 0px); /* Ajustar ancho total en pantallas pequeñas */
+        padding-left: 80px; /* Ajustar el espaciado para pantallas pequeñas */
+                padding-right: 10px; /* Ajustar el espaciado para pantallas pequeñas */
+position: absolute; /* Cambiar a relative para evitar superposición */
+    }
+}
+
+/* palabra-atras */
+.palabra-atras {
+    display: inline-block;
+    margin-bottom: 15px; /* Espacio adicional debajo del botón de retroceso */
+    border: 1px solid #f0f2f5;
+    border-radius: 4px;
+    background-color: #f0f2f5; /* Fondo gris claro al pasar el cursor */
+}
+
+
+.enlace-retroceso {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: 450;
+    color: #e30613; 
+}
+
+.enlace-retroceso:hover {
+    background-color: #255B74; /* Fondo gris claro al pasar el cursor */
+    border-radius: 4px;
+    color: #FFFFFF;
+}
+
+.enlace-retroceso i {
+    font-size: 16px; /* Tamaño del icono */
+    margin-right: 8px; /* Espacio entre el icono y el texto */
+}
+
+
+
+
+/* Estilo de la deuda y descuento */
+.deuda, .descuento {
+    margin-bottom: 20px; /* Espaciado inferior */
+    padding: 15px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.deuda {
+    background-color: #ffcccc; /* Fondo rojo claro para deuda */
+}
+
+.descuento {
+    background-color: #ccffcc; /* Fondo verde claro para descuentos */
+}
+
+/* Estilo de la tabla */
+.table-responsive {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd; /* Borde gris claro */
+}
+
+.table-header {
+    display: flex;
+    background-color: #007bff; /* Azul de la UTP */
+    color: white; /* Texto blanco */
+    font-weight: bold; /* Texto en negrita */
+}
+
+.table-row {
+    display: flex;
+    border-bottom: 1px solid #ddd; /* Separador entre filas */
+}
+
+.table-cell {
+    flex: 1; /* Toma el mismo espacio */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Alinear el texto al centro */
+}
+
+/* Estilo de enlaces */
+a {
+    text-decoration: none; /* Sin subrayado */
+    color: #007bff; /* Color del enlace */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayar al pasar el mouse */
+}
