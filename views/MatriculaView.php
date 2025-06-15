@@ -1,4 +1,4 @@
-<?php
+<?php 
 if (!isset($_SESSION['username'])) {
     header("Location: index.php?action=showLoginForm");
     exit;
@@ -35,68 +35,73 @@ $cursosDisponibles = array_filter($cursosParaMatricula, function($curso) use ($c
         <h1>Matrículate</h1>
 
         <!-- Formulario para seleccionar el periodo -->
-<form method="POST" action="index.php?action=seleccionarPeriodo">
-    <div class="container-periodo">
-        <select id="seleccionar-lista-periodo" name="codPeriodo" onchange="cargarCursos(this.value)">
-            <option value="" disabled selected>Seleccione periodo</option>
-            <?php foreach ($_SESSION['periodos'] as $periodo): ?>
-                <option value="<?= $periodo['codPeriodo'] ?>">
-                    <?= htmlspecialchars($periodo['NombrePeriodo']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-</form>
-
-<!--contenidor para desplegar cursos del periodo seleccionado-->
-<div class="container-curso-disponible">
-            <div class="container-header-curso-disponible" onclick="AlternarContenido(this)">
-                <h2>Despliega para ver cursos</h2>
-                <i class="fas fa-chevron-down"></i>
+        <form method="POST" action="index.php?action=seleccionarPeriodo">
+            <div class="container-periodo">
+                <select id="seleccionar-lista-periodo" name="codPeriodo" onchange="cargarCursos(this.value)">
+                    <option value="" disabled selected>Seleccione periodo</option>
+                    <?php foreach ($_SESSION['periodos'] as $periodo): ?>
+                        <option value="<?= $periodo['codPeriodo'] ?>">
+                            <?= htmlspecialchars($periodo['NombrePeriodo']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
-<!-- Div para mostrar los cursos del período seleccionado -->
-<div class="curso-disponible">
-<div id="cursos-periodo">
-    <!-- Cursos desaprobados -->
-    <div id="cursos-desaprobados" class="seccion-cursos">
-        <h3>Cursos Desaprobados</h3>
-        <div class="container-listado-curso">
-            <!-- Aquí se mostrarán los cursos desaprobados dinámicamente -->
-        </div>
-    </div>
-<br>
-    <!-- Cursos disponibles -->
-    <div id="cursos-disponibles" class="container-listado-curso">
-        <h3>Cursos Disponibles</h3>
-        <div class="container-listado-curso">
-            <!-- Aquí se mostrarán los cursos disponibles dinámicamente -->
-        </div>
-    </div>
+        </form>
 
+        <!-- FORMULARIO PRINCIPAL DE MATRÍCULA -->
+        
+<form action="../index.php?action=guardarMatricula" method="post">
+    
 
-</div>
-</div>
-</div>
-
-
-        <!-- Listado de cursos seleccionados --> 
-        <div class="container-curso-seleccionado">
-            <header class="header-container-listado">
-                <span>Resumen de selección</span>
-            </header>
-            <div id="resumen-seleccion" class="container-listado">
-                <!-- Aquí se mostrarán los cursos seleccionados con el checkbox desde el div de cursos desaprobardo y cursos disponibles -->
+            <!--contenidor para desplegar cursos del periodo seleccionado-->
+            <div class="container-curso-disponible">
+                <div class="container-header-curso-disponible" onclick="AlternarContenido(this)">
+                    <h2>Despliega para ver cursos</h2>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <!-- Div para mostrar los cursos del período seleccionado -->
+                <div class="curso-disponible">
+                    <div id="cursos-periodo">
+                        <!-- Cursos desaprobados -->
+                        <div id="cursos-desaprobados" class="seccion-cursos">
+                            <h3>Cursos Desaprobados</h3>
+                            <div class="container-listado-curso">
+                                <!-- Aquí se mostrarán los cursos desaprobados dinámicamente -->
+                            </div>
+                        </div>
+                        <br>
+                        <!-- Cursos disponibles -->
+                        <div id="cursos-disponibles" class="container-listado-curso">
+                            <h3>Cursos Disponibles</h3>
+                            <div class="container-listado-curso">
+                                <!-- Aquí se mostrarán los cursos disponibles dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Botón para guardar selección -->
-        <div class="registrar-matricula">
-            <button type="submit">Registra tu matricula</button>
-        </div>
+            <!-- Listado de cursos seleccionados --> 
+            <div class="container-curso-seleccionado">
+                <header class="header-container-listado">
+                    <span>Resumen de selección</span>
+                </header>
+                <div id="resumen-seleccion" class="container-listado">
+                    <!-- Aquí se mostrarán los cursos seleccionados con el checkbox desde el div de cursos desaprobardo y cursos disponibles -->
+                </div>
+            </div>
+
+            <!-- Botón para guardar selección y registrar todas las tablas de la Base de datos relacionados para que le alumno vea sus horarios, cursos matriculados, profesores, etc -->
+            <div class="registrar-matricula">
+                <button type="submit">Registra tu matrícula</button>
+            </div>
+
+        </form> <!-- fin form-matricula -->
+
     </div>
 
-            <script src="../public/assets/js/script_mostrar_formulario_matricula.js"></script>
-        <script src="../public/assets/js/script_matricula.js"></script>
+    <script src="../public/assets/js/script_mostrar_formulario_matricula.js"></script>
+    <script src="../public/assets/js/H.js"></script>
 
 </body>
 </html>

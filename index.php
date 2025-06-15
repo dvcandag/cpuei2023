@@ -67,8 +67,14 @@ case 'obtenerCursosPorPeriodo': // Nueva acción para obtener cursos por períod
         $matriculaController->obtenerCursosPorPeriodo();
         break;
 
+case 'guardarMatricula':
+        $matriculaController->guardarMatricula();
+        break;
+
     default:
         $loginController->showLoginForm();
         break;
+
+
 }
 ?>

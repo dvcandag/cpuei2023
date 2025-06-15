@@ -31,7 +31,7 @@ function cargarCursos(codPeriodo) {
                         cursoItem.className = 'listado-curso curso-desaprobado';
                         cursoItem.innerHTML = `
                             <label>
-                                <input type="checkbox" name="cursos[]" value="${curso.codcurso}">
+                                <input type="checkbox" name="cursos[]" value="${curso.codcurso}" onchange="actualizarResumenSeleccion()">
                                 ${curso.nombrecurso}
                                 <span>(Curso obligatorio)</span>
                             </label>
@@ -49,7 +49,7 @@ function cargarCursos(codPeriodo) {
                         cursoItem.className = 'listado-curso';
                         cursoItem.innerHTML = `
                             <label>
-                                <input type="checkbox" name="cursos[]" value="${curso.codcurso}">
+                                <input type="checkbox" name="cursos[]" value="${curso.codcurso}" onchange="actualizarResumenSeleccion()">
                                 ${curso.nombrecurso}
                             </label>
                         `;
@@ -68,4 +68,32 @@ function cargarCursos(codPeriodo) {
         });
 }
 
+// Función para listar seleccion en  "resumen de selección"
+function actualizarResumenSeleccion() {
+    const contenedorResumen = document.getElementById('resumen-seleccion');
+    const cursosSeleccionados = document.querySelectorAll('input[name="cursos[]"]:checked');
+    
+    contenedorResumen.innerHTML = cursosSeleccionados.length === 0
+        ? '<p>No hay cursos seleccionados</p>'
+        : '';
 
+    cursosSeleccionados.forEach(checkbox => {
+        const cursoItem = document.createElement('div');
+        cursoItem.className = 'curso-resumen';
+        cursoItem.innerHTML = `
+            <span>${checkbox.parentNode.textContent.trim()}</span>
+           
+        `;
+        contenedorResumen.appendChild(cursoItem);
+    });
+}
+
+// Función para eliminar un curso del resumen
+function eliminarCurso(codCurso) {
+    // Desmarcar el checkbox del curso
+    const checkbox = document.querySelector(`input[name="cursos[]"][value="${codCurso}"]`);
+    checkbox.checked = false;
+
+    // Llamar a la función para actualizar el resumen
+    actualizarResumenSeleccion();
+}

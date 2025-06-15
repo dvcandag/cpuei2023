@@ -2,38 +2,27 @@
 require_once 'models/MatriculaModel.php';
 
 class MatriculaController {
+
     public function mostrarFormularioMatricula() {
-        // Verificar si el usuario está autenticado
         if (!isset($_SESSION["username"])) {
             header("Location: index.php?action=showLoginForm");
             exit;
         }
 
-        // Verificar si 'codalumno' está definido en la sesión
         if (!isset($_SESSION["codalumno"])) {
             echo "Error: No se ha identificado al alumno correctamente.";
             exit;
         }
 
-        // Obtener el código del período desde el formulario
         $codPeriodo = $_POST["codPeriodo"] ?? $_GET["codPeriodo"] ?? null;
-
         $codalumno = $_SESSION["codalumno"];
         $matriculaModel = new MatriculaModel();
 
-        // Obtener cursos disponibles para el período seleccionado
         $cursosDisponibles = $codPeriodo ? $matriculaModel->getCursosDisponibles($codPeriodo) : [];
-
-        // Obtener cursos desaprobados
         $cursosDesaprobados = $matriculaModel->getCursosDesaprobados($codalumno);
-
-        // Combinar cursos disponibles y desaprobados
         $cursosParaMatricula = array_merge($cursosDisponibles, $cursosDesaprobados);
-
-        // Obtener todos los períodos disponibles
         $periodos = $matriculaModel->obtenerPeriodos();
 
-        // Pasar datos a la vista
         $_SESSION['cursosParaMatricula'] = $cursosParaMatricula;
         $_SESSION['cursosDesaprobados'] = $cursosDesaprobados;
         $_SESSION['codPeriodo'] = $codPeriodo;
@@ -43,13 +32,11 @@ class MatriculaController {
     }
 
     public function seleccionarPeriodo() {
-        // Verificar si el usuario está autenticado
         if (!isset($_SESSION["username"])) {
             header("Location: index.php?action=showLoginForm");
             exit;
         }
 
-        // Obtener el código del período desde el formulario
         $codPeriodo = $_POST["codPeriodo"] ?? $_GET["codPeriodo"] ?? null;
 
         if (!$codPeriodo) {
@@ -57,46 +44,74 @@ class MatriculaController {
             exit;
         }
 
-        // Redirigir a la acción mostrarMatricula con el período seleccionado
         header("Location: index.php?action=mostrarMatricula&codPeriodo=$codPeriodo");
         exit;
     }
 
+    public function guardarMatricula() {
+        if (!isset($_SESSION["username"])) {
+            header("Location: index.php?action=showLoginForm");
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['cursos']) || !isset($_SESSION['codPeriodo'])) {
+            $_SESSION['error'] = "Datos de matrícula incompletos";
+            header("Location: index.php?action=mostrarMatricula");
+            exit;
+        }
+
+        $cursos = $_POST['cursos'];
+        $codPeriodo = $_SESSION['codPeriodo'];
+        $codalumno = $_SESSION["codalumno"];
+        $matriculaModel = new MatriculaModel();
+
+        if (!$matriculaModel->isMatriculaActiva($codPeriodo)) {
+            $_SESSION['error'] = "El período de matrícula no está activo";
+            header("Location: index.php?action=mostrarMatricula");
+            exit;
+        }
+
+        if ($matriculaModel->registrarVariosCursos($cursos, $codalumno, $codPeriodo)) {
+            $_SESSION['success'] = "Matrícula registrada exitosamente";
+        } else {
+            $_SESSION['error'] = "Error al registrar la matrícula";
+        }
+
+        header("Location: index.php");
+        exit;
+    }
+
     public function obtenerCursosPorPeriodo() {
-    if (!isset($_SESSION["username"])) {
-        header("Location: index.php?action=showLoginForm");
+        if (!isset($_SESSION["username"])) {
+            header("Location: index.php?action=showLoginForm");
+            exit;
+        }
+
+        $codPeriodo = $_GET['codPeriodo'] ?? null;
+        if (!$codPeriodo) {
+            echo json_encode([]);
+            exit;
+        }
+
+        $codalumno = $_SESSION["codalumno"];
+        $matriculaModel = new MatriculaModel();
+
+        $cursosDesaprobados = $matriculaModel->getCursosDesaprobados($codalumno);
+        $cursosDisponibles = $matriculaModel->getCursosDisponibles($codPeriodo);
+
+        $cursos = [];
+        foreach ($cursosDesaprobados as $curso) {
+            $curso['estado'] = 'desaprobado';
+            $cursos[] = $curso;
+        }
+        foreach ($cursosDisponibles as $curso) {
+            $curso['estado'] = 'disponible';
+            $cursos[] = $curso;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($cursos);
         exit;
     }
-
-    $codPeriodo = $_GET['codPeriodo'] ?? null;
-    if (!$codPeriodo) {
-        echo json_encode([]); // Devuelve un array vacío si no hay código de período
-        exit;
-    }
-
-    $codalumno = $_SESSION["codalumno"];
-    $matriculaModel = new MatriculaModel();
-
-    // Obtener cursos desaprobados
-    $cursosDesaprobados = $matriculaModel->getCursosDesaprobados($codalumno);
-
-    // Obtener cursos disponibles para el período seleccionado
-    $cursosDisponibles = $matriculaModel->getCursosDisponibles($codPeriodo);
-
-    // Combinar los resultados y agregar un campo "estado"
-    $cursos = [];
-    foreach ($cursosDesaprobados as $curso) {
-        $curso['estado'] = 'desaprobado';
-        $cursos[] = $curso;
-    }
-    foreach ($cursosDisponibles as $curso) {
-        $curso['estado'] = 'disponible';
-        $cursos[] = $curso;
-    }
-
-    header('Content-Type: application/json'); // Establece el tipo de contenido como JSON
-    echo json_encode($cursos); // Devuelve los cursos en formato JSON
-    exit;
-}
 }
 ?>

@@ -73,8 +73,11 @@ cursomvc/
     
 
 
+
+
+
 DATA BASE 
-Crear la tabla ciclo
+--Crear la tabla ciclo
 CREATE TABLE `ciclo` (
   `codCiclo` CHAR(8) NOT NULL PRIMARY KEY,
   `cicloNombre` ENUM('I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X') NOT NULL
@@ -83,11 +86,13 @@ CREATE TABLE `ciclo` (
 -- Crear la tabla periodo
 CREATE TABLE `periodo` (
   `codPeriodo` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `NombrePeriodo` char(100) NOT NULL,
-  `anio` INT NOT NULL,
-  `codCiclo` CHAR(8) NOT NULL,
-  `fechaInicio` DATE NOT NULL,
-  `fechaFin` DATE NOT NULL,
+   `NombrePeriodo` char(100) DEFAULT NULL,
+  `anio` int(11) NOT NULL,
+  `codCiclo` char(8) NOT NULL,
+  `fecha_inicio_matricula` date DEFAULT NULL,
+  `fecha_fin_matricula` date DEFAULT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL
   UNIQUE (`anio`, `codCiclo`),
   FOREIGN KEY (`codCiclo`) REFERENCES `ciclo` (`codCiclo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -178,8 +183,6 @@ CREATE TABLE `matricula` (
   `codcurso` char(8) NOT NULL,
   `modalidad` enum('presencial','semi-presencial','virtual') NOT NULL,
   `fecha_de_matricula` date DEFAULT NULL,
-  `fecha_inicio_matricula` date DEFAULT NULL,
-  `fecha_fin_matricula` date DEFAULT NULL,
   `codPeriodo` int(8) NOT NULL,
   FOREIGN KEY (`codprofesor`) REFERENCES `profesor` (`codprofesor`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`codalumno`) REFERENCES `alumno` (`codalumno`) ON DELETE CASCADE ON UPDATE CASCADE,
