@@ -168,22 +168,29 @@ class MatriculaModel {
         }
     }
 
+
+
+//// validar para los registros de matricula  por fechas disponibles de la matricula no por inicio y fin de periodo o modeficar la base de datos para que el periodo empiese al igual con la fecha matricula
+
     // Obtener todos los períodos disponibles
     public function obtenerPeriodos() {
-        $db = Database::getInstance();
-        $conn = $db->getConnection();
+    $db = Database::getInstance();
+    $conn = $db->getConnection();
 
-        try {
-            $stmt = $conn->prepare("
-                SELECT codPeriodo, NombrePeriodo 
-                FROM periodo
-            ");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error en obtenerPeriodos: " . $e->getMessage());
-            return [];
-        }
+    try {
+        $stmt = $conn->prepare("
+            SELECT codPeriodo, NombrePeriodo 
+            FROM periodo
+            WHERE fechaFin >= CURDATE()
+            ORDER BY fechaFin ASC
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error en obtenerPeriodos: " . $e->getMessage());
+        return [];
     }
+}
+
 }
 ?>

@@ -91,17 +91,17 @@ $cursosDisponibles = array_filter($cursosParaMatricula, function($curso) use ($c
                 </div>
             </div>
 
-            <!-- Botón para guardar selección y registrar todas las tablas de la Base de datos relacionados para que le alumno vea sus horarios, cursos matriculados, profesores, etc -->
+            <!-- Botón para guardar selección-->
             <div class="registrar-matricula">
                 <button type="submit">Registra tu matrícula</button>
             </div>
+
 
         </form> <!-- fin form-matricula -->
 
     </div>
 
     <script src="../public/assets/js/script_mostrar_formulario_matricula.js"></script>
-    <script src="../public/assets/js/H.js"></script>
 
 </body>
 </html>

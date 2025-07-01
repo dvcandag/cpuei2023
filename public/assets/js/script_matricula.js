@@ -72,7 +72,7 @@ function cargarCursos(codPeriodo) {
 function actualizarResumenSeleccion() {
     const contenedorResumen = document.getElementById('resumen-seleccion');
     const cursosSeleccionados = document.querySelectorAll('input[name="cursos[]"]:checked');
-    
+
     contenedorResumen.innerHTML = cursosSeleccionados.length === 0
         ? '<p>No hay cursos seleccionados</p>'
         : '';

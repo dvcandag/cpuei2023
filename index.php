@@ -55,7 +55,7 @@ switch ($action) {
         $horarioAlumnoController->mostrarHorario();
         break;
 
-    case 'mostrarMatricula': // por ver Acción para mostrar el formulario de matrícula
+    case 'mostrarMatricula': // muesstrar el formulario de matrícula
         $matriculaController->mostrarFormularioMatricula();
         break;    
 case 'seleccionarPeriodo':///va
