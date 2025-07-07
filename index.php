@@ -13,6 +13,8 @@ require_once 'controllers/DashboardController.php';
 require_once 'controllers/CursosController.php';
 require_once 'controllers/HorarioAlumnoController.php';
 require_once 'controllers/MatriculaController.php';
+require_once 'controllers/PeriodosFinalizadosController.php';
+
 
 
 $action = $_GET['action'] ?? 'showLoginForm';
@@ -22,7 +24,9 @@ $headerController = new HeaderController();
 $cursosController = new CursosController();
 $dashboardController = new DashboardController();
 $horarioAlumnoController = new HorarioAlumnoController();
-$matriculaController = new MatriculaController(); 
+$matriculaController = new MatriculaController();
+$periodosFinalizadosController = new PeriodosFinalizadosController();
+
 
 
 if (isset($_SESSION['username'])) {
@@ -70,6 +74,11 @@ case 'obtenerCursosPorPeriodo': // Nueva acción para obtener cursos por períod
 case 'guardarMatricula':
         $matriculaController->guardarMatricula();
         break;
+        
+case 'mostrarPeriodosFinalizados': // Nueva acción para mostrar historial
+        $periodosFinalizadosController->mostrarVistaPeriodosFinalizados();
+        break;
+
 
     default:
         $loginController->showLoginForm();
