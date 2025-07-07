@@ -32,7 +32,7 @@
 
 
                         <li class="elemento-navegacion">
-                            <a href="#" class="enlace-navegacion" data-view="CursosMatriculadosView">
+                            <a href="#" class="enlace-navegacion js-periodos-finalizados" data-view="PeriodosFinalizadosView">
                                 <i class="fa-solid fa-book"></i>
                                 <span class="ms-1 d-none d-sm-inline">Cursos</span>
                             </a>
@@ -91,6 +91,8 @@
     <script src="../public/assets/js/script_navbar.js"></script>
     <script src="../public/assets/js/script_navegacion.js"></script>
     <script src="../public/assets/js/script_home.js"></script>
+            <script src="../public/assets/js/script_mostrar_periodos_finalizados.js"></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>

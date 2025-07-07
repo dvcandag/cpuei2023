@@ -46,3 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error al cargar contenido:', error));
     }
 });
+
+
+    
