@@ -7,39 +7,70 @@ class New_PasswordModel {
         try {
             $conn = Database::getInstance()->getConnection();
 
-            $query = "SELECT codalumno, nombrealumno, apaterno, amaterno, escuela, aula FROM alumno WHERE codalumno = :codalumno";
+            // Usar LEFT JOINs para combinar datos de alumno, aula y periodo en una sola consulta
+            $query = "
+                SELECT
+                    a.codalumno,
+                    a.nombrealumno,
+                    a.apaterno,
+                    a.amaterno,
+                    a.dni,
+                    a.escuela_nombre,
+                    au.nombreAula,
+                    p.NombrePeriodo
+                FROM
+                    alumno a
+                LEFT JOIN
+                    aula_laboratorio au ON a.codAula = au.codAula
+                LEFT JOIN
+                    periodo p ON p.codPeriodo
+                WHERE
+                    a.codalumno = :codalumno
+            ";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':codalumno', $codalumno);
             $stmt->execute();
 
-            if ($stmt->rowCount() == 0) {
+            $alumnoData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$alumnoData) {
                 return "El código de alumno no existe. Por favor, regístrese como alumno antes de actualizar la contraseña.";
             }
 
-            // Obtener datos del alumno
-            $alumnoData = $stmt->fetch(PDO::FETCH_ASSOC);
-            $nombreCompleto = $alumnoData['nombrealumno'] . ' ' . $alumnoData['apaterno'] . ' ' . $alumnoData['amaterno'];
+            // Validar y asignar valores predeterminados si los datos están vacíos
+            $dni = $alumnoData['dni'] ?? 'DNI no registrado';
+            $nombreCompleto = trim($alumnoData['nombrealumno'] . ' ' . $alumnoData['apaterno'] . ' ' . $alumnoData['amaterno']);
+            $escuelaNombre = $alumnoData['escuela_nombre'] ?? 'No asignada';
+            $nombreAula = $alumnoData['nombreAula'] ?? 'No asignada';
+            $nombrePeriodo = $alumnoData['NombrePeriodo'] ?? 'No disponible';
 
             // Generar contenido para el código QR
-            $qrContent = "Código: " . $codalumno . "\n";
+            $qrContent = "Código: " . $alumnoData['codalumno'] . "\n";
+            $qrContent .= "DNI: " . $dni . "\n";
             $qrContent .= "Nombre: " . $nombreCompleto . "\n";
-            $qrContent .= "Escuela: " . $alumnoData['escuela'] . "\n";
-            $qrContent .= "Aula: " . $alumnoData['aula'];
+            $qrContent .= "Escuela: " . $escuelaNombre . "\n";
+            $qrContent .= "Aula: " . $nombreAula . "\n";
+            $qrContent .= "Periodo: " . $nombrePeriodo;
 
-            // Directorio donde se guardarán los códigos QR (cambia la ruta a tu nueva carpeta)
+            // Directorio para los códigos QR
             $qrDirectory = '../database/qr-alumno/';
 
-            // Nombre de archivo para el código QR con prefijo "qr-" y código de alumno
-            $qrFileName = "qr-" . $codalumno . '.png';
+            // Verificar y crear el directorio si no existe
+            if (!is_dir($qrDirectory)) {
+                mkdir($qrDirectory, 0755, true);
+            }
 
-            // Generar el código QR y guardarlo
-            QRcode::png($qrContent, $qrDirectory . $qrFileName);
-
-            // Actualizar la base de datos con la ruta del archivo del código QR generado
+            // Nombre de archivo para el código QR
+            $qrFileName = "qr-" . $alumnoData['codalumno'] . '.png';
             $qrFilePath = $qrDirectory . $qrFileName;
+
+            // Generar y guardar el código QR
+            QRcode::png($qrContent, $qrFilePath);
+
+            // Actualizar la base de datos del usuario
             $updateUsuarioQuery = "UPDATE usuario SET password = :password, qr_alumno = :qr_alumno WHERE codalumno = :codalumno";
             $stmtUsuario = $conn->prepare($updateUsuarioQuery);
-            $stmtUsuario->bindParam(':codalumno', $codalumno);
+            $stmtUsuario->bindParam(':codalumno', $alumnoData['codalumno']);
             $stmtUsuario->bindParam(':password', password_hash($password, PASSWORD_DEFAULT));
             $stmtUsuario->bindParam(':qr_alumno', $qrFilePath);
             $stmtUsuario->execute();

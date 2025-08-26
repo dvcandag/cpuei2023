@@ -3,14 +3,14 @@ require_once 'config/database.php';
 
 class MatriculaModel {
 
-    // Obtener las fechas de matrícula desde la base de datos
+    // Obtener las fechas de matrícula desde la tabla periodo
     public function getFechasMatricula($codPeriodo) {
         $db = Database::getInstance();
         $conn = $db->getConnection();
 
         try {
             $stmt = $conn->prepare("
-                SELECT fechaInicio, fechaFin 
+                SELECT fecha_inicio_matricula, fecha_fin_matricula
                 FROM periodo 
                 WHERE codPeriodo = ?
             ");
@@ -22,16 +22,30 @@ class MatriculaModel {
         }
     }
 
-    // Verificar si la matrícula está activa
+    // Validar matrícula solo si está dentro del rango permitido
     public function isMatriculaActiva($codPeriodo) {
         $fechasMatricula = $this->getFechasMatricula($codPeriodo);
         if (!$fechasMatricula) {
+            error_log("No se encontraron fechas de matrícula para codPeriodo: $codPeriodo");
             return false;
         }
 
         $fechaActual = date('Y-m-d');
-        return ($fechaActual >= $fechasMatricula['fechaInicio'] && 
-                $fechaActual <= $fechasMatricula['fechaFin']);
+        $inicioMatricula = $fechasMatricula['fecha_inicio_matricula'];
+        $finMatricula = $fechasMatricula['fecha_fin_matricula'];
+
+        // Validar que las fechas no estén vacías
+        if (empty($inicioMatricula) || empty($finMatricula)) {
+            error_log("Fechas de matrícula vacías para codPeriodo: $codPeriodo");
+            return false;
+        }
+
+        // Convertir a timestamp para comparación
+        $fechaActualTs = strtotime($fechaActual);
+        $inicioTs = strtotime($inicioMatricula);
+        $finTs = strtotime($finMatricula);
+
+        return ($fechaActualTs >= $inicioTs && $fechaActualTs <= $finTs);
     }
 
     // Obtener cursos disponibles para un período
@@ -74,7 +88,7 @@ class MatriculaModel {
         }
     }
 
-    // ✅ Registra un solo curso (uso interno o individual)
+    // Registra un solo curso (uso interno o individual)
     public function registrarCursoIndividual(string $codalumno, string $codcurso, int $codPeriodo): bool {
         $db = Database::getInstance();
         $conn = $db->getConnection();
@@ -93,7 +107,7 @@ class MatriculaModel {
                 throw new Exception("Curso no encontrado");
             }
 
-            // Verificar si hay horarios disponibles
+            // Obtener horarios disponibles del curso
             $stmtHorarios = $conn->prepare("
                 SELECT codhorario 
                 FROM horarios_disponibles 
@@ -103,7 +117,7 @@ class MatriculaModel {
             $horarios = $stmtHorarios->fetchAll(PDO::FETCH_ASSOC);
 
             if (empty($horarios)) {
-                return false; // No hay horarios disponibles
+                throw new Exception("No hay horarios disponibles para este curso");
             }
 
             // Insertar en matrícula
@@ -121,7 +135,9 @@ class MatriculaModel {
                 $codPeriodo
             ]);
 
-            // Insertar horarios del alumno
+            $codmatricula = $conn->lastInsertId();
+
+            // Asignar horarios al alumno
             foreach ($horarios as $horario) {
                 $stmtAlumnoHorario = $conn->prepare("
                     INSERT INTO alumno_horario (codalumno, codhorario) 
@@ -130,6 +146,18 @@ class MatriculaModel {
                 ");
                 $stmtAlumnoHorario->execute([$codalumno, $horario['codhorario']]);
             }
+
+            // Insertar en nota
+            $stmtNota = $conn->prepare("
+                INSERT INTO nota (codmatricula) VALUES (?)
+            ");
+            $stmtNota->execute([$codmatricula]);
+
+            // Insertar en pagos
+            $stmtPago = $conn->prepare("
+                INSERT INTO pagos (codmatricula) VALUES (?)
+            ");
+            $stmtPago->execute([$codmatricula]);
 
             return true;
 
@@ -142,7 +170,7 @@ class MatriculaModel {
         }
     }
 
-    // ✅ Registra varios cursos (transacción completa)
+    // Registra varios cursos (transacción completa)
     public function registrarVariosCursos(array $cursos, string $codalumno, int $codPeriodo): bool {
         $db = Database::getInstance();
         $conn = $db->getConnection();
@@ -168,29 +196,28 @@ class MatriculaModel {
         }
     }
 
-
-
-//// validar para los registros de matricula  por fechas disponibles de la matricula no por inicio y fin de periodo o modeficar la base de datos para que el periodo empiese al igual con la fecha matricula
-
-    // Obtener todos los períodos disponibles
-    public function obtenerPeriodos() {
+    // Obtener periodos con matrícula activa (fecha_fin_matricula igual o posterior a hoy)
+    // Obtener periodos con matrícula activa (dentro del rango de fechas)
+public function obtenerPeriodos() {
     $db = Database::getInstance();
     $conn = $db->getConnection();
 
     try {
         $stmt = $conn->prepare("
-            SELECT codPeriodo, NombrePeriodo 
+            SELECT codPeriodo, NombrePeriodo, fecha_inicio_matricula, fecha_fin_matricula
             FROM periodo
-            WHERE fechaFin >= CURDATE()
-            ORDER BY fechaFin ASC
+            WHERE CURDATE() BETWEEN fecha_inicio_matricula AND fecha_fin_matricula
+            ORDER BY fecha_inicio_matricula ASC
         ");
         $stmt->execute();
+        
+        // La consulta ya devuelve solo los periodos válidos,
+        // por lo que no es necesario un filtro adicional con array_filter.
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
     } catch (PDOException $e) {
         error_log("Error en obtenerPeriodos: " . $e->getMessage());
         return [];
     }
 }
-
 }
-?>
