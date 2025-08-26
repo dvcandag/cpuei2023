@@ -5,3 +5,130 @@ Comentarios:
    //Cambiar la ruta segun requerida('http://localhost/cpuei2023/index.php?action=mostrarHorario')
 
 
+
+
+public function mostrarHorario() {
+    if (!isset($_SESSION["username"])) {
+        header("Location: index.php?action=showLoginForm");
+        exit;
+    }
+
+    $codalumno = $_SESSION["codalumno"];
+    $horarioModel = new HorarioAlumnoModel();
+    
+    // Obtener todos los periodos disponibles
+    $periodos = $horarioModel->getAllPeriodos();
+    
+    // Manejar la selección del periodo
+    $codPeriodoSeleccionado = $_POST['codPeriodo'] ?? null;
+    
+    // Si no se seleccionó un periodo, obtener el activo por defecto
+    if (!$codPeriodoSeleccionado) {
+        $periodoActivo = $horarioModel->getPeriodoActivo();
+        $codPeriodoSeleccionado = $periodoActivo['codPeriodo'] ?? null;
+    }
+    
+    // Obtener el horario según el periodo seleccionado
+    $horario = $horarioModel->getHorarioByCodalumno($codalumno, $codPeriodoSeleccionado);
+
+    // Resto del código para procesar el horario...
+    $diasSemana = [
+        'Lunes' => [],
+        'Martes' => [],
+        'Miércoles' => [],
+        'Jueves' => [],
+        'Viernes' => [],
+        'Sábado' => [],
+        'Domingo' => []
+    ];
+
+    foreach ($horario as $clase) {
+        if (isset($clase['codcurso'])) {
+            $diasSemana[$clase['dia_semana']][] = $clase;
+        }
+    }
+
+    // Pasar los datos a la vista
+    $_SESSION['horario'] = $diasSemana;
+    $_SESSION['periodos'] = $periodos;
+    $_SESSION['codPeriodoSeleccionado'] = $codPeriodoSeleccionado;
+
+    include "views/HorarioAlumnoView.php";
+}
+
+
+public function getAllPeriodos() {
+    $db = Database::getInstance();
+    $conn = $db->getConnection();
+
+    $stmt = $conn->prepare("
+        SELECT p.codPeriodo, CONCAT(c.cicloNombre, ' - ', p.NombrePeriodo) AS NombrePeriodo 
+        FROM periodo p
+        JOIN ciclo c ON p.codCiclo = c.codCiclo
+        ORDER BY p.fechaInicio DESC
+    ");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function getHorarioByCodalumno($codalumno, $codPeriodo = null) {
+    $db = Database::getInstance();
+    $conn = $db->getConnection();
+
+    $wherePeriodo = "";
+    $params = [$codalumno];
+    
+    if ($codPeriodo) {
+        $wherePeriodo = "AND c.codPeriodo = ?";
+        $params[] = $codPeriodo;
+    } else {
+        // Si no hay periodo seleccionado, obtener el activo
+        $periodoActivo = $this->getPeriodoActivo();
+        if ($periodoActivo) {
+            $wherePeriodo = "AND c.codPeriodo = ?";
+            $params[] = $periodoActivo['codPeriodo'];
+        }
+    }
+
+    $sql = "
+        SELECT ah.codalumno, h.dia_semana, 
+               DATE_FORMAT(h.hora_inicio, '%H:%i') AS hora_inicio, 
+               DATE_FORMAT(h.hora_fin, '%H:%i') AS hora_fin, 
+               c.nombrecurso, c.modalidad, c.codcurso 
+        FROM alumno_horario ah 
+        JOIN horarios_disponibles h ON ah.codhorario = h.codhorario 
+        JOIN curso c ON h.codcurso = c.codcurso 
+        WHERE ah.codalumno = ? $wherePeriodo
+        ORDER BY 
+            FIELD(h.dia_semana, 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'),
+            h.hora_inicio
+    ";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+<div class="contenedor-periodos">
+    <label for="seleccion-periodo" class="periodo-label">Periodos pasados:</label>
+    <form method="POST" id="form-periodo" action="index.php?action=mostrarHorario">
+        <div class="select-wrapper">
+            <select id="seleccion-periodo" name="codPeriodo" onchange="this.form.submit()">
+                <option value="" disabled <?= !isset($_SESSION['codPeriodoSeleccionado']) ? 'selected' : '' ?> hidden>Seleccione periodo</option>
+                <?php foreach ($_SESSION['periodos'] as $periodo): ?>
+                    <option value="<?= htmlspecialchars($periodo['codPeriodo']) ?>"
+                        <?= (isset($_SESSION['codPeriodoSeleccionado']) && $_SESSION['codPeriodoSeleccionado'] == $periodo['codPeriodo']) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($periodo['NombrePeriodo']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </form>
+</div>
+
+// En tu archivo JavaScript o en un script en la vista
+document.getElementById('seleccion-periodo').addEventListener('change', function() {
+    document.getElementById('form-periodo').submit();
+});
+
+//Se debe realizar cambio de password para que se genere el QR del alumno y por seguridad
