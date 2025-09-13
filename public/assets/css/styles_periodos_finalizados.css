@@ -132,9 +132,7 @@ position: absolute; /* Cambiar a relative para evitar superposición */
 
 
 
-
-
-#seleccion-curso {
+#seleccion-periodo {
     appearance: none; /* Elimina el estilo predeterminado del navegador */
     background-color: #FFFFFF;
     border: 1px solid #C0D0D7;
@@ -151,7 +149,7 @@ position: absolute; /* Cambiar a relative para evitar superposición */
 
 }
 
-#seleccion-curso:focus {
+#seleccion-periodo:focus {
     border-color: #63899B; /* Cambia el color del borde cuando el select está enfocado */
 }
 
@@ -440,21 +438,22 @@ position: absolute; /* Cambiar a relative para evitar superposición */
 }
 
 /* Contenedor del promedio */
-.calificaion-final {
+.calificacion-final {
     background-color: #DFE7EB; /* Fondo claro y atractivo */
     border-radius: 5px; /* Bordes redondeados */
     padding: 15px; /* Espaciado interno */
-    margin: 15px 0; /* Espaciado externo */
+    margin: 15px; /* Espaciado externo */
     display: flex; /* Flexbox para alinear elementos en línea */
     align-items: center; /* Centrar verticalmente los elementos */
     justify-content: space-between; /* Alinear elementos a los extremos */
-    gap: 10px; /* Espaciado entre elementos */
+    gap: 8px; /* Espaciado entre elementos */
 }
 
 /* Contenido del promedio */
 .calificaion-final p {
     margin: 0; /* Eliminar márgenes */
     font-size: 12px;    color: #050C10; /* Color del texto */
+    
 }
 
 /* Estado final */

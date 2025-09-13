@@ -202,11 +202,20 @@ h3::after {
 /* Estilos para resaltar cursos desaprobados */
 .curso-desaprobado {
     border-left: 4px solid #ff4d4d; /* Borde izquierdo rojo */
+    padding-left: 6px; 
 }
 .curso-desaprobado span {
-    color: #ff4d4d; /* Color rojo para el texto adicional */
-    font-size: 14px; /* Reducir el tamaño de la fuente si es necesario */
+    color: #ff4d4d; /* Color rojo para el texto */
+    font-size: 14px; 
 }
+
+.curso-desaprobado .listado-curso label {
+    gap: 12px; 
+}
+
+
+
+
 
 
 
