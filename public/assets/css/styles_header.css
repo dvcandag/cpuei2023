@@ -340,7 +340,7 @@ button.btn:hover {
     right: 10px; /* Ajusta el espacio desde el borde derecho del contenedor */
     top: 50%;
     transform: translateY(-50%);
-    font-size: 16px; /* Tamaño del ícono */
+    font-size: 14px ;
 }
 
 /* Mostrar el contenido cuando el checkbox está marcado */

@@ -1,40 +1,38 @@
 /* Estilos para el contenedor de container-horario-alumno */
 .container-horario-alumno {
-    margin: 75px auto 0; /* Mantener margen superior */
-    padding: 20px; /* Espaciado interno */
-    width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
-    max-width: 1200px; /* Ancho máximo del contenido */
-    box-sizing: border-box; /* Incluye el padding y borde en el cálculo del ancho */
-
+    margin: 0;
+    padding: 20px;
+    width: calc(100% - 210px);
+    max-width: 1200px;
+    box-sizing: border-box;
+    position: relative;
 }
 
-/* PANTALLA GRANDE (más de 576px) */
+/* Pantallas grandes (más de 576px) */
 @media (min-width: 576px) {
-       .container-horario-alumno {
-        left: 210px; /* Alineado al borde derecho de la navbar */
-        position: absolute; /* Mantener posición absoluta para evitar superposición */
-        width: calc(100% - 210px); /* Ajustar ancho total menos el ancho de la navbar */
+    .container-horario-alumno {
+        left: 210px;
     }
 }
 
-/* PANTALLA PEQUEÑA (menos de 576px) */
+/* Pantallas pequeñas (menos de 576px) */
 @media (max-width: 576px) {
     .container-horario-alumno {
-        width: calc(100% - 0px); /* Ajustar ancho total en pantallas pequeñas */
-        padding-left: 80px; /* Ajustar el espaciado para pantallas pequeñas */
-                padding-right: 10px; /* Ajustar el espaciado para pantallas pequeñas */
-position: absolute; /* Cambiar a relative para evitar superposición */
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 10px;
     }
 }
 
 /* palabra-atras */
 .palabra-atras {
     display: inline-block;
-    margin-bottom: 15px; /* Espacio adicional debajo del botón de retroceso */
+    margin-bottom: 15px;
     border: 1px solid #f0f2f5;
     border-radius: 4px;
-    background-color: #f0f2f5; /* Fondo gris claro al pasar el cursor */
+    background-color: #f0f2f5;
 }
+
 .enlace-retroceso {
     display: flex;
     align-items: center;
@@ -44,171 +42,157 @@ position: absolute; /* Cambiar a relative para evitar superposición */
     padding: 10px 15px;
     font-size: 12px;
     font-weight: 450;
-    color: #e30613; 
+    color: #e30613;
 }
 
 .enlace-retroceso:hover {
-    background-color: #255B74; /* Fondo gris claro al pasar el cursor */
+    background-color: #255B74;
     border-radius: 4px;
     color: #FFFFFF;
 }
 
 .enlace-retroceso i {
-    font-size: 16px; /* Tamaño del icono */
-    margin-right: 8px; /* Espacio entre el icono y el texto */
+    font-size: 16px;
+    margin-right: 8px;
 }
-
-
-
 
 /* Estilos para el encabezado */
 header {
-    text-align: center; /* Centrar el texto del encabezado */
+    text-align: center;
 }
 
 header h1 {
-    font-size: 24px; /* Tamaño de fuente del encabezado */
-    color: #333; /* Color del texto */
-    margin-bottom: 20px; /* Espaciado inferior */
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
 }
-
-
 
 /* Estilos para la cuadrícula de tarjetas */
 .card-grid {
     display: grid;
-    gap: 15px; /* Espacio entre las tarjetas */
-    grid-template-columns: repeat(1, 1fr); /* 1 tarjeta por fila en pantallas pequeñas */
-    justify-content: center; /* Centrar las columnas */
-    align-items: flex-start; /* Alineación superior de las tarjetas */
-
+    gap: 15px;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .card {
-    background-color: #ffffff; /* Fondo blanco para la tarjeta */
-    border: 1px solid #ddd;; /* Borde gris claro */
-    border-radius: 5px; /* Bordes redondeados */
-    overflow: hidden; /* Ocultar desbordamiento */
-    width: 100%; /* Ajustar ancho al contenedor */
-    margin: auto; /* Centrar la tarjeta */
-    height: 100%; /* Asegurar que todas las tarjetas tengan la misma altura */
-
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    height: 100%;
 }
 
 /* Pantallas grandes (más de 992px) */
 @media (min-width: 992px) {
     .card-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 tarjetas por fila en pantallas grandes */
-
-        justify-content: center; /* Centrar el contenido en pantallas grandes */
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
     }
 }
 
-
-
-
-
 /* Estilos para el encabezado de la tarjeta */
 .card-header {
-    padding: 15px; /* Espaciado interno */
-    background-color: #f7f7f7; /* Fondo gris claro */
-    border-bottom: 1px solid #ddd; /* Borde inferior */
-    height: 60px; /* Altura fija */
-
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ddd;
+    height: 60px;
 }
 
 .card-header h2 {
-    font-size: 20px; /* Tamaño de fuente del título */
-    color: #333; /* Color del texto */
-    margin: 0; /* Sin margen */
+    font-size: 20px;
+    color: #333;
+    margin: 0;
 }
 
 .card-subtitle {
-    font-size: 14px; /* Tamaño de fuente del subtítulo */
-    color: #888; /* Color gris claro */
+    font-size: 14px;
+    color: #888;
 }
 
 /* Estilos para el contenido de la tarjeta */
 .card-content {
-    padding: 10px 15px; /* Espaciado interno */
-    background-color: #f9f9f9; /* Fondo claro */
-    border-top: 1px solid #ddd; /* Línea separadora opcional */
-    font-size: 13px; /* Tamaño de fuente uniforme */
-    color: #666; /* Color más tenue */
-    flex-grow: 1; /* Permite que el contenido crezca y ocupe el espacio restante */
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    font-size: 13px;
+    color: #666;
+    flex-grow: 1;
 }
 
 /* Estilo para cada curso (nombre y hora en la misma línea) */
 .course-item {
-    display: flex; /* Usar Flexbox para mostrar en una sola línea */
-    justify-content: space-between; /* Espacio entre el nombre del curso y la hora */
-    align-items: center; /* Centrar verticalmente */
-    margin-bottom: 4px; /* Separación entre los cursos */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
 }
+
 .course-item p {
-    margin: 0; /* Eliminar márgenes por defecto */
+    margin: 0;
 }
 
 /* Nombre del curso */
 .course-name {
-    margin-right: 10px; /* Separar el nombre de la hora */
-    white-space: normal; /* Permitir saltos de línea si el texto es largo */
-    word-wrap: break-word; /* Dividir palabras largas si es necesario */
-    flex-grow: 1; /* ocupe todo el espacio disponible */
+    margin-right: 10px;
+    white-space: normal;
+    word-wrap: break-word;
+    flex-grow: 1;
 }
 
 /* Hora del curso */
 .course-time {
-    white-space: nowrap; /* Mantener la hora en una sola línea */
-    text-align: right; 
-    padding-right: 0px; 
-
+    white-space: nowrap;
+    text-align: right;
+    padding-right: 0px;
 }
 
-
 /* Estilos para el pie de la tarjeta */
-.card-footer { 
-    padding: 0 15px; /* Espaciado interno horizontal */
-    background-color: #ffffff; /* Fondo blanco */
-    border-top: 1px solid #f5f5f5; /* Borde superior */
-    height: 48px; /* Altura fija personalizada */
-    display: flex; /* Usar Flexbox para la alineación */
-    align-items: center; /* Centrar verticalmente el contenido */
-    justify-content: space-between; /* Distribuir elementos horizontalmente */
-    box-sizing: border-box; /* Asegurar que padding no incremente altura */
-    overflow: hidden; /* Prevenir desbordamientos */
-    position: relative; /* Permitir uso de posicionamiento relativo */
+.card-footer {
+    padding: 0 15px;
+    background-color: #ffffff;
+    border-top: 1px solid #f5f5f5;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
 }
 
 .progress-container {
-    display: flex; /* Usar Flexbox para organizar los elementos */
-    align-items: center; /* Centrar verticalmente los elementos */
-    gap: 10px; /* Espacio entre la barra de progreso y el texto */
-    width: 100%; /* Asegurar que el contenedor ocupe todo el ancho disponible */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
 .progress-label {
-    font-size: 12px; /* Tamaño de fuente para la etiqueta */
-    color: #333; /* Color del texto */
-    white-space: nowrap; /* Prevenir salto de línea */
-    margin-right: 0px; /* Espaciado con la barra */
-    text-align: right; /* Alinear texto a la derecha */
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+    margin-right: 0px;
+    text-align: right;
 }
 
 .progress-bar {
-    flex: 1; /* La barra ocupa el resto del espacio disponible */
-    height: 6px; /* Altura de la barra de progreso */
-    background-color: #eee; /* Fondo gris claro */
-    border-radius: 4px; /* Bordes redondeados */
-    position: relative; /* Para posicionar el relleno */
-    overflow: hidden; /* Evitar desbordamientos */
+    flex: 1;
+    height: 6px;
+    background-color: #eee;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
 }
 
 .relleno-progress-bar {
-    height: 100%; /* Altura total del contenedor */
-    width: 70%; /* Porcentaje de progreso (ajustable dinámicamente) */
-    background-color: #4caf50; /* Color verde */
-    border-radius: 4px; /* Bordes redondeados */
+    height: 100%;
+    width: 70%;
+    background-color: #4caf50;
+    border-radius: 4px;
 }
 
 
@@ -216,3 +200,49 @@ header h1 {
 
 
 
+/* Contenedor periodo */
+.contenedor-periodos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 100px 5px 5px auto;
+    width: calc(100% - 230px);
+    max-width: 190;
+        border: 1px #e2e8f0;
+
+
+}
+
+
+/* Contenedor del select */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Estilo del select */
+#seleccion-periodo {
+    width: 100%;
+    padding: 12px 24px;
+
+    font-size: 14px;
+    border-radius: 8px;
+    background-color: #e2e8f0;
+    color: #1e293b;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-weight: 500;
+
+}
+
+
+
+/* Estilo para las opciones */
+#seleccion-periodo option {
+    padding: 16px;
+    background: #fff;
+        font-size: 14px; /* Tamaño de fuente aumentado */
+
+}
