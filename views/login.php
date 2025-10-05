@@ -46,7 +46,7 @@
             </div>
 
             <!-- Botón de inicio de sesión -->
-                <button type="submit">Iniciar sesión</button>
+                <button id="loginButton">Iniciar sesión</button>
             </form>
             
             <!-- Divisor -->
