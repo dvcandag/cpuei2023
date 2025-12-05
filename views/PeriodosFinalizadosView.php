@@ -1,5 +1,3 @@
-
-
 <!-- Incluye Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -7,6 +5,10 @@
 
 <link rel="stylesheet" type="text/css" href="../public/assets/css/styles_periodos_finalizados.css">
 
+<?php
+// Esta línea captura el periodo seleccionado, ya sea por GET o POST
+$codPeriodoSeleccionado = $_GET['codPeriodo'] ?? $_POST['codPeriodo'] ?? null;
+?>
 
 
 <div class="container-notas">
@@ -22,15 +24,14 @@
 <div class="mis-cursos"></div>
         <h5>Mis cursos</h5>
         <p>Periodo:</p>
-<div class="contenedor-seleccion">
-    
-      <form method="POST" id="form-periodo">
+   <div class="contenedor-seleccion">
+    <form method="POST" id="form-periodo">
         <div class="container-periodo">
-            <select id="seleccion-curso" name="codPeriodo">
-                <option value="" disabled <?= !isset($_POST['codPeriodo']) ? 'selected' : '' ?> hidden>Seleccione periodo</option>
+            <select id="seleccion-periodo" name="codPeriodo" class="seleccion-periodo">
+                <option value="" disabled <?= !$codPeriodoSeleccionado ? 'selected' : '' ?> hidden>Seleccione periodo</option>
                 <?php foreach ($periodos as $periodo): ?>
-                    <option value="<?= htmlspecialchars($periodo['codPeriodo']) ?>" 
-                        <?= (isset($_POST['codPeriodo']) && $_POST['codPeriodo'] == $periodo['codPeriodo']) ? 'selected' : '' ?>>
+                    <option value="<?= htmlspecialchars($periodo['codPeriodo']) ?>"
+                        <?= ($codPeriodoSeleccionado == $periodo['codPeriodo']) ? 'selected' : '' ?>>
                         <?= htmlspecialchars($periodo['NombrePeriodo']) ?>
                     </option>
                 <?php endforeach; ?>
@@ -38,123 +39,162 @@
         </div>
     </form>
 </div>
-    
 
-
-
-
-    <div class="resumen-general">
+     
+<!-- Resumen General Completo -->
+<div id="contenedor-resumen" class="resumen-general">
     <header class="resumen-header">
         <span>Resumen general del ciclo</span>
     </header>
     <div class="resumen-contenido">
         <div class="resumen-indicador">
             <div class="resumen-etiqueta">Campus:</div>
-            <div class="resumen-dato">Lima Norte</div>
+            <div class="resumen-dato"><?= htmlspecialchars($datosResumen['campus'] ?? 'No disponible') ?></div>
         </div>
         <div class="resumen-indicador">
             <div class="resumen-etiqueta">Cursos matriculados:</div>
-            <div class="resumen-dato">01</div>
+            <div class="resumen-dato"><?= htmlspecialchars($datosResumen['cursos_matriculados'] ?? '0') ?></div>
         </div>
         <div class="resumen-indicador">
             <div class="resumen-etiqueta">Ciclo relativo:</div>
-            <div class="resumen-dato">10</div>
+            <div class="resumen-dato"><?= htmlspecialchars($datosResumen['ciclo_relativo'] ?? 'No disponible') ?></div>
         </div>
-        
         <div class="resumen-indicador">
             <div class="resumen-etiqueta">Horas semanales:</div>
-            <div class="resumen-dato">4</div>
+            <div class="resumen-dato"><?= htmlspecialchars($datosResumen['horas_semanales'] ?? '0') ?></div>
         </div>
         <div class="resumen-indicador">
-            <div class="resumen-etiqueta">Cantidad de créditos:</div>
-            <div class="resumen-dato">21</div>
+            <div class="resumen-etiqueta">Créditos:</div>
+            <div class="resumen-dato"><?= htmlspecialchars($datosResumen['cantidad_creditos'] ?? '0') ?></div>
         </div>
         <div class="resumen-indicador">
             <div class="resumen-etiqueta">Orden de mérito:</div>
-            <div class="resumen-dato">10</div>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="curso-detalle">
-    <div class="curso-header" onclick="AlternarContenido(this)">
-        <h3>Taller de investigación - sistemas (1SI95)</h3>
-        <p class="estado-curso">Aprobado | Promedio: 17</p>
-        <button type="button" class="toggle-button">
-            <i class="fas fa-chevron-down"></i>
-        </button>
-    </div>
-    
-    <div class="curso-content">
-        <div class="docente-info">
-    <h4>Docente:</h4>
-    <div class="docente-nombres">
-        <p>Alejandria Vallejos, Patricia Abigail</p>
-    </div>
-</div>
-
-
-        
-        <div class="modalidad-curso">
-            <h4>Modalidad de curso:</h4>
-            <p>Virtual en vivo</p>
-        </div>
-        
-        <div class="horario">
-            <h4>Horario:</h4>
-            <p>Lunes: 18:30 - 20:00</p>
-            <p>Miércoles: 18:30 - 20:00</p>
-        </div>
-        
-        <div class="creditos">
-            <p>Horas semanales: 4.0</p>
-            <p>Créditos: 4.00</p>
-            <p>Nro vez: 1</p>
-            <p>Sección: 50404</p>
-        </div>
-        
-        <div class="evaluaciones">
-    <h4>Evaluaciones:</h4>
-    <div class="evaluacion">
-        <span>Avance de proyecto final 1 (APF1):</span>
-        <span class="valor-notas">15</span>
-    </div>
-    <div class="evaluacion">
-        <span>Avance de proyecto final 2 (APF2):</span>
-        <span class="valor-notas">15</span>
-    </div>
-    <div class="evaluacion">
-        <span>Avance de proyecto final 3 (APF3):</span>
-        <span class="valor-notas">15</span>
-    </div>
-    <div class="evaluacion">
-        <span>Participación en clase (PA):</span>
-        <span class="valor-notas">18</span>
-    </div>
-    <div class="evaluacion">
-        <span>Proyecto final (PROY):</span>
-        <span class="valor-notas">20</span>
-    </div>
-</div>
-
-        
-        <div class="formula">
-            <h4>Fórmula:</h4>
-            <p>10%*[APF1] + 20%*[APF2] + 20%*[APF3] + 10%*[PA] + 40%*[PROY]</p>
-        </div>
-        
-        <div class="calificaion-final">
-            <p><strong>Promedio:</strong> 17</p>
-            <p class="estado-final">Aprobado</p>
+            <div class="resumen-dato">
+                <?php if(isset($datosResumen['orden_merito']) && $datosResumen['orden_merito'] !== 'No disponible'): ?>
+                    Top <?= htmlspecialchars($datosResumen['orden_merito']) ?> 
+                    <small>(según promedio ponderado)</small>
+                <?php else: ?>
+                    No disponible
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- toggle-button para visualizar detalless del curso -->
+   <?php if (!empty($cursos)): ?>
+    <?php foreach ($cursos as $curso): ?>
+        <div class="curso-detalle">
+            <div class="curso-header" onclick="AlternarContenido(this)">
+                <h3><?= htmlspecialchars($curso['nombrecurso']); ?> (<?= htmlspecialchars($curso['codcurso']); ?>)</h3>
+                
+
+                <p class="estado-curso">Promedio: <?= isset($evaluaciones[$curso['codcurso']]['promedio']) ? htmlspecialchars($evaluaciones[$curso['codcurso']]['promedio']) : 'No disponible'; ?></p>
+
+
+                <button type="button" class="toggle-button">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            
+            <div class="curso-content">
+                <!-- Docente Info -->
+                <div class="docente-info">
+                    <h4>Docente:</h4>
+                    <div class="docente-nombres">
+                        <p><?= htmlspecialchars($curso['nombre_completo']); ?></p>
+                    </div>
+                </div>
+                
+                <!-- Modalidad de curso -->
+                <div class="modalidad-curso">
+                    <h4>Modalidad de curso:</h4>
+                    <p><?= htmlspecialchars($curso['modalidad']); ?></p>
+                </div>
+                
+                <!-- Horarios -->
+                <div class="horario">
+                    <h4>Horario:</h4>
+                    <?php if (isset($horarios[$curso['codcurso']])): ?>
+                        <?php foreach ($horarios[$curso['codcurso']] as $horario): ?>
+                            <p><?= htmlspecialchars($horario['dia_semana']); ?>: <?= htmlspecialchars($horario['hora_inicio']); ?> - <?= htmlspecialchars($horario['hora_fin']); ?></p>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>Debe seleccionar un periodo para ver historial.</p>
+                    <?php endif; ?>
+                </div>
+                
+                <!-- Créditos y Aula -->
+                <div class="creditos">
+                    <p>Hora semanal: <?= htmlspecialchars($curso['hora_semanal']); ?></p>
+                    <p>Créditos: <?= htmlspecialchars($curso['creditos']); ?></p>
+<p>Aula: <?= isset($aulaAlumno['nombreAula']) ? htmlspecialchars($aulaAlumno['nombreAula']) : 'No asignada' ?></p>
+<p>Sede: <?= isset($aulaAlumno['nombreSede']) ? htmlspecialchars($aulaAlumno['nombreSede']) : 'No disponible' ?></p> <!-- Mostramos el nombre de la sede -->
+                </div>
+
+                <!-- Evaluaciones -->
+                <div class="evaluaciones">
+                    <h4>Evaluaciones:</h4>
+                    <?php if (isset($evaluaciones[$curso['codcurso']])): ?>
+                        <div class="evaluacion">
+                            <span>Avance de proyecto final 1 (APF1):</span>
+                            <span class="valor-notas"><?= isset($evaluaciones[$curso['codcurso']]['nota1']) ? htmlspecialchars($evaluaciones[$curso['codcurso']]['nota1']) : 'No disponible'; ?></span>
+                        </div>
+                        <div class="evaluacion">
+                            <span>Avance de proyecto final 2 (APF2):</span>
+                            <span class="valor-notas"><?= isset($evaluaciones[$curso['codcurso']]['nota2']) ? htmlspecialchars($evaluaciones[$curso['codcurso']]['nota2']) : 'No disponible'; ?></span>
+                        </div>
+                        <div class="evaluacion">
+                            <span>Avance de proyecto final 3 (APF3):</span>
+                            <span class="valor-notas"><?= isset($evaluaciones[$curso['codcurso']]['nota3']) ? htmlspecialchars($evaluaciones[$curso['codcurso']]['nota3']) : 'No disponible'; ?></span>
+                        </div>
+                        
+                        <div class="evaluacion">
+                            <span>Proyecto final (PROY):</span>
+                            <span class="valor-notas"><?= isset($evaluaciones[$curso['codcurso']]['nota_proyecto']) ? htmlspecialchars($evaluaciones[$curso['codcurso']]['nota_proyecto']) : 'NP'; ?></span>
+                        </div>
+
+                        <div class="evaluacion">
+                            <span>Participación en clase (PA):</span>
+                            <span class="valor-notas"><?= isset($evaluaciones[$curso['codcurso']]['nota4']) ? htmlspecialchars($evaluaciones[$curso['codcurso']]['nota4']) : 'No disponible'; ?></span>
+                        </div>
+
+                        <div class="evaluacion">
+                            <span>Promedio Final (PROFINAL):</span>
+                            <span class="valor-notas"><?= isset($evaluaciones[$curso['codcurso']]['promedio']) ? htmlspecialchars($evaluaciones[$curso['codcurso']]['promedio']) : 'No disponible'; ?></span>
+                        </div>
+                    <?php else: ?>
+                        <p>No hay evaluaciones disponibles para este curso.</p>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Fórmula para calcular el promedio -->
+                <div class="formula">
+                    <h4>Fórmula de Calificación:</h4>
+                    <p>5%*[APF1] + 20%*[APF2] + 20%*[APF3] + 15%*[PA] + 40%*[PROY]</p>
+
+                </div>
+                
+                <!-- Calificación final -->
+                <div class="calificacion-final">
+                    <p><strong>Promedio:</strong> <?= isset($evaluaciones[$curso['codcurso']]['promedio']) ? htmlspecialchars($evaluaciones[$curso['codcurso']]['promedio']) : 'No disponible'; ?></p>
+                    <p class="estado-final"><?= isset($evaluaciones[$curso['codcurso']]['promedio']) && $evaluaciones[$curso['codcurso']]['promedio'] >= 13 ? 'Aprobado' : 'Desaprobado'; ?></p>
+                </div>
+            </div>
+        </div>
+
+    <?php endforeach; ?>
+
+<?php else: ?>
+        <div class="alert alert-info">Debes seleccionar periodo culminado para ver historial.</div>
+    <?php endif; ?>
+
+
 
 
     <script src="../public/assets/js/script_AlternarContenido.js"></script>
 
         <script src="../public/assets/js/script_mostrar_periodos_finalizados.js"></script>
+
+
 
