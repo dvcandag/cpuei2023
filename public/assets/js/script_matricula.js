@@ -1,90 +1,55 @@
 function cargarCursos(codPeriodo) {
-    if (!codPeriodo) {
-        console.error("No se ha seleccionado un período válido.");
-        return;
-    }
+    if (!codPeriodo) return;
+
+    // AÑADE ESTA LÍNEA para actualizar el campo oculto
+    document.querySelector('input[name="codPeriodo"]').value = codPeriodo;
 
     fetch(`http://localhost/cpuei2023/index.php?action=obtenerCursosPorPeriodo&codPeriodo=${codPeriodo}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al cargar los cursos');
-            }
-            return response.json(); // Devuelve los cursos en formato JSON
-        })
+        .then(response => response.json())
         .then(cursos => {
-            const contenedorDesaprobados = document.getElementById('cursos-desaprobados').querySelector('.container-listado-curso');
-            const contenedorDisponibles = document.getElementById('cursos-disponibles').querySelector('.container-listado-curso');
+            const contenedorDesaprobados = document.querySelector('#cursos-desaprobados .container-listado-curso');
+            const contenedorDisponibles = document.querySelector('#cursos-disponibles .container-listado-curso');
 
-            // Limpiar los contenedores
             contenedorDesaprobados.innerHTML = '';
             contenedorDisponibles.innerHTML = '';
 
-            if (cursos.length > 0) {
-                // Separar cursos desaprobados y disponibles
-                const cursosDesaprobados = cursos.filter(curso => curso.estado === 'desaprobado');
-                const cursosDisponibles = cursos.filter(curso => curso.estado === 'disponible');
+            const desaprobados = cursos.filter(c => c.estado === 'desaprobado');
+            const disponibles = cursos.filter(c => c.estado === 'disponible');
 
-                // Mostrar cursos desaprobados
-                if (cursosDesaprobados.length > 0) {
-                    cursosDesaprobados.forEach(curso => {
-                        const cursoItem = document.createElement('div');
-                        cursoItem.className = 'listado-curso curso-desaprobado';
-                        cursoItem.innerHTML = `
-                            <label>
-                                <input type="checkbox" name="cursos[]" value="${curso.codcurso}" onchange="actualizarResumenSeleccion()">
-                                ${curso.nombrecurso}
-                                <span>(Curso obligatorio)</span>
-                            </label>
-                        `;
-                        contenedorDesaprobados.appendChild(cursoItem);
-                    });
-                } else {
-                    contenedorDesaprobados.innerHTML = '<p>No tienes cursos desaprobados.</p>';
-                }
+            desaprobados.forEach(curso => {
+                contenedorDesaprobados.innerHTML += `
+                    <div>
+                        <label>
+                            <input type="checkbox" name="cursos[]" value="${curso.codcurso}" onchange="actualizarResumenSeleccion()">
+                            ${curso.nombrecurso} <span>(Curso obligatorio)</span>
+                        </label>
+                    </div>`;
+            });
 
-                // Mostrar cursos disponibles
-                if (cursosDisponibles.length > 0) {
-                    cursosDisponibles.forEach(curso => {
-                        const cursoItem = document.createElement('div');
-                        cursoItem.className = 'listado-curso';
-                        cursoItem.innerHTML = `
-                            <label>
-                                <input type="checkbox" name="cursos[]" value="${curso.codcurso}" onchange="actualizarResumenSeleccion()">
-                                ${curso.nombrecurso}
-                            </label>
-                        `;
-                        contenedorDisponibles.appendChild(cursoItem);
-                    });
-                } else {
-                    contenedorDisponibles.innerHTML = '<p class="mensaje-error">No hay cursos disponibles para este período.</p>';
-                }
-            } else {
-                contenedorDisponibles.innerHTML = '<p class="mensaje-error">No hay cursos disponibles para este período.</p>';
-            }
-        })
-        .catch(error => {
-            console.error('Error al cargar los cursos:', error);
-            document.getElementById('cursos-disponibles').innerHTML = '<p>Error al cargar los cursos.</p>';
+            disponibles.forEach(curso => {
+                contenedorDisponibles.innerHTML += `
+                    <div>
+                        <label>
+                            <input type="checkbox" name="cursos[]" value="${curso.codcurso}" onchange="actualizarResumenSeleccion()">
+                            ${curso.nombrecurso}
+                        </label>
+                    </div>`;
+            });
+
+            actualizarResumenSeleccion();
         });
 }
 
-// Función para listar seleccion en  "resumen de selección"
 function actualizarResumenSeleccion() {
     const contenedorResumen = document.getElementById('resumen-seleccion');
-    const cursosSeleccionados = document.querySelectorAll('input[name="cursos[]"]:checked');
+    const seleccionados = document.querySelectorAll('input[name="cursos[]"]:checked');
 
-    contenedorResumen.innerHTML = cursosSeleccionados.length === 0
+    contenedorResumen.innerHTML = seleccionados.length === 0
         ? '<p>No hay cursos seleccionados</p>'
         : '';
 
-    cursosSeleccionados.forEach(checkbox => {
-        const cursoItem = document.createElement('div');
-        cursoItem.className = 'curso-resumen';
-        cursoItem.innerHTML = `
-            <span>${checkbox.parentNode.textContent.trim()}</span>
-           
-        `;
-        contenedorResumen.appendChild(cursoItem);
+    seleccionados.forEach(curso => {
+        contenedorResumen.innerHTML += `<div>${curso.parentNode.textContent.trim()}</div>`;
     });
 }
 

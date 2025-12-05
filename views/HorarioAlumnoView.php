@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
 
 $horario = $_SESSION['horario'] ?? [];
 $progresoPeriodo = $_SESSION['progresoPeriodo'] ?? [];
-
+$periodos = $_SESSION['periodos'] ?? [];  // Cargar los periodos desde la sesión
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,24 @@ $progresoPeriodo = $_SESSION['progresoPeriodo'] ?? [];
     <link rel="stylesheet" href="../public/assets/css/styles_horario_alumno.css"> <!-- Suponiendo que has guardado los estilos proporcionados en este archivo -->
 </head>
 <body>
-    
+<!-- views/Periodos-->
+<div class="contenedor-periodos">
+    <form method="POST" id="form-periodo">
+        <div class="select-wrapper">
+            <select id="seleccion-periodo" name="codPeriodo">
+                <option value="" disabled selected hidden>VER MAS HORARIOS</option>
+                <?php foreach ($periodos as $periodo): ?>
+                    <option value="<?= htmlspecialchars($periodo['codPeriodo']) ?>">
+                        <?= htmlspecialchars($periodo['NombrePeriodo']) ?> 
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </form>
+</div>
+
+
+
 <div class="container-horario-alumno"> 
     <h1>Horario del Alumno</h1>
     <?php if (!empty($_SESSION['horario'])): ?>
@@ -33,6 +50,8 @@ $progresoPeriodo = $_SESSION['progresoPeriodo'] ?? [];
                             <p class="card-subtitle"><strong>MODALIDAD:</strong> <?= htmlspecialchars($clases[0]['modalidad']) ?></p>
                         <?php endif; ?>
                     </div>
+
+
                     
 <div class="card-content">
     <?php if (!empty($clases)): ?>
@@ -99,3 +118,4 @@ if (isset($progresoPeriodo[$clase['codcurso']])):
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
 </html>
+
